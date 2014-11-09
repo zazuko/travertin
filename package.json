@@ -1,0 +1,11 @@
+{
+  "name": "ld-proxy",
+  "description": "Linked Data REST proxy",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "4.10.*",
+    "express-utils": "0.1.*",
+    "request": "2.47.*"
+  },
+  "license": "MIT"
+}
