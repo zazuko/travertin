@@ -1,10 +1,22 @@
 {
   "name": "ld-proxy",
   "description": "Linked Data REST proxy",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "homepage": "https://github.com/zazukoians/ld-proxy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zazukoians/ld-proxy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zazukoians/ld-proxy/issues"
+  },
   "dependencies": {
     "express": "4.10.*",
     "express-utils": "0.1.*",
+    "ldp": "0.1.*",
+    "morgan": "1.5.*",
+    "rdf-ext": "0.1.*",
+    "rdf-interfaces": "0.1.*",
     "request": "2.47.*"
   },
   "license": "MIT"
