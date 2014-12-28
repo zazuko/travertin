@@ -16,17 +16,39 @@
 
 global.rdf = require('rdf-interfaces');
 require('rdf-ext')(rdf);
-require('./file-store')(rdf);
+
+var
+  fs = require('fs'),
+  graphSplit = require('./lib/graph-split')(rdf);
+
+
+var init = function () {
+  var config = this;
+
+  return new Promise(function (resolve) {
+    rdf.parseTurtle(fs.readFileSync('./data/graph.ttl').toString(), function (graph) {
+      config.handlerOptions.storeOptions = {
+        // optional map hostname port
+        /*hostname: 'localhost',
+        port: null,*/
+        graph: graph,
+        split: graphSplit.subjectIriSplit
+      };
+
+      resolve();
+    });
+  });
+};
 
 
 module.exports = {
   listener: {
     port: 9091
   },
+  init: init,
   HandlerClass: require('./lib/ldp-module-handler'),
   handlerOptions: {
     rdf: rdf,
-    StoreClass: rdf.FileStore,
-    storeOptions: {path: 'data'}
+    StoreClass: graphSplit.SplitStore
   }
 };

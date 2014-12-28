@@ -17,7 +17,8 @@
     "morgan": "1.5.*",
     "rdf-ext": "0.1.*",
     "rdf-interfaces": "0.1.*",
-    "request": "2.47.*"
+    "request": "2.47.*",
+    "stream-buffers": "1.1.*"
   },
   "license": "MIT"
 }
