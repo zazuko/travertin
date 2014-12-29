@@ -13,7 +13,7 @@ var
 
 
 if (!('init' in config)) {
-  config.init = Promise.resolve;
+  config.init = function () { return Promise.resolve(); };
 }
 
 config.init()
