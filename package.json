@@ -18,7 +18,12 @@
     "rdf-ext": "0.1.*",
     "rdf-interfaces": "0.1.*",
     "request": "2.47.*",
-    "stream-buffers": "1.1.*"
+    "stream-buffers": "1.1.*",
+    "es6-promise": "1.0.*",
+    "express-negotiate": "0.0.*"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  }
 }
