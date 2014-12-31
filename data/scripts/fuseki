@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export FUSEKI_HOME=/home/bergi/opt/jena-fuseki-1.1.1/
+
+$FUSEKI_HOME/fuseki-server "$@"

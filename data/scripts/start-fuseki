@@ -1,0 +1,3 @@
+#!/bin/bash
+
+fuseki --config=fuseki-config.ttl
