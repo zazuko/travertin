@@ -2,19 +2,25 @@
 
 'use strict';
 
-/*module.exports = {
+
+var buildQuery = function (iri) {
+  return 'DESCRIBE <' + iri + '>';
+};
+
+module.exports = {
   listener: {
     port: 9091
   },
   HandlerClass: require('./lib/sparql-handler'),
   handlerOptions: {
     endpointUrl: 'http://localhost:3030/alod/sparql',
-    port: 3030
+    //hostname: 'data.admin.ch',
+    port: null,
+    buildQuery: buildQuery
   }
-};*/
+};
 
-
-global.rdf = require('rdf-interfaces');
+/*global.rdf = require('rdf-interfaces');
 require('rdf-ext')(rdf);
 
 var
@@ -29,8 +35,8 @@ var init = function () {
     rdf.parseTurtle(fs.readFileSync('./data/graph.ttl').toString(), function (graph) {
       config.handlerOptions.storeOptions = {
         // optional map hostname port
-        /*hostname: 'localhost',
-        port: null,*/
+        hostname: 'localhost',
+        port: null,
         graph: graph,
         split: graphSplit.subjectIriSplit
       };
@@ -51,4 +57,4 @@ module.exports = {
     rdf: rdf,
     StoreClass: graphSplit.SplitStore
   }
-};
+};*/
