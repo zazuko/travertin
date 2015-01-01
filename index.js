@@ -12,9 +12,10 @@ var
   bunyan  = require('bunyan'),
   renderHtmlMiddleware = require('./lib/render-html-middleware');
 
-var log  = bunyan.createLogger({
-  name: 'zazuko-alod',
-  level: 'debug'
+
+global.log  = bunyan.createLogger({
+  name: config.app,
+  level: config.logger.level
 });
 
 

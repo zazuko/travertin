@@ -8,6 +8,10 @@ var buildQuery = function (iri) {
 };
 
 module.exports = {
+  app: 'zazuko-alod',
+  logger: {
+    level: 'debug'
+  },
   listener: {
     port: 9091
   },
@@ -60,6 +64,10 @@ var init = function () {
 
 
 module.exports = {
+  app: 'zazuko-alod',
+  logger: {
+    level: 'debug'
+  },
   listener: {
     port: 9091
   },
