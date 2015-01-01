@@ -11,14 +11,16 @@ module.exports = {
   listener: {
     port: 9091
   },
+  expressSettings: {
+    'trust proxy': 'loopback'
+  },
   HandlerClass: require('./lib/sparql-handler'),
   handlerOptions: {
     endpointUrl: 'http://localhost:3030/alod/sparql',
-    //hostname: 'data.admin.ch',
-    port: null,
     buildQuery: buildQuery
   }
 };
+
 
 /*global.rdf = require('rdf-interfaces');
 require('rdf-ext')(rdf);
@@ -31,18 +33,28 @@ var
 var init = function () {
   var config = this;
 
-  return new Promise(function (resolve) {
-    rdf.parseTurtle(fs.readFileSync('./data/graph.ttl').toString(), function (graph) {
-      config.handlerOptions.storeOptions = {
-        // optional map hostname port
-        hostname: 'localhost',
-        port: null,
-        graph: graph,
-        split: graphSplit.subjectIriSplit
-      };
-
-      resolve();
+  var importGraph = function (filename) {
+    return new Promise(function (resolve) {
+      rdf.parseTurtle(fs.readFileSync(filename).toString(), function (graph) {
+        resolve(graph);
+      });
     });
+  };
+
+  return Promise.all([
+    importGraph('./data/graphs/bar.ttl'),
+    importGraph('./data/graphs/ne.ttl')
+  ]).then(function (graphs) {
+    var mergedGraph = rdf.createGraph();
+
+    graphs.forEach(function (graph) {
+      mergedGraph.addAll(graph);
+    });
+
+    config.handlerOptions.storeOptions = {
+      graph: mergedGraph,
+      split: graphSplit.subjectIriSplit
+    };
   });
 };
 
@@ -50,6 +62,9 @@ var init = function () {
 module.exports = {
   listener: {
     port: 9091
+  },
+  expressSettings: {
+    'trust proxy': 'loopback'
   },
   init: init,
   HandlerClass: require('./lib/ldp-module-handler'),
