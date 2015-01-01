@@ -22,6 +22,12 @@ config.init()
       app = express(),
       handler = new config.HandlerClass(config.handlerOptions);
 
+    if ('expressSettings' in config) {
+      for (var key in config.expressSettings) {
+        app.set(key, config.expressSettings[key]);
+      }
+    }
+
     app.use(morgan('combined'));
     app.use(express.static(path.join(__dirname, './data/public/')));
     app.use(expressUtils.absoluteUrl());
