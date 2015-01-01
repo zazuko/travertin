@@ -15,6 +15,7 @@
     "express-utils": "0.1.*",
     "ldp": "0.1.*",
     "morgan": "1.5.*",
+    "bunyan": "1.2.*",
     "rdf-ext": "0.1.*",
     "rdf-interfaces": "0.1.*",
     "request": "2.47.*",

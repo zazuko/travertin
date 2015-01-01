@@ -9,7 +9,13 @@ var
   handlerMiddleware = require('./lib/handler-middleware'),
   morgan = require('morgan'),
   path = require('path'),
+  bunyan  = require('bunyan'),
   renderHtmlMiddleware = require('./lib/render-html-middleware');
+
+var log  = bunyan.createLogger({
+  name: 'zazuko-alod',
+  level: 'debug'
+});
 
 
 if (!('init' in config)) {
@@ -35,5 +41,5 @@ config.init()
     app.use(handlerMiddleware(handler));
     app.listen(config.listener.port);
 
-    console.log('listening on port: ' + config.listener.port);
+    log.info('listening on port: ' + config.listener.port);
   });
