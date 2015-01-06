@@ -1,0 +1,700 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix alod: <http://data.admin.ch/alod/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix locah: <http://data.archiveshub.ac.uk/def/> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+
+<http://data.ge.ch/id/archivalresource/31780> a locah:ArchivalResource ;
+	dc:title "Archives du Département du Léman (dépôt commun)" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL" ;
+	alod:recordID "31780" ;
+	time:intervalStarts "1798-08-25"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-04-04"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "dépôt commun" ;
+	alod:locationTag "Léman" ;
+	alod:otherReferenceCode "ADL" .
+
+<http://data.ge.ch/id/archivalresource/33130> a locah:ArchivalResource ;
+	dc:title "Enregistrement et timbre, actes civils" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL K 1-36" ;
+	alod:recordID "33130" ;
+	time:intervalStarts "1798-10-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-09-30"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "enregistrement" , "timbre" , "acte notarié" , "notaire" ;
+	alod:otherReferenceCode "ADL, Enregistrement et timbre, chapitre 1" ;
+	dc:description "Recette de l'enregistrement et timbre, actes civils, comportant la date de l'acte, une brève désignation, la référence de l'acte notarié, sur des formules préimprimées." .
+
+<http://data.ge.ch/id/archivalresource/33140> a locah:ArchivalResource ;
+	dc:title "Enregistrement et timbre, actes sous signature privée" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL K 37-54" ;
+	alod:recordID "33140" ;
+	time:intervalStarts "1799-03-21"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1813-12-24"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "enregistrement" , "timbre" , "acte sous seing privé" , "acte sous signature privée" ;
+	alod:otherReferenceCode "ADL, Enregistrement et timbre, chapitre 2" ;
+	dc:description "Recette de l'enregistrement et timbre, actes sous seing privé ou sous signature privée, comportant la date de l'acte, une brève désignation, le lieu de signature, et le droit perçu, sur des formules pré imprimées." .
+
+<http://data.ge.ch/id/archivalresource/33150> a locah:ArchivalResource ;
+	dc:title "Enregistrement et timbre, actes judiciaires" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL K 60-106" ;
+	alod:recordID "33150" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-04"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "enregistrement" , "timbre" , "jugement" ;
+	alod:otherReferenceCode "ADL, Enregistrement et timbre, chapitre 4" ;
+	dc:description "Recette de l'enregistrement et timbre, actes judiciaires, comportant le nom du tribunal, la date du jugement, les noms des parties, un bref résumé du jugement, et le droit perçu, sur des formules préimprimées." .
+
+<http://data.ge.ch/id/archivalresource/33160> a locah:ArchivalResource ;
+	dc:title "Enregistrement et timbre, actes d'huissiers" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL K 107-161" ;
+	alod:recordID "33160" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "enregistrement" , "timbre" , "huissier" , "acte d'huissier" , "exploit d'huissier" ;
+	alod:otherReferenceCode "ADL, Enregistrement et timbre, chapitre 5" ;
+	dc:description "Recette de l'enregistrement et timbre, actes d'huissiers, comportant la date de l'acte, le nom du réquérant, celui du défendeur, celui de l'huissier, le motif de l'acte, et le droit perçu, sur des formules préimprimées." .
+
+<http://data.ge.ch/id/archivalresource/34450> a locah:ArchivalResource ;
+	dc:title "Pièces diverses de la Préfecture et de la Sous-préfecture classées alphabétiquement par matières." ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34450" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "préfecture" , "sous-préfecture" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 13" .
+
+<http://data.ge.ch/id/archivalresource/34470> a locah:ArchivalResource ;
+	dc:title "Registres d'arrêtés, généraux et par bureau." ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL A" ;
+	alod:recordID "34470" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "arrêté" ;
+	alod:otherReferenceCode "ADL, Chapitre I, section 1" .
+
+<http://data.ge.ch/id/archivalresource/34480> a locah:ArchivalResource ;
+	dc:title "Copies de lettres du Secrétariat central et par bureau" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL A" ;
+	alod:recordID "34480" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "correspondance" ;
+	alod:otherReferenceCode "ADL, Chapitre I, section 2" .
+
+<http://data.ge.ch/id/archivalresource/34490> a locah:ArchivalResource ;
+	dc:title "Copies de lettres du Commissaire du pouvoir exécutif près l'Administration centrale" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL A" ;
+	alod:recordID "34490" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "correspondance" ;
+	alod:otherReferenceCode "ADL, Chapitre I, section 3" .
+
+<http://data.ge.ch/id/archivalresource/34500> a locah:ArchivalResource ;
+	dc:title "Registres d'enregistrement de la correspondance reçue et un registre de pétitions isolé" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL A" ;
+	alod:recordID "34500" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "correspondance" , "pétition" ;
+	alod:otherReferenceCode "ADL, Chapitre I, section 4" .
+
+<http://data.ge.ch/id/archivalresource/34510> a locah:ArchivalResource ;
+	dc:title "Ventes de biens nationaux dans le District de Carouge à l'époque du Département du Mont-Blanc et quelques pièces isolées provenant du District de Carouge" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL A" ;
+	alod:recordID "34510" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "vente" ;
+	alod:personTag "Département du Mont-Blanc" ;
+	alod:locationTag "Carouge" ;
+	alod:otherReferenceCode "ADL, Chapitre I, section 5" .
+
+<http://data.ge.ch/id/archivalresource/34520> a locah:ArchivalResource ;
+	dc:title "Registres d'arrêtés de la Préfecture et de ses bureaux" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34520" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "arrêté" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 1" .
+
+<http://data.ge.ch/id/archivalresource/34530> a locah:ArchivalResource ;
+	dc:title "Registres de correspondance de la Préfecture, diverses catégories." ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34530" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "Préfecture" , "correspondance" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 2" .
+
+<http://data.ge.ch/id/archivalresource/34540> a locah:ArchivalResource ;
+	dc:title "Bureau militaire : registres de correspondance" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34540" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "militaire" , "correspondance" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 2" .
+
+<http://data.ge.ch/id/archivalresource/34550> a locah:ArchivalResource ;
+	dc:title "Registres d'enregistrement de la correspondance reçue" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34550" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "correspondance" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 3" .
+
+<http://data.ge.ch/id/archivalresource/34560> a locah:ArchivalResource ;
+	dc:title "Registres des pétitions" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34560" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "pétition" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 4" .
+
+<http://data.ge.ch/id/archivalresource/34570> a locah:ArchivalResource ;
+	dc:title "Conseil de préfecture" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34570" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "préfecture" ;
+	alod:personTag "Conseil de préfecture" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 6" .
+
+<http://data.ge.ch/id/archivalresource/34580> a locah:ArchivalResource ;
+	dc:title "Conseil général de département" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34580" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "département" ;
+	alod:personTag "Conseil général de département" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 7" .
+
+<http://data.ge.ch/id/archivalresource/34590> a locah:ArchivalResource ;
+	dc:title "Registres des actes de la préfecture sujets à enregistrement" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34590" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "préfecture" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 8" .
+
+<http://data.ge.ch/id/archivalresource/34600> a locah:ArchivalResource ;
+	dc:title "Registres divers" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34600" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "préfecture" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 9" .
+
+<http://data.ge.ch/id/archivalresource/34610> a locah:ArchivalResource ;
+	dc:title "Registres de la comptabilité départementale" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34610" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "préfecture" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 10" .
+
+<http://data.ge.ch/id/archivalresource/34620> a locah:ArchivalResource ;
+	dc:title "Registres relatifs aux émigrés" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34620" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "émigré" , "émigration" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 11" .
+
+<http://data.ge.ch/id/archivalresource/34630> a locah:ArchivalResource ;
+	dc:title "Bureau militaire : tableau général de la conscription" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34630" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "militaire" , "conscription" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 12" .
+
+<http://data.ge.ch/id/archivalresource/34640> a locah:ArchivalResource ;
+	dc:title "Bureau militaire : registres des séances du Conseil de recrutement" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34640" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "militaire" , "conscription" , "recrutement" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 12" .
+
+<http://data.ge.ch/id/archivalresource/34650> a locah:ArchivalResource ;
+	dc:title "Bureau militaire : état général des conscrits réformés (les conscrits réformés des classes postérieures, même de 1811, sont compris sur les tableaux généraux de la conscription)" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34650" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "militaire" , "conscription" , "recrutement" , "réformé" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 12" .
+
+<http://data.ge.ch/id/archivalresource/34660> a locah:ArchivalResource ;
+	dc:title "Bureau militaire : registres des actes de remplacement et exemptions de conscrits; instructions générales sur les levées de 1809 et 1811; contrôle des déserteurs." ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34660" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "militaire" , "conscription" , "recrutement" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 12" .
+
+<http://data.ge.ch/id/archivalresource/34670> a locah:ArchivalResource ;
+	dc:title "Bureau militaire : pièces diverses en liasses" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34670" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "militaire" , "conscription" , "recrutement" ;
+	alod:otherReferenceCode "ADL, Chapitre II, section 12" .
+
+<http://data.ge.ch/id/archivalresource/34680> a locah:ArchivalResource ;
+	dc:title "Bureau militaire : supplément." ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B" ;
+	alod:recordID "34680" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "militaire" ;
+	alod:otherReferenceCode "ADL, supplément au Chapitre 2, section 12" .
+
+<http://data.ge.ch/id/archivalresource/34690> a locah:ArchivalResource ;
+	dc:title "Sous-Préfecture de l'arrondissement de Genève." ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL C" ;
+	alod:recordID "34690" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "sous-préfecture" ;
+	alod:otherReferenceCode "ADL, Chapitre III, section unique" .
+
+<http://data.ge.ch/id/archivalresource/34700> a locah:ArchivalResource ;
+	dc:title "Commission centrale : registres" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL D" ;
+	alod:recordID "34700" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:personTag "Commission centrale" ;
+	alod:otherReferenceCode "ADL, Chapitre IV, section 1" .
+
+<http://data.ge.ch/id/archivalresource/34710> a locah:ArchivalResource ;
+	dc:title "Commission centrale : liasses diverses" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL D" ;
+	alod:recordID "34710" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:personTag "Commission centrale" ;
+	alod:otherReferenceCode "ADL, Chapitre IV, section 2" .
+
+<http://data.ge.ch/id/archivalresource/34720> a locah:ArchivalResource ;
+	dc:title "Commission subsidiaire départementale : registres" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL E" ;
+	alod:recordID "34720" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:personTag "Commission subsidiaire départementale" ;
+	alod:otherReferenceCode "ADL, Chapitre V, section 1" .
+
+<http://data.ge.ch/id/archivalresource/34730> a locah:ArchivalResource ;
+	dc:title "Commission subsidiaire départementale : liasses diverses" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL E" ;
+	alod:recordID "34730" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:personTag "Commission subsidiaire départementale" ;
+	alod:otherReferenceCode "ADL, Chapitre V, section 2" .
+
+<http://data.ge.ch/id/archivalresource/34740> a locah:ArchivalResource ;
+	dc:title "Direction des contributions : registres" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL F" ;
+	alod:recordID "34740" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "fiscalité" , "impôt" ;
+	alod:personTag "Direction des contributions" ;
+	alod:otherReferenceCode "ADL, Chapitre VI, section 1" .
+
+<http://data.ge.ch/id/archivalresource/34750> a locah:ArchivalResource ;
+	dc:title "Direction des contributions : liasses diverses" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL F" ;
+	alod:recordID "34750" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "fiscalité" , "impôt" ;
+	alod:personTag "Direction des contributions" ;
+	alod:otherReferenceCode "ADL, Chapitre VI, section 2" .
+
+<http://data.ge.ch/id/archivalresource/34760> a locah:ArchivalResource ;
+	dc:title "Passeports" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL G" ;
+	alod:recordID "34760" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "passeport" ;
+	alod:otherReferenceCode "ADL, Chapitre VII, passeports" .
+
+<http://data.ge.ch/id/archivalresource/34770> a locah:ArchivalResource ;
+	dc:title "Bureau de police de la Ville de Genève" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL H" ;
+	alod:recordID "34770" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "police" , "étranger" , "permis de séjour" ;
+	alod:otherReferenceCode "ADL, Chapitre VIII" .
+
+<http://data.ge.ch/id/archivalresource/34780> a locah:ArchivalResource ;
+	dc:title "Placard des publications officielles" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL I" ;
+	alod:recordID "34780" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "placard" , "affiche" , "publication" ;
+	alod:otherReferenceCode "ADL, Chapitre IX" .
+
+<http://data.ge.ch/id/archivalresource/34790> a locah:ArchivalResource ;
+	dc:title "Placards, circulaires, imprimés classés chronologiquement" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL I" ;
+	alod:recordID "34790" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "placard" , "affiche" , "publication" ;
+	alod:otherReferenceCode "ADL, Chapitre IX" .
+
+<http://data.ge.ch/id/archivalresource/34800> a locah:ArchivalResource ;
+	dc:title "Greffe correctionnel" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34800" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "justice" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34810> a locah:ArchivalResource ;
+	dc:title "Greffe du Tribunal ordinaire des douanes" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34810" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "justice" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34820> a locah:ArchivalResource ;
+	dc:title "Greffe criminel" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34820" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "justice" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34830> a locah:ArchivalResource ;
+	dc:title "Greffe civil" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34830" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "justice" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34840> a locah:ArchivalResource ;
+	dc:title "Etat civil" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34840" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "Etat civil" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34850> a locah:ArchivalResource ;
+	dc:title "Ancienne judicadure maje de la Province de Carouge: transferé à Jur. Civ. Pc 8 à 22." ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34850" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "justice" ;
+	alod:locationTag "Carouge" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34860> a locah:ArchivalResource ;
+	dc:title "District de Carouge" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34860" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "justice" ;
+	alod:locationTag "Carouge" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34870> a locah:ArchivalResource ;
+	dc:title "Tribunal de commerce : feuilles d'audiences ou plumitifs" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34870" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "justice" , "tribunal de commerce" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34880> a locah:ArchivalResource ;
+	dc:title "Tribunal de commerce : minutes de jugements" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34880" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "justice" , "tribunal de commerce" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34890> a locah:ArchivalResource ;
+	dc:title "Tribunal de commerce : registres et répertoires divers, pièces de faillite, élections et décrets de nomination des juges, correspondance diverse" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL J" ;
+	alod:recordID "34890" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "justice" , "tribunal de commerce" ;
+	alod:otherReferenceCode "ADL, Justice" .
+
+<http://data.ge.ch/id/archivalresource/34910> a locah:ArchivalResource ;
+	dc:title "Registres dits \"\"sans utilité\"\". Quelques sommiers" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL K" ;
+	alod:recordID "34910" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "enregistrement et timbre" ;
+	alod:otherReferenceCode "ADL, Enregistrement et timbres" .
+
+<http://data.ge.ch/id/archivalresource/34920> a locah:ArchivalResource ;
+	dc:title "Supplément général : registres et portefeuille divers" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL L" ;
+	alod:recordID "34920" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:otherReferenceCode "ADL, Supplément général" .
+
+<http://data.ge.ch/id/archivalresource/34930> a locah:ArchivalResource ;
+	dc:title "Supplément général : liasses de correspondance des communes" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL N" ;
+	alod:recordID "34930" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "commune" ;
+	alod:otherReferenceCode "ADL, Supplément général" .
+
+<http://data.ge.ch/id/archivalresource/34940> a locah:ArchivalResource ;
+	dc:title "Fonds Martin-Servand" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL M" ;
+	alod:recordID "34940" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:personTag "Marin-Servand" ;
+	alod:otherReferenceCode "ADL, Supplément général" .
+
+<http://data.ge.ch/id/archivalresource/34950> a locah:ArchivalResource ;
+	dc:title "Enregistrement et timbre, recettes diverses" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL K 107-161" ;
+	alod:recordID "34950" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "enregistrement" , "timbre" , "huissier" , "acte d'huissier" , "exploit d'huissier" ;
+	alod:otherReferenceCode "ADL, Enregistrement et timbre, chapitre 5" .
+
+<http://data.ge.ch/id/archivalresource/34960> a locah:ArchivalResource ;
+	dc:title "Enregistrement et timbre, sommiers divers" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL K 107-161" ;
+	alod:recordID "34960" ;
+	time:intervalStarts "1798-09-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1814-07-20"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "enregistrement" , "timbre" , "huissier" , "acte d'huissier" , "exploit d'huissier" ;
+	alod:otherReferenceCode "ADL, Enregistrement et timbre, chapitre 5" .
+
+<http://data.ge.ch/id/archivalresource/35600> a locah:ArchivalResource ;
+	dc:title "Registres d'arrêtés du Bureau militaire de la Préfecture" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "ADL B 30 à B 36" ;
+	alod:recordID "35600" ;
+	time:intervalStarts "1803-03-22"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1811-02-25"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "Préfecture" , "militaire" , "arrêté" ;
+	alod:personTag "ADL" ;
+	dc:description "Registres d'arrêtés de la Préfecture concernant les affaires militaires" .
+
+<http://data.ge.ch/id/archivalresource/36930> a locah:ArchivalResource ;
+	dc:title "Cadastre français 1806-1825" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "Cadastre E" ;
+	alod:recordID "36930" ;
+	time:intervalStarts "1806-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1825-12-31"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "cadastre" , "plan" .
+
+<http://data.ge.ch/id/archivalresource/36940> a locah:ArchivalResource ;
+	dc:title "Registres correspondant aux plans du cadastre français 1804-1827" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "Cadastre E Rg" ;
+	alod:recordID "36940" ;
+	time:intervalStarts "1805-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1827-12-31"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "cadastre" , "plan" .
+
+<http://data.ge.ch/id/archivalresource/36950> a locah:ArchivalResource ;
+	dc:title "Pièces annexes du cadastre français 1752-1817" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "Cadastre E ann." ;
+	alod:recordID "36950" ;
+	time:intervalStarts "1798-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1816-12-31"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "cadastre" , "pièce annexe" .
+
+<http://data.ge.ch/id/archivalresource/36980> a locah:ArchivalResource ;
+	dc:title "Minutes des plans du cadastre français" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "Cadastre E min." ;
+	alod:recordID "36980" ;
+	time:intervalStarts "1806-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1825-12-31"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "cadastre" , "minute" .
+
+<http://data.ge.ch/id/archivalresource/36990> a locah:ArchivalResource ;
+	dc:title "Bulletins des propriétés du cadastre français 1801-1818" ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "Cadastre E bulletins" ;
+	alod:recordID "36990" ;
+	time:intervalStarts "1801-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1818-12-31"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "cadastre" , "bulletin" .
+
+<http://data.ge.ch/id/archivalresource/53400> a locah:ArchivalResource ;
+	dc:title "Plans annexes des traités." ;
+	locah:level "http://data.admin.ch/alod/level/series" ;
+	dc:relation <http://data.ge.ch/id/archivalresource/54550> ;
+	alod:referenceCode "Plans annexes des traités" ;
+	alod:recordID "53400" ;
+	time:intervalStarts "1798-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	time:intervalFinishes "1815-12-31"^^<http://www.w3.org/2001/XMLSchema#date> ;
+	alod:conceptTag "traité" .
