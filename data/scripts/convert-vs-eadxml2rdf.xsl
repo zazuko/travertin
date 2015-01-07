@@ -12,7 +12,7 @@
     <xsl:template match="//c02">
         <rdf:Description>
             <xsl:attribute name="rdf:about">
-                <xsl:text>http://data.admin.ch/</xsl:text>
+                <xsl:text>http://data.vs.ch/id/archivalressource/</xsl:text>
                 <xsl:value-of select="./did/unitid" />
             </xsl:attribute>
 
@@ -20,8 +20,15 @@
                 <xsl:value-of select="./did/unittitle" />
             </dc:title>
 
+            <dc:related>
+                <xsl:attribute name="rdf:resource">
+                    <xsl:text>http://data.vs.ch/id/archivalressource/</xsl:text>
+                    <xsl:value-of select="../did/unitid" />
+                </xsl:attribute>
+            </dc:related>
+
             <locah:level>
-                <xsl:value-of select="../@otherlevel" />
+                <xsl:value-of select="@otherlevel" />
             </locah:level>
 
             <alod:recordID>

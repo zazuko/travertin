@@ -1,8 +1,8 @@
 #!/bin/bash
 
 DEBUG=0
-INPUT=../graphs/H_Republique_Helvetique_EAD_crop.xml
-OUTPUT=../graphs/ead.xml
+INPUT=../raw/vs_ead.xml
+OUTPUT=../graphs/vs_ead.xml
 XSLT=convert-vs-eadxml2rdf.xsl
 
 
