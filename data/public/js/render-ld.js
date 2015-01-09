@@ -229,22 +229,22 @@ var JsonLdSubjectTable = React.createClass({
     };
 
     var renderBlankNode = function (blankNode) {
-      return React.DOM.p({}, blankNode);
+      return React.DOM.span({}, blankNode);
     };
 
     var renderLiteral = function (literal) {
       if (typeof literal === 'string') {
-        return React.DOM.p({}, literal);
+        return React.DOM.span({}, literal);
       } else {
         if ('@language' in literal) {
-          return React.DOM.p({}, literal['@value'] + ' @' + literal['@language']);
+          return React.DOM.span({}, literal['@value'] + ' @' + literal['@language']);
         } else if ('@type' in literal) {
-          return React.DOM.p({},
+          return React.DOM.span({},
             literal['@value'] + ' (',
             renderIri(literal['@type'], getIriLabel(literal['@type'])),
             ')');
         } else {
-          return React.DOM.p({}, literal['@value']);
+          return React.DOM.span({}, literal['@value']);
         }
       }
     };
