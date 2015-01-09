@@ -27,7 +27,7 @@
 		ja:graphName	<http://localhost:3030/alod/bar>;
 		ja:graph [ a ja:MemoryModel;
 			ja:content [
-				ja:externalContent <file:../graphs/bar.ttl>
+				ja:externalContent <file:../graphs/bar_2015_01_06.ttl>
 			];
 		];
 	];
