@@ -27,7 +27,7 @@
 		ja:graphName	<http://localhost:3030/alod/bar>;
 		ja:graph [ a ja:MemoryModel;
 			ja:content [
-				ja:externalContent <file:../graphs/bar.ttl>
+				ja:externalContent <file:../graphs/bar_2015_01_06.ttl>
 			];
 		];
 	];
@@ -35,7 +35,71 @@
 		ja:graphName	<http://localhost:3030/alod/ne>;
 		ja:graph [ a ja:MemoryModel;
 			ja:content [
-				ja:externalContent <file:../graphs/ne.ttl>
+				ja:externalContent <file:../graphs/ne_2014_12_21.ttl>
+			];
+		];
+	];
+		ja:namedGraph [
+		ja:graphName	<http://localhost:3030/alod/bs_eisenbahn>;
+		ja:graph [ a ja:MemoryModel;
+			ja:content [
+				ja:externalContent <file:../graphs/bs_2015_01_06_eisenbahn.ttl>
+			];
+		];
+	];
+		ja:namedGraph [
+		ja:graphName	<http://localhost:3030/alod/bs_helvetik>;
+		ja:graph [ a ja:MemoryModel;
+			ja:content [
+				ja:externalContent <file:../graphs/bs_2015_01_06_helvetik.ttl>
+			];
+		];
+	];
+		ja:namedGraph [
+		ja:graphName	<http://localhost:3030/alod/ge_adl_doc>;
+		ja:graph [ a ja:MemoryModel;
+			ja:content [
+				ja:externalContent <file:../graphs/ge_2014_12_21_adl_doc.ttl>
+			];
+		];
+	];
+		ja:namedGraph [
+		ja:graphName	<http://localhost:3030/alod/ge_adl_fon>;
+		ja:graph [ a ja:MemoryModel;
+			ja:content [
+				ja:externalContent <file:../graphs/ge_2014_12_21_adl_fon.ttl>
+			];
+		];
+	];
+		ja:namedGraph [
+		ja:graphName	<http://localhost:3030/alod/ge_adl_ser>;
+		ja:graph [ a ja:MemoryModel;
+			ja:content [
+				ja:externalContent <file:../graphs/ge_2014_12_21_adl_ser.ttl>
+			];
+		];
+	];
+		ja:namedGraph [
+		ja:graphName	<http://localhost:3030/alod/ge_rc_doc>;
+		ja:graph [ a ja:MemoryModel;
+			ja:content [
+				ja:externalContent <file:../graphs/ge_2014_12_21_rc_doc.ttl>
+			];
+		];
+	];
+		ja:namedGraph [
+		ja:graphName	<http://localhost:3030/alod/ge_rc_fon>;
+		ja:graph [ a ja:MemoryModel;
+			ja:content [
+				ja:externalContent <file:../graphs/ge_2014_12_21_rc_fon.ttl>
+			];
+		];
+	];
+		ja:namedGraph [
+		ja:graphName	<http://localhost:3030/alod/ge_rc_ser>;
+		ja:graph [ a ja:MemoryModel;
+			ja:content [
+				ja:externalContent <file:../graphs/ge_2014_12_21_rc_ser.ttl>
 			];
 		];
 	];
