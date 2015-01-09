@@ -7,6 +7,7 @@ var
   express = require('express'),
   expressUtils = require('express-utils'),
   handlerMiddleware = require('./lib/handler-middleware'),
+  patchHeadersMiddleware = require('./lib/patch-headers-middleware'),
   morgan = require('morgan'),
   path = require('path'),
   bunyan  = require('bunyan'),
@@ -36,6 +37,7 @@ config.init()
     }
 
     app.use(morgan('combined'));
+    app.use(patchHeadersMiddleware(config.patchHeaders));
     app.use(express.static(path.join(__dirname, './data/public/')));
     app.use(expressUtils.absoluteUrl());
     app.use(renderHtmlMiddleware(handler));

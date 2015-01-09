@@ -7,6 +7,18 @@ var buildQuery = function (iri) {
   return 'DESCRIBE <' + iri + '>';
 };
 
+var patchResponseHeaders = function (res, headers) {
+  if (res.statusCode === 200) {
+    // cors header
+    headers['Access-Control-Allow-Origin'] = '*';
+
+    // cache header
+    headers['Cache-Control'] = 'public, max-age=120';
+  }
+
+  return headers;
+};
+
 module.exports = {
   app: 'zazuko-alod',
   logger: {
@@ -17,6 +29,9 @@ module.exports = {
   },
   expressSettings: {
     'trust proxy': 'loopback'
+  },
+  patchHeaders: {
+    patchResponse: patchResponseHeaders
   },
   HandlerClass: require('./lib/sparql-handler'),
   handlerOptions: {
