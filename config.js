@@ -31,7 +31,8 @@ module.exports = {
     port: 9091
   },
   expressSettings: {
-    'trust proxy': 'loopback'
+    'trust proxy': 'loopback',
+    'x-powered-by': null
   },
   patchHeaders: {
     patchResponse: patchResponseHeaders
