@@ -14,6 +14,9 @@ var patchResponseHeaders = function (res, headers) {
 
     // cache header
     headers['Cache-Control'] = 'public, max-age=120';
+
+    // vary header
+    headers['Vary'] = 'Accept';
   }
 
   return headers;
