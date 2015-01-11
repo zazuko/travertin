@@ -11,6 +11,7 @@
     "url": "https://github.com/zazukoians/ld-proxy/issues"
   },
   "dependencies": {
+    "body-parser": "1.10.*",
     "express": "4.10.*",
     "express-utils": "0.1.*",
     "ldp": "0.1.*",
@@ -20,6 +21,7 @@
     "rdf-interfaces": "0.1.*",
     "request": "2.47.*",
     "stream-buffers": "1.1.*",
+    "yasgui": "0.0.*",
     "es6-promise": "1.0.*",
     "express-negotiate": "0.0.*"
   },

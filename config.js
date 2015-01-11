@@ -37,6 +37,12 @@ module.exports = {
   patchHeaders: {
     patchResponse: patchResponseHeaders
   },
+  sparqlProxy: {
+    path: '/datenbank/sparql',
+    options: {
+      endpointUrl:'http://localhost:3030/alod/sparql'
+    }
+  },
   HandlerClass: require('./lib/sparql-handler'),
   handlerOptions: {
     endpointUrl: 'http://localhost:3030/alod/sparql',

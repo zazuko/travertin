@@ -3,6 +3,7 @@
 global.Promise = require('es6-promise').Promise;
 
 var
+  bodyParser = require('body-parser'),
   config = require('./config.js'),
   express = require('express'),
   expressUtils = require('express-utils'),
@@ -11,7 +12,8 @@ var
   morgan = require('morgan'),
   path = require('path'),
   bunyan  = require('bunyan'),
-  renderHtmlMiddleware = require('./lib/render-html-middleware');
+  renderHtmlMiddleware = require('./lib/render-html-middleware'),
+  sparqlProxy = require('./lib/sparql-proxy');
 
 
 global.log  = bunyan.createLogger({
@@ -38,6 +40,13 @@ config.init()
 
     app.use(morgan('combined'));
     app.use(patchHeadersMiddleware(config.patchHeaders));
+    app.use(bodyParser.text());
+    app.use(bodyParser.urlencoded());
+
+    if ('sparqlProxy' in config) {
+      app.use(config.sparqlProxy.path, sparqlProxy(config.sparqlProxy.options));
+    }
+
     app.use(express.static(path.join(__dirname, './data/public/')));
     app.use(expressUtils.absoluteUrl());
     app.use(renderHtmlMiddleware(handler));
