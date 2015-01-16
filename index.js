@@ -41,7 +41,7 @@ config.init()
     app.use(morgan('combined'));
     app.use(patchHeadersMiddleware(config.patchHeaders));
     app.use(bodyParser.text());
-    app.use(bodyParser.urlencoded());
+    app.use(bodyParser.urlencoded({ extended: false }));
 
     if ('sparqlProxy' in config) {
       app.use(config.sparqlProxy.path, sparqlProxy(config.sparqlProxy.options));
