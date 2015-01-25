@@ -1,7 +1,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix alod: <http://data.admin.ch/alod/> .
+@prefix alod: <http://data.alod.ch/alod/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix locah: <http://data.archiveshub.ac.uk/def/> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
@@ -10,10 +10,10 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 
-<http://data.ge.ch/id/archivalresource/33500> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/33500> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif (de la République de Genève)" ;
-	locah:level "http://data.admin.ch/alod/level/series" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/21370> ;
+	locah:level "http://data.alod.ch/alod/level/series" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/21370> ;
 	alod:referenceCode "RC" ;
 	alod:recordID "33500" ;
 	time:intervalStarts "1794-02-05"^^<http://www.w3.org/2001/XMLSchema#date> ;
@@ -22,10 +22,10 @@
 	alod:personTag "Conseil administratif" ;
 	alod:otherReferenceCode "RC" .
 
-<http://data.ge.ch/id/archivalresource/38190> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/38190> a locah:ArchivalResource ;
 	dc:title "Répertoires alphabétiques des registres du Conseil administratif" ;
-	locah:level "http://data.admin.ch/alod/level/series" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/21370> ;
+	locah:level "http://data.alod.ch/alod/level/series" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/21370> ;
 	alod:recordID "38190" ;
 	time:intervalStarts "1794-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	time:intervalFinishes "1796-12-31"^^<http://www.w3.org/2001/XMLSchema#date> ;
@@ -33,10 +33,10 @@
 	alod:personTag "Conseil administratif" ;
 	dc:description "répertoires alphabétiques." .
 
-<http://data.ge.ch/id/archivalresource/38210> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/38210> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif (de la République de Genève)" ;
-	locah:level "http://data.admin.ch/alod/level/series" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/21370> ;
+	locah:level "http://data.alod.ch/alod/level/series" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/21370> ;
 	alod:referenceCode "RC cop." ;
 	alod:recordID "38210" ;
 	time:intervalStarts "1794-02-05"^^<http://www.w3.org/2001/XMLSchema#date> ;

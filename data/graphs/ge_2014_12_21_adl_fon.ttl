@@ -1,7 +1,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix alod: <http://data.admin.ch/alod/> .
+@prefix alod: <http://data.alod.ch/alod/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
 @prefix locah: <http://data.archiveshub.ac.uk/def/> .
@@ -10,9 +10,9 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 
-<http://data.ge.ch/id/archivalresource/54550> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/54550> a locah:ArchivalResource ;
 	dc:title "Archives du Département du Léman" ;
-	locah:level "http://data.admin.ch/alod/level/fond" ;
+	locah:level "http://data.alod.ch/alod/level/fond" ;
 	alod:referenceCode "ADL" ;
 	alod:recordID "54550" ;
 	time:intervalStarts "1798-08-25"^^<http://www.w3.org/2001/XMLSchema#date> ;

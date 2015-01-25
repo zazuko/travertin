@@ -1,7 +1,7 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix alod: <http://data.admin.ch/alod/> .
+@prefix alod: <http://data.alod.ch/alod/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix locah: <http://data.archiveshub.ac.uk/def/> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
@@ -10,11 +10,11 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 
-<http://data.ge.ch/id/archivalresource/rc-311> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-311> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/33500> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/33500> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. 311" ;
 	alod:recordID "rc-311" ;
@@ -24,11 +24,11 @@
 	time:intervalFinishes "1798-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "exécutif" , "Conseil administratif" .
 
-<http://data.ge.ch/id/archivalresource/rc-312> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-312> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif. (Erreur de pagination : manque les pages 76 et 77)." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/33500> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/33500> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. 312" ;
 	alod:recordID "rc-312" ;
@@ -38,11 +38,11 @@
 	time:intervalFinishes "1798-06-13"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "exécutif" , "Conseil administratif" .
 
-<http://data.ge.ch/id/archivalresource/rc-304> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-304> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/33500> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/33500> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. 304" ;
 	alod:recordID "rc-304" ;
@@ -52,11 +52,11 @@
 	time:intervalFinishes "1794-10-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "exécutif" , "Conseil administratif" .
 
-<http://data.ge.ch/id/archivalresource/rc-cop-304> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-cop-304> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif pour l'année 1794, du 14 avril 1794 au 6 octobre 1794" ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38210> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38210> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. Cop. 304" ;
 	alod:recordID "rc-cop-304" ;
@@ -66,11 +66,11 @@
 	time:intervalFinishes "1794-10-06"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "procès-verbal" , "conseil" .
 
-<http://data.ge.ch/id/archivalresource/rc-cop-305> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-cop-305> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif pour l'année 1794-95 du 8 octobre 1794 au 5 avril 1795" ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38210> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38210> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. Cop. 305" ;
 	alod:recordID "rc-cop-305" ;
@@ -80,11 +80,11 @@
 	time:intervalFinishes "1795-04-05"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "procès-verbal" , "conseil" .
 
-<http://data.ge.ch/id/archivalresource/rc-cop-306> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-cop-306> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif pour l'année 1795, du 5 avril 1795 au 30 septembre 1795" ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38210> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38210> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. Cop. 306" ;
 	alod:recordID "rc-cop-306" ;
@@ -94,11 +94,11 @@
 	time:intervalFinishes "1795-09-30"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "procès-verbal" , "conseil" .
 
-<http://data.ge.ch/id/archivalresource/rc-cop-307> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-cop-307> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif pour l'année 1795-96 du, 2 octobre 1795 au 3 avril 1796" ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38210> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38210> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. Cop. 307" ;
 	alod:recordID "rc-cop-307" ;
@@ -108,11 +108,11 @@
 	time:intervalFinishes "1796-04-03"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "procès-verbal" , "conseil" .
 
-<http://data.ge.ch/id/archivalresource/rc-cop-308> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-cop-308> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif pour l'année 1796, du 3 avril 1796 au 4 octobre 1796" ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38210> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38210> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. Cop. 308" ;
 	alod:recordID "rc-cop-308" ;
@@ -122,11 +122,11 @@
 	time:intervalFinishes "1796-10-04"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "procès-verbal" , "conseil" .
 
-<http://data.ge.ch/id/archivalresource/rc-cop-309> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-cop-309> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif pour l'année 1796-97, du 5 octobre 1796 au 2 avril 1797" ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38210> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38210> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. Cop. 309" ;
 	alod:recordID "rc-cop-309" ;
@@ -136,11 +136,11 @@
 	time:intervalFinishes "1797-04-02"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "procès-verbal" , "conseil" .
 
-<http://data.ge.ch/id/archivalresource/rc-cop-310> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-cop-310> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif poue l'année 1797, du 2 avril 1797 au 30 septembre 1797" ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38210> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38210> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. Cop. 310" ;
 	alod:recordID "rc-cop-310" ;
@@ -150,11 +150,11 @@
 	time:intervalFinishes "1797-09-30"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "procès-verbal" , "conseil" .
 
-<http://data.ge.ch/id/archivalresource/rc-cop-311> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-cop-311> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif pour l'année 1797-98, du 2 octobre 1797 au 1 avril 1798" ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38210> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38210> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. Cop. 311" ;
 	alod:recordID "rc-cop-311" ;
@@ -164,11 +164,11 @@
 	time:intervalFinishes "1798-04-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "procès-verbal" , "conseil" .
 
-<http://data.ge.ch/id/archivalresource/rc-cop-312> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-cop-312> a locah:ArchivalResource ;
 	dc:title "Copies des procès-verbaux du Conseil administratif pour l'année 1798, du 1er janvier au 1er avril 1798" ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38210> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38210> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. Cop. 312" ;
 	alod:recordID "rc-cop-312" ;
@@ -179,11 +179,11 @@
 	alod:conceptTag "procès-verbal" , "conseil" ;
 	alod:otherReferenceCode "RC Cop. 1" .
 
-<http://data.ge.ch/id/archivalresource/rc-305> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-305> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/33500> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/33500> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. 305" ;
 	alod:recordID "rc-305" ;
@@ -193,11 +193,11 @@
 	time:intervalFinishes "1795-04-05"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "exécutif" , "Conseil administratif" .
 
-<http://data.ge.ch/id/archivalresource/rc-306> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-306> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/33500> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/33500> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. 306" ;
 	alod:recordID "rc-306" ;
@@ -207,11 +207,11 @@
 	time:intervalFinishes "1795-09-30"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "exécutif" , "Conseil administratif" .
 
-<http://data.ge.ch/id/archivalresource/rc-307> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-307> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/33500> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/33500> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. 307" ;
 	alod:recordID "rc-307" ;
@@ -221,11 +221,11 @@
 	time:intervalFinishes "1796-04-03"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "exécutif" , "Conseil administratif" .
 
-<http://data.ge.ch/id/archivalresource/rc-308> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-308> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/33500> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/33500> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. 308" ;
 	alod:recordID "rc-308" ;
@@ -235,11 +235,11 @@
 	time:intervalFinishes "1796-10-04"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "exécutif" , "Conseil administratif" .
 
-<http://data.ge.ch/id/archivalresource/rc-309> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-309> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/33500> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/33500> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. 309" ;
 	alod:recordID "rc-309" ;
@@ -249,11 +249,11 @@
 	time:intervalFinishes "1797-04-02"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "exécutif" , "Conseil administratif" .
 
-<http://data.ge.ch/id/archivalresource/rc-310> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-310> a locah:ArchivalResource ;
 	dc:title "Procès-verbaux du Conseil administratif." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/33500> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/33500> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. 310" ;
 	alod:recordID "rc-310" ;
@@ -263,11 +263,11 @@
 	time:intervalFinishes "1797-09-30"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "exécutif" , "Conseil administratif" .
 
-<http://data.ge.ch/id/archivalresource/rc-rp-14> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-rp-14> a locah:ArchivalResource ;
 	dc:title "Répertoire alphabétique des registres du Conseil administratif cotés 304 et 305." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38190> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38190> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. rép. 14" ;
 	alod:recordID "rc-rp-14" ;
@@ -277,11 +277,11 @@
 	time:intervalFinishes "1795-04-05"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "Epoque du Léman" , "exécutif" , "administration" .
 
-<http://data.ge.ch/id/archivalresource/rc-rp-15> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-rp-15> a locah:ArchivalResource ;
 	dc:title "Répertoire alphabétique du registre du Conseil administratif cotés 306." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38190> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38190> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. rép. 15" ;
 	alod:recordID "rc-rp-15" ;
@@ -291,11 +291,11 @@
 	time:intervalFinishes "1795-09-30"^^<http://www.w3.org/2001/XMLSchema#date> ;
 	alod:conceptTag "Epoque du Léman" , "exécutif" , "administration" .
 
-<http://data.ge.ch/id/archivalresource/rc-rp-16> a locah:ArchivalResource ;
+<http://data.ge.alod.ch/id/archivalresource/rc-rp-16> a locah:ArchivalResource ;
 	dc:title "Répertoire alphabétique du registre du Conseil administratif cotés 307." ;
-	locah:level "http://data.admin.ch/alod/level/item" ;
-	dc:relation <http://data.ge.ch/id/archivalresource/38190> ;
-	locah:maintenanceAgency <http://data.helveticarchives.ch/isil/CH-000012-9> ;
+	locah:level "http://data.alod.ch/alod/level/item" ;
+	dc:relation <http://data.ge.alod.ch/id/archivalresource/38190> ;
+	locah:maintenanceAgency <http://data.helveticarchives.alod.ch/isil/CH-000012-9> ;
 	locah:maintenanceAgencyCode "CH-000012-9" ;
 	alod:referenceCode "R.C. rép. 16" ;
 	alod:recordID "rc-rp-16" ;
