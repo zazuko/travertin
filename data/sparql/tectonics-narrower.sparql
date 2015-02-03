@@ -1,4 +1,5 @@
 # roqet -q tectonics-narrower.sparql -D tectonics.ttl -r turtle
+BASE <http://data.alod.ch/alod/level/> 
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 
 CONSTRUCT {
