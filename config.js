@@ -7,6 +7,10 @@ var buildQuery = function (iri) {
   return 'DESCRIBE <' + iri + '>';
 };
 
+var buildExistsQuery = function (iri) {
+  return 'ASK { GRAPH ?g { <' + iri + '> ?p ?o }}';
+};
+
 var patchResponseHeaders = function (res, headers) {
   if (res.statusCode === 200) {
     // cors header
@@ -38,7 +42,7 @@ module.exports = {
     patchResponse: patchResponseHeaders
   },
   sparqlProxy: {
-    path: '/datenbank/sparql',
+    path: '/alod/sparql',
     options: {
       endpointUrl:'http://localhost:3030/alod/sparql'
     }
@@ -46,7 +50,8 @@ module.exports = {
   HandlerClass: require('./lib/sparql-handler'),
   handlerOptions: {
     endpointUrl: 'http://localhost:3030/alod/sparql',
-    buildQuery: buildQuery
+    buildQuery: buildQuery,
+    buildExistsQuery: buildExistsQuery
   }
 };
 
