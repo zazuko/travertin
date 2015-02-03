@@ -182,6 +182,7 @@ var JsonLdSubjectTable = React.createClass({
   render: function () {
     var
       self = this,
+      id,
       head,
       body,
       objects,
@@ -229,7 +230,7 @@ var JsonLdSubjectTable = React.createClass({
     };
 
     var renderBlankNode = function (blankNode) {
-      return React.DOM.span({}, blankNode);
+      return React.DOM.a({href: '#' + blankNode}, blankNode);
     };
 
     var renderLiteral = function (literal) {
@@ -298,7 +299,7 @@ var JsonLdSubjectTable = React.createClass({
 
     body = React.DOM.tbody({}, rows);
 
-    return React.DOM.table({className: 'table table-bordered'}, head, body);
+    return React.DOM.table({className: 'table table-bordered', id: self.props.subject['@id']}, head, body);
   }
 });
 
@@ -308,16 +309,30 @@ var createJsonLdSubjectTable = React.createFactory(JsonLdSubjectTable);
 var JsonLdTables = React.createClass({
   render: function () {
     var
-      self = this;
+      self = this,
+      subjects,
+      tables = [];
 
-    return React.DOM.div({},
-      self.props.graph.map(function (subject) {
-        return createJsonLdSubjectTable({
-          key: subject['@id'],
-          subject: subject,
-          vocabs: self.props.vocabs});
-      })
-    );
+    // move blank nodes to the end
+    subjects = self.props.graph
+      .sort(function (a, b) {
+        if (a['@id'].indexOf('_:') === 0 && b['@id'].indexOf('_:') !== 0) {
+          return 1;
+        } else if (a['@id'].indexOf('_:') !== 0 && b['@id'].indexOf('_:') === 0) {
+          return -1;
+        }
+
+        return a['@id'].localeCompare(b['@id']);
+      });
+
+    subjects.forEach(function (subject) {
+      tables.push(createJsonLdSubjectTable({
+        key: subject['@id'],
+        subject: subject,
+        vocabs: self.props.vocabs}));
+    });
+
+    return React.DOM.div({}, tables);
   }
 });
 
