@@ -1,13 +1,91 @@
-# roqet -q tectonics-narrower.sparql -D tectonics.ttl -r turtle
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+@base <http://data.alod.ch/alod/level/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
 
-CONSTRUCT {
-?o skos:narrower ?s .
+<alodtectonics> rdf:type skos:ConceptScheme ;
+  skos:hasTopConcept <archive> ;
+  dct:title "ALOD tectonics"@en ;
+  dct:title "ALOD Tektonik"@de ;
+  dct:title "ALOD tectonique"@fr .
 
-}
+<archive> rdf:type skos:Concept ;
+  skos:prefLabel "archive"@en ;
+  skos:prefLabel "Archiv"@de ;
+  skos:prefLabel "archive"@fr ;
+  skos:topConceptOf <alodtectonics> .
 
-WHERE {
+<unit> rdf:type skos:Concept ;
+  skos:prefLabel "unit"@en ;
+  skos:altLabel "Abteilung"@de ;
+  skos:broader <archive>, <unit> ;
+  skos:inScheme <alodtectonics> .
 
-?s skos:broader ?o .
+<fond> rdf:type skos:Concept ;
+  skos:prefLabel "fond"@en ;
+  skos:prefLabel "Bestand"@de ;
+  skos:prefLabel "fond"@fr ;
+  skos:altLabel "Fond"@de ;
+  skos:broader <archive>, <unit> ;
+  skos:inScheme <alodtectonics> .
 
-} 
+<subfond> rdf:type skos:Concept ;
+  skos:prefLabel "subfond"@en ;
+  skos:prefLabel "Teilbestand"@de ;
+  skos:broader <fond> ;
+  skos:inScheme <alodtectonics> .
+
+<series> rdf:type skos:Concept ;
+  skos:prefLabel "serie"@en ;
+  skos:prefLabel "Serie"@de ;
+  skos:prefLabel "serie"@fr ;
+  skos:broader <fond>, <subfond>, <series> ;
+  skos:inScheme <alodtectonics> .
+
+<file> rdf:type skos:Concept ;
+  skos:prefLabel "file"@en ;
+  skos:prefLabel "Dossier"@de ;
+  skos:prefLabel "dossier"@fr ;
+  skos:broader <series> ;
+  skos:inScheme <alodtectonics> .
+
+<subfile> rdf:type skos:Concept ;
+  skos:prefLabel "subfile"@en ;
+  skos:prefLabel "Subdossier"@de ;
+  skos:broader <file> ;
+  skos:inScheme <alodtectonics> .
+
+<subsubfile> rdf:type skos:Concept ;
+  skos:prefLabel "subsubfile"@en ;
+  skos:prefLabel "Subsubdossier"@de ;
+  skos:broader <file>, <subsubfile> ;
+  skos:inScheme <alodtectonics> .
+
+<item> rdf:type skos:Concept ;
+  skos:prefLabel "item"@en ;
+  skos:prefLabel "Dokument"@de ;
+  skos:prefLabel "document"@fr ;
+  skos:broader <file>, <subsubfile>, <subsubfile> ;
+  skos:inScheme <alodtectonics> .
+
+<http://data.alod.ch/alod/level/archive>
+    skos:narrower <http://data.alod.ch/alod/level/fond>, <http://data.alod.ch/alod/level/unit> .
+
+<http://data.alod.ch/alod/level/file>
+    skos:narrower <http://data.alod.ch/alod/level/item>, <http://data.alod.ch/alod/level/subfile>, <http://data.alod.ch/alod/level/subsubfile> .
+
+<http://data.alod.ch/alod/level/fond>
+    skos:narrower <http://data.alod.ch/alod/level/series>, <http://data.alod.ch/alod/level/subfond> .
+
+<http://data.alod.ch/alod/level/series>
+    skos:narrower <http://data.alod.ch/alod/level/file>, <http://data.alod.ch/alod/level/series> .
+
+<http://data.alod.ch/alod/level/subfond>
+    skos:narrower <http://data.alod.ch/alod/level/series> .
+
+<http://data.alod.ch/alod/level/subsubfile>
+    skos:narrower <http://data.alod.ch/alod/level/item>, <http://data.alod.ch/alod/level/subsubfile> .
+
+<http://data.alod.ch/alod/level/unit>
+    skos:narrower <http://data.alod.ch/alod/level/fond>, <http://data.alod.ch/alod/level/unit> .
