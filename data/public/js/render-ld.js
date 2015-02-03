@@ -288,7 +288,7 @@ var JsonLdSubjectTable = React.createClass({
       }
 
       objects.forEach(function (object) {
-        rows.push(React.DOM.tr({key: predicate + object.toString()},
+        rows.push(React.DOM.tr({key: predicate + JSON.stringify(object)},
           React.DOM.td({}, renderIri(predicate, getPredicateLabel(predicate))),
           React.DOM.td({}, renderNode(object, '@id' in object ? getIriLabel(object['@id']) : null))
         ));
