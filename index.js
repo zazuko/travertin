@@ -13,7 +13,8 @@ var
   path = require('path'),
   bunyan  = require('bunyan'),
   renderHtmlMiddleware = require('./lib/render-html-middleware'),
-  sparqlProxy = require('./lib/sparql-proxy');
+  sparqlProxy = require('./lib/sparql-proxy'),
+  sparqlSearch = require('./lib/sparql-search');
 
 
 global.log  = bunyan.createLogger({
@@ -42,13 +43,17 @@ config.init()
     app.use(patchHeadersMiddleware(config.patchHeaders));
     app.use(bodyParser.text());
     app.use(bodyParser.urlencoded({ extended: false }));
+    app.use(express.static(path.join(__dirname, './data/public/')));
+    app.use(expressUtils.absoluteUrl());
 
     if ('sparqlProxy' in config) {
       app.use(config.sparqlProxy.path, sparqlProxy(config.sparqlProxy.options));
     }
 
-    app.use(express.static(path.join(__dirname, './data/public/')));
-    app.use(expressUtils.absoluteUrl());
+    if ('sparqlSearch' in config) {
+      app.use(config.sparqlSearch.path, sparqlSearch(config.sparqlSearch.options));
+    }
+
     app.use(renderHtmlMiddleware(handler));
     app.use(handlerMiddleware(handler));
     app.listen(config.listener.port);

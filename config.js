@@ -2,6 +2,10 @@
 
 'use strict';
 
+var
+  fs = require('fs'),
+  path = require('path');
+
 
 var buildQuery = function (iri) {
   return 'DESCRIBE <' + iri + '>';
@@ -45,6 +49,16 @@ module.exports = {
     path: '/alod/sparql',
     options: {
       endpointUrl:'http://localhost:3030/alod/sparql'
+    }
+  },
+  sparqlSearch: {
+    path: '/alod/search',
+    options: {
+      endpointUrl:'http://localhost:3030/alod/sparql',
+      queryTemplate: fs.readFileSync(path.join(__dirname, 'data/sparql/index-browse.sparql')).toString(),
+      variables: {
+        'q': '?title'
+      }
     }
   },
   HandlerClass: require('./lib/sparql-handler'),
