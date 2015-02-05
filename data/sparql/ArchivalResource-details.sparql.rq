@@ -1,0 +1,52 @@
+# Gets detail view about an entry, basic form for the moment
+# Replace %%URI%% with an URI from a resource like http://data.bs.alod.ch/archivalresource/CH-000027-1/eisenbahn-o-35d
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX alod: <http://data.alod.ch/alod/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX locah: <http://data.archiveshub.ac.uk/def/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX level: <http://localhost:3030/alod/level>
+PREFIX bs: <http://localhost:3030/alod/bs>
+PREFIX bar: <http://localhost:3030/alod/bar>
+PREFIX ge: <http://localhost:3030/alod/ge>
+PREFIX ne: <http://localhost:3030/alod/ne>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX loc: <http://www.w3.org/2007/uwa/context/location.owl#>
+
+CONSTRUCT 
+{
+      <%%URI%%> a locah:ArchivalResource;
+      dc:title ?title ;
+      alod:graph ?graph ;
+      time:intervalStarts ?intervalStarts ;
+      time:intervalEnds ?intervalEnds ;
+      locah:note ?note ;
+      locah:level ?level ;
+      #?level skos:prefLabel ?levelprefLabel . 
+      alod:recordID ?recordID ;
+      dc:relation ?relation .
+      ?relation dc:title ?reltitle.
+}
+
+WHERE {
+    GRAPH ?graph {
+      <%%URI%%> a locah:ArchivalResource;
+      dc:title ?title .
+      OPTIONAL { <%%URI%%> time:intervalStarts ?intervalStarts. }
+      OPTIONAL { <%%URI%%> time:intervalEnds ?intervalEnds. }
+      OPTIONAL { <%%URI%%> locah:note ?note . }
+      OPTIONAL {
+        <%%URI%%> locah:level ?level.
+      #?level skos:prefLabel ?levelprefLabel . 
+    }
+      OPTIONAL { <%%URI%%> alod:recordID ?recordID. }
+      OPTIONAL {
+        <%%URI%%> dc:relation ?relation . 
+        ?relation dc:title ?reltitle. }
+    }
+} 

@@ -14,28 +14,16 @@ PREFIX bar: <http://localhost:3030/alod/bar>
 PREFIX ge: <http://localhost:3030/alod/ge>
 PREFIX ne: <http://localhost:3030/alod/ne>
 
-SELECT (count(DISTINCT ?sBS) AS ?BScount)
-       (count(DISTINCT ?sNE) AS ?NEcount)
-       (count(DISTINCT ?sGE) AS ?GEcount)
-       (count(DISTINCT ?sBAR) AS ?BARcount)
-       ((?BScount + ?NEcount + ?GEcount + ?BARcount) AS ?total ) WHERE 
+CONSTRUCT {
+    ?sub a locah:ArchivalResource ;
+    dc:title ?title ;
+    locah:level ?level;
+} WHERE 
+
 {
-  {
-    GRAPH bs: {
-      ?sBS a locah:ArchivalResource
-    }
-  } UNION {
-    GRAPH ne: {
-      ?sNE a locah:ArchivalResource
-    }
-  } UNION {
-    GRAPH ge: {
-      ?sGE a locah:ArchivalResource
-    }
+  GRAPH ?g {
+    ?sub a locah:ArchivalResource ;
+    dc:title ?title ;
+    locah:level ?level;
   }
-   UNION {
-    GRAPH bar: {
-      ?sBAR a locah:ArchivalResource
-    }
-  }
-}
+} LIMIT 10
