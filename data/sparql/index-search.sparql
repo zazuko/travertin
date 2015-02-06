@@ -1,11 +1,13 @@
+# Get an index of 
 PREFIX dc: <http://purl.org/dc/elements/1.1/>
 PREFIX text: <http://jena.apache.org/text#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX locah: <http://data.archiveshub.ac.uk/def/>
+
 
 SELECT  ?s ?title WHERE {
 
   GRAPH  <http://data.alod.ch/graph/bs>  {
+  ?s text:query (dc:title 'Unfug') .
   ?s dc:title ?title .
-  ?s text:query (dc:title 'Unfug' 10);
-
 }} LIMIT 10
