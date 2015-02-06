@@ -55,10 +55,20 @@ module.exports = {
     path: '/alod/search',
     options: {
       endpointUrl:'http://localhost:3030/alod/sparql',
-      queryTemplate: fs.readFileSync(path.join(__dirname, 'data/sparql/index-browse.sparql')).toString(),
+      resultsPerPage: 10,
+      queryTemplate: fs.readFileSync(path.join(__dirname, 'data/sparql/index-search.sparql')).toString(),
       variables: {
-        'q': '?title'
+        'q': {
+          variable: '%searchstring%',
+          required: true
+        }
       }
+      /*queryTemplate: fs.readFileSync(path.join(__dirname, 'data/sparql/index-browse.sparql')).toString(),
+      variables: {
+        'q': {
+          variable: '?title'
+        }
+      }*/
     }
   },
   HandlerClass: require('./lib/sparql-handler'),
