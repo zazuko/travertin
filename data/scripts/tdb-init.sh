@@ -2,6 +2,7 @@
 export FUSEKI_HOME=/data/bin/jena-fuseki-1.1.1
 export JENA_HOME=/data/bin/apache-jena-2.12.1/bin/
 export DB_HOME=$DB_HOME/
+export JENA_ROOT=/data/bin/apache-jena-2.12.1
 $JENA_HOME/tdbloader --graph=http://data.alod.ch/graph/bs --loc=$DB_HOME/DB ../graphs/bs_all.nt
 $JENA_HOME/tdbloader --graph=http://data.alod.ch/graph/ne --loc=$DB_HOME/DB ../graphs/ne_2014_12_21.ttl
 $JENA_HOME/tdbloader --graph=http://data.alod.ch/graph/ge --loc=$DB_HOME/DB ../graphs/ge_all.nt
