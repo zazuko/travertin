@@ -2,7 +2,7 @@
 if [ -z $FUSEKI_HOME ]; then export FUSEKI_HOME=/data/bin/jena-fuseki-1.1.1; fi
 if [ -z $DB_HOME ]; then export DB_HOME=/data/fusekidb/alod; fi
 if [ -z $JENA_ROOT ]; then export JENA_ROOT=/data/bin/apache-jena-2.12.1; fi
-$JENA_ROOT/bin/tdbloader --graph=http://data.alod.ch/graph/bs --loc=$DB_HOME/alod/DB ../graphs/bs_all.nt
+$JENA_ROOT/bin/tdbloader --graph=http://data.alod.ch/graph/bs --loc=$DB_HOME/DB ../graphs/bs_all.nt
 sleep 2
 $JENA_ROOT/bin/tdbloader --graph=http://data.alod.ch/graph/ne --loc=$DB_HOME/DB ../graphs/ne_2015_02_08.ttl
 sleep 2
