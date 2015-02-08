@@ -9,7 +9,7 @@
     <!-- skip unwanted text and attribute nodes -->
     <xsl:template match="text()|@*"></xsl:template>
 
-    <xsl:template match="//c02">
+    <xsl:template match="//archdesc|//c01|//c02|//c03">
         <rdf:Description>
             <xsl:attribute name="rdf:about">
                 <xsl:text>http://data.vs.alod.ch/id/archivalressource/</xsl:text>
@@ -38,49 +38,19 @@
                         <xsl:text>http://data.alod.ch/alod/level/series</xsl:text>
                     </xsl:attribute>
                 </xsl:if>
+                <xsl:if test="@otherlevel='Fonds'">
+                    <xsl:attribute name="rdf:resource">
+                        <xsl:text>http://data.alod.ch/alod/level/fond</xsl:text>
+                    </xsl:attribute>
+                </xsl:if>
+
             </locah:level>
 
             <alod:recordID>
                 <xsl:value-of select="./did/unitid" />
             </alod:recordID>
         </rdf:Description>
-    </xsl:template>
-
-    <xsl:template match="//c03">
-        <rdf:Description>
-            <xsl:attribute name="rdf:about">
-                <xsl:text>http://data.vs.alod.ch/id/archivalressource/</xsl:text>
-                <xsl:value-of select="./did/unitid" />
-            </xsl:attribute>
-
-            <dc:title>
-                <xsl:value-of select="./did/unittitle" />
-            </dc:title>
-
-            <dc:related>
-                <xsl:attribute name="rdf:resource">
-                    <xsl:text>http://data.vs.alod.ch/id/archivalressource/</xsl:text>
-                    <xsl:value-of select="../did/unitid" />
-                </xsl:attribute>
-            </dc:related>
-
-            <locah:level>
-                <xsl:if test="@otherlevel='Document'">
-                    <xsl:attribute name="rdf:resource">
-                        <xsl:text>http://data.alod.ch/alod/level/item</xsl:text>
-                    </xsl:attribute>
-                </xsl:if>
-                <xsl:if test="@otherlevel='Dossier'">
-                    <xsl:attribute name="rdf:resource">
-                        <xsl:text>http://data.alod.ch/alod/level/series</xsl:text>
-                    </xsl:attribute>
-                </xsl:if>
-            </locah:level>
-
-            <alod:recordID>
-                <xsl:value-of select="./did/unitid" />
-            </alod:recordID>
-        </rdf:Description>
+        <xsl:apply-templates />
     </xsl:template>
 
 
