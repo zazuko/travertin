@@ -245,7 +245,7 @@ var JsonLdSubjectTable = React.createClass({
             renderIri(literal['@type'], getIriLabel(literal['@type'])),
             ')');
         } else {
-          return React.DOM.span({}, literal['@value']);
+          return React.DOM.span({}, literal['@value'].toString());
         }
       }
     };

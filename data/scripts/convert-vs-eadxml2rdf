@@ -21,3 +21,5 @@ if [ $DEBUG -eq 1 ]; then
 else
 	xsltproc --novalid --nonet --nodtdattr $XSLT $INPUT > $OUTPUT
 fi
+
+cat $OUTPUT | rapper -i rdfxml -o turtle - http://data.vs.alod.ch/ > ../graphs/vs.ttl

@@ -17,6 +17,26 @@ var buildExistsQuery = function (iri) {
 
 var patchResponseHeaders = function (res, headers) {
   if (res.statusCode === 200) {
+    // clean existings values
+    var fieldList = [
+      'Access-Control-Allow-Origin',
+      'Cache-Control',
+      'Fuseki-Request-ID',
+      'Server',
+      'Vary'];
+
+    if ('_headers' in res) {
+      fieldList.forEach(function (field) {
+        if (field in res._headers) {
+          delete res._headers[field];
+        }
+
+        if (field.toLowerCase() in res._headers) {
+          delete res._headers[field.toLowerCase()];
+        }
+      });
+    }
+
     // cors header
     headers['Access-Control-Allow-Origin'] = '*';
 
@@ -61,14 +81,12 @@ module.exports = {
         'q': {
           variable: '%searchstring%',
           required: true
+        },
+        'graph': {
+          variable: '?g',
+          type: 'NamedNode'
         }
       }
-      /*queryTemplate: fs.readFileSync(path.join(__dirname, 'data/sparql/index-browse.sparql')).toString(),
-      variables: {
-        'q': {
-          variable: '?title'
-        }
-      }*/
     }
   },
   HandlerClass: require('./lib/sparql-handler'),

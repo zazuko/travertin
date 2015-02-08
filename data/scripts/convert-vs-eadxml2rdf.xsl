@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
-    xmlns:alod="http://data.admin.ch/alod/"
+    xmlns:alod="http://data.alod.ch/alod/"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:locah="http://data.archiveshub.ac.uk/def/"
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -12,7 +12,7 @@
     <xsl:template match="//c02">
         <rdf:Description>
             <xsl:attribute name="rdf:about">
-                <xsl:text>http://data.vs.ch/id/archivalressource/</xsl:text>
+                <xsl:text>http://data.vs.alod.ch/id/archivalressource/</xsl:text>
                 <xsl:value-of select="./did/unitid" />
             </xsl:attribute>
 
@@ -22,13 +22,18 @@
 
             <dc:related>
                 <xsl:attribute name="rdf:resource">
-                    <xsl:text>http://data.vs.ch/id/archivalressource/</xsl:text>
+                    <xsl:text>http://data.vs.alod.ch/id/archivalressource/</xsl:text>
                     <xsl:value-of select="../did/unitid" />
                 </xsl:attribute>
             </dc:related>
 
             <locah:level>
-                <xsl:value-of select="@otherlevel" />
+                <xsl:if test="@otherlevel='Document'">
+                    <xsl:attribute name="rdf:resource">
+                        <xsl:text>http://data.alod.ch/alod/level/item</xsl:text>
+                    </xsl:attribute>
+                </xsl:if>
+                <!-- <xsl:value-of select="@otherlevel" />-->
             </locah:level>
 
             <alod:recordID>
