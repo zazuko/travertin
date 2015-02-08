@@ -80,12 +80,21 @@ var ResultTable = React.createClass({
   loadResults: function(page) {
     var
       self = this,
+      searchGraph = $('#search-graph').val(),
       searchString = $('#search-string').val();
 
-    var doRequest = function (searchString, page) {
+    console.log(searchGraph);
+
+    var doRequest = function (searchString, searchGraph, page) {
       return new Promise(function (resolve, reject) {
+        var url = '/alod/search?q=' + encodeURIComponent(searchString) + '&page=' + (page + 1);
+
+        if (searchGraph != null && searchGraph !== '') {
+          url += '&graph=' + encodeURIComponent(searchGraph);
+        }
+
         $.ajax({
-          url: '/alod/search?q=' + encodeURIComponent(searchString) + '&page=' + (page + 1),
+          url: url,
           headers: {Accept: 'application/ld+json'},
           success: function (data) {
             jsonld.promises().compact(data, context)
@@ -115,7 +124,7 @@ var ResultTable = React.createClass({
     if (page in self.state.cache) {
       return Promise.resolve(self.state.cache[page]);
     } else {
-      return doRequest(searchString, page);
+      return doRequest(searchString, searchGraph, page);
     }
   },
   loadDetails: function (url) {
