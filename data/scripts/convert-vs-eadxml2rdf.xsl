@@ -20,12 +20,15 @@
                 <xsl:value-of select="./did/unittitle" />
             </dc:title>
 
-            <dc:related>
-                <xsl:attribute name="rdf:resource">
-                    <xsl:text>http://data.vs.alod.ch/id/archivalressource/</xsl:text>
-                    <xsl:value-of select="../did/unitid" />
-                </xsl:attribute>
-            </dc:related>
+            <xsl:if test="../did/unitid or ../../did/unitid">
+                <dc:related>
+                    <xsl:attribute name="rdf:resource">
+                        <xsl:text>http://data.vs.alod.ch/id/archivalressource/</xsl:text>
+                        <xsl:value-of select="../did/unitid" />
+                        <xsl:value-of select="../../did/unitid" />
+                    </xsl:attribute>
+                </dc:related>
+            </xsl:if>
 
             <locah:level>
                 <xsl:if test="@otherlevel='Document'">
