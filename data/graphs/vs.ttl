@@ -4,6 +4,17 @@
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix locah: <http://data.archiveshub.ac.uk/def/> .
 
+<id/archivalressource/CH_AEV-H>
+    alod:recordID "CH_AEV-H" ;
+    locah:level <http://data.alod.ch/alod/level/fond> ;
+    dc:title "République Helvétique" .
+
+<id/archivalressource/CH_AEV-H_1>
+    alod:recordID "CH_AEV-H_1" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, mémoires, conventions, arrêtés, fragments, etc." .
+
 <id/archivalressource/CH_AEV-H_1.1>
     alod:recordID "CH_AEV-H_1.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -1655,6 +1666,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_1> ;
     dc:title "Lettre de la chambre administrative du canton du Valais au commissaire des guerres. Fourniture d'avoine et d'argent." .
 
+<id/archivalressource/CH_AEV-H_10>
+    alod:recordID "CH_AEV-H_10" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Décrets, patentes, signalements, rapports." .
+
 <id/archivalressource/CH_AEV-H_10.1>
     alod:recordID "CH_AEV-H_10.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -3239,6 +3256,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_10> ;
     dc:title "Préfet national communique la lettre qui précède." .
 
+<id/archivalressource/CH_AEV-H_11>
+    alod:recordID "CH_AEV-H_11" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, observations, ordres, rapports, publications." .
+
 <id/archivalressource/CH_AEV-H_11.1>
     alod:recordID "CH_AEV-H_11.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -4774,6 +4797,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_11> ;
     dc:title "Sous-préfet de Saint-Maurice. Réception de lois, etc." .
+
+<id/archivalressource/CH_AEV-H_12>
+    alod:recordID "CH_AEV-H_12" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, listes, signalements, certificats, pétitions." .
 
 <id/archivalressource/CH_AEV-H_12.1>
     alod:recordID "CH_AEV-H_12.1" ;
@@ -7355,6 +7384,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_12> ;
     dc:title "Unterstatthalter von Ernen. Briefen Empfang. Kriegsgefangenen. Allgemeine Amnistie Einschreiben der liegenden Kriegswaffen, etc." .
 
+<id/archivalressource/CH_AEV-H_13>
+    alod:recordID "CH_AEV-H_13" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Réceptions, registres, signalements, permissions." .
+
 <id/archivalressource/CH_AEV-H_13.1>
     alod:recordID "CH_AEV-H_13.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -9316,6 +9351,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_13> ;
     dc:title "Sous-préfet de Monthey. Réception des bulletins des lois." .
+
+<id/archivalressource/CH_AEV-H_14>
+    alod:recordID "CH_AEV-H_14" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, jugements, arrêtés, tarifs, signalements." .
 
 <id/archivalressource/CH_AEV-H_14.1>
     alod:recordID "CH_AEV-H_14.1" ;
@@ -11813,6 +11854,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_14> ;
     dc:title "Sous-préfet de Sembrancher. Réception de lois, arrêtés." .
 
+<id/archivalressource/CH_AEV-H_15>
+    alod:recordID "CH_AEV-H_15" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Rapports, lettres, arrêtés, bulletins, signalements." .
+
 <id/archivalressource/CH_AEV-H_15.1>
     alod:recordID "CH_AEV-H_15.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -14213,6 +14260,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_15> ;
     dc:title "Préfet national du Léman transmet bulletin des lois." .
 
+<id/archivalressource/CH_AEV-H_16>
+    alod:recordID "CH_AEV-H_16" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, certificats, quittances, notes, renseignements." .
+
 <id/archivalressource/CH_AEV-H_16.1>
     alod:recordID "CH_AEV-H_16.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -15785,6 +15838,24 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_16> ;
     dc:title "Regierungsstatthalter wegen Pferde des Joseph Bregy von Ergisch wohnhaft in Leuk." .
 
+<id/archivalressource/CH_AEV-H_16_bis>
+    alod:recordID "CH_AEV-H_16_bis" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Minutes de correspondance militaire concernant les armées du Danube et du Rhin, spécialement la section du Valais." .
+
+<id/archivalressource/CH_AEV-H_17>
+    alod:recordID "CH_AEV-H_17" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Correspondance Mainoni. Registre de la correspondance commencé le 20 Pluviose an 8 ( 9 Février 1800) au quartier central à Sierre en Valais, par le commandant Mainoni, et terminé au 25 avril 1800." .
+
+<id/archivalressource/CH_AEV-H_18-19>
+    alod:recordID "CH_AEV-H_18-19" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lois, arrêtés, proclamations; Correspondance adressée au Tribunal cantonal." .
+
 <id/archivalressource/CH_AEV-H_18-19.1>
     alod:recordID "CH_AEV-H_18-19.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -15802,6 +15873,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_18-19> ;
     dc:title "Fascicule 3ème. Correspondance adressée au Tribunal cantonal." .
+
+<id/archivalressource/CH_AEV-H_2>
+    alod:recordID "CH_AEV-H_2" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, pensions, arrêtés, signalements, tabelles." .
 
 <id/archivalressource/CH_AEV-H_2.1>
     alod:recordID "CH_AEV-H_2.1" ;
@@ -17567,6 +17644,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_2> ;
     dc:title "Curé Landry de Monthey. Dîmes dues par ceux de Properey sur Troistorrents." .
 
+<id/archivalressource/CH_AEV-H_20>
+    alod:recordID "CH_AEV-H_20" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Sel: comptabilité des sels, correspondance, lettres de voiture." .
+
 <id/archivalressource/CH_AEV-H_20.1>
     alod:recordID "CH_AEV-H_20.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -17591,6 +17674,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_20> ;
     dc:title "Fascicule 4ème. Lettres de voiture, Bex, Sion." .
 
+<id/archivalressource/CH_AEV-H_21>
+    alod:recordID "CH_AEV-H_21" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Grand-Saint-Bernard: passage des troupes, réclamations, bordereau général, correspondance." .
+
 <id/archivalressource/CH_AEV-H_21.1>
     alod:recordID "CH_AEV-H_21.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -17602,6 +17691,13 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_21> ;
     dc:title "Fascicule 2ème. Bordereau général des fournitures faites par l'hospice du Grand-Saint-Bernard." .
+
+<id/archivalressource/CH_AEV-H_22>
+    alod:recordID "CH_AEV-H_22" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title """Autorité législative, constitution et lois.
+Autorité exécutive, correspondance.""" .
 
 <id/archivalressource/CH_AEV-H_22.1>
     alod:recordID "CH_AEV-H_22.1" ;
@@ -17741,6 +17837,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_22> ;
     dc:title "Justice : tribunaux des districts de Sierre et Sion. Comptes et correspondance." .
 
+<id/archivalressource/CH_AEV-H_23>
+    alod:recordID "CH_AEV-H_23" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Autorité exécutive, finances." .
+
 <id/archivalressource/CH_AEV-H_23.1>
     alod:recordID "CH_AEV-H_23.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -17819,6 +17921,18 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_23> ;
     dc:title "Emprunt de 5% sur les biens des communes." .
 
+<id/archivalressource/CH_AEV-H_24>
+    alod:recordID "CH_AEV-H_24" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Trafic du Simplon. Fahrbuch. Folios 1-83, 90-97." .
+
+<id/archivalressource/CH_AEV-H_25>
+    alod:recordID "CH_AEV-H_25" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Trafic des marchandises par le Simplon." .
+
 <id/archivalressource/CH_AEV-H_25.1>
     alod:recordID "CH_AEV-H_25.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -17867,6 +17981,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_25> ;
     dc:title "Rechungsbuch über Spedition." .
 
+<id/archivalressource/CH_AEV-H_26>
+    alod:recordID "CH_AEV-H_26" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Trafic du Simplon, voitures, marchandises." .
+
 <id/archivalressource/CH_AEV-H_26.1>
     alod:recordID "CH_AEV-H_26.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -17884,6 +18004,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_26> ;
     dc:title "No 1-38. Comptes, livres de caisse." .
+
+<id/archivalressource/CH_AEV-H_27>
+    alod:recordID "CH_AEV-H_27" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Postes du Simplon, comptes et correspondance." .
 
 <id/archivalressource/CH_AEV-H_27.1>
     alod:recordID "CH_AEV-H_27.1" ;
@@ -17933,6 +18059,42 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_27> ;
     dc:title "Correspondance. Postes du Simplon. 5 dossiers (1 à 5)." .
 
+<id/archivalressource/CH_AEV-H_27.8.1>
+    alod:recordID "CH_AEV-H_27.8.1" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_27.8CH_AEV-H_27> ;
+    dc:title "Correspondance. Postes du Simplon." .
+
+<id/archivalressource/CH_AEV-H_27.8.2>
+    alod:recordID "CH_AEV-H_27.8.2" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_27.8CH_AEV-H_27> ;
+    dc:title "Correspondance. Postes du Simplon." .
+
+<id/archivalressource/CH_AEV-H_27.8.3>
+    alod:recordID "CH_AEV-H_27.8.3" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_27.8CH_AEV-H_27> ;
+    dc:title "Correspondance. Postes du Simplon." .
+
+<id/archivalressource/CH_AEV-H_27.8.4>
+    alod:recordID "CH_AEV-H_27.8.4" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_27.8CH_AEV-H_27> ;
+    dc:title "Correspondance. Postes du Simplon." .
+
+<id/archivalressource/CH_AEV-H_27.8.5>
+    alod:recordID "CH_AEV-H_27.8.5" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_27.8CH_AEV-H_27> ;
+    dc:title "Correspondance. Postes du Simplon. Procès verbaux sur accidents" .
+
+<id/archivalressource/CH_AEV-H_28>
+    alod:recordID "CH_AEV-H_28" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Exploits, procédures." .
+
 <id/archivalressource/CH_AEV-H_28.1>
     alod:recordID "CH_AEV-H_28.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -17969,6 +18131,48 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_28> ;
     dc:title "Exploits et procédures (1 à 7)." .
 
+<id/archivalressource/CH_AEV-H_28.4.1>
+    alod:recordID "CH_AEV-H_28.4.1" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_28.4CH_AEV-H_28> ;
+    dc:title "Catherine Georgeoz. Bittschrift." .
+
+<id/archivalressource/CH_AEV-H_28.4.2>
+    alod:recordID "CH_AEV-H_28.4.2" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_28.4CH_AEV-H_28> ;
+    dc:title "Moix Jean Vincent et Barthélemy contre leur oncle Moix Barthélemy." .
+
+<id/archivalressource/CH_AEV-H_28.4.3>
+    alod:recordID "CH_AEV-H_28.4.3" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_28.4CH_AEV-H_28> ;
+    dc:title "Sentence, cause Jean Théodule Blatter et Pierre Anzevui." .
+
+<id/archivalressource/CH_AEV-H_28.4.4>
+    alod:recordID "CH_AEV-H_28.4.4" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_28.4CH_AEV-H_28> ;
+    dc:title "Mémoires Anzevui Sébastien." .
+
+<id/archivalressource/CH_AEV-H_28.4.5>
+    alod:recordID "CH_AEV-H_28.4.5" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_28.4CH_AEV-H_28> ;
+    dc:title "Micheloud Alexis contre les héritiers de Muez." .
+
+<id/archivalressource/CH_AEV-H_28.4.6>
+    alod:recordID "CH_AEV-H_28.4.6" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_28.4CH_AEV-H_28> ;
+    dc:title "Vuissoz Joseph. Compte de tutelle." .
+
+<id/archivalressource/CH_AEV-H_28.4.7>
+    alod:recordID "CH_AEV-H_28.4.7" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H_28.4CH_AEV-H_28> ;
+    dc:title "Quinodoz Jean, procédure." .
+
 <id/archivalressource/CH_AEV-H_28.5>
     alod:recordID "CH_AEV-H_28.5" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -17998,6 +18202,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_28> ;
     dc:title "Procédure Baruchet Jean Evangéliste de Saint-Gingolph." .
+
+<id/archivalressource/CH_AEV-H_29>
+    alod:recordID "CH_AEV-H_29" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Tribunaux, exploits, procédures, comptes des tribunaux." .
 
 <id/archivalressource/CH_AEV-H_29.1>
     alod:recordID "CH_AEV-H_29.1" ;
@@ -18034,6 +18244,18 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_29bis-H_39> ;
     dc:title "No 1-1041. Lettres écrites par le préfet national du Valais et son lieutenant." .
+
+<id/archivalressource/CH_AEV-H_29bis-H_39>
+    alod:recordID "CH_AEV-H_29bis-H_39" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres et journal du préfet national." .
+
+<id/archivalressource/CH_AEV-H_3>
+    alod:recordID "CH_AEV-H_3" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, arrêtés, lois, tabelles, logements des troupes, etc." .
 
 <id/archivalressource/CH_AEV-H_3.1>
     alod:recordID "CH_AEV-H_3.1" ;
@@ -20278,6 +20500,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_29bis-H_39> ;
     dc:title "Journal du préfet du Valais." .
+
+<id/archivalressource/CH_AEV-H_4>
+    alod:recordID "CH_AEV-H_4" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres adressées au préfet national et au sous-préfet ou lieutenant du préfet national. Lois, arrêtés, signalements, notifications, légalisations." .
 
 <id/archivalressource/CH_AEV-H_4.1>
     alod:recordID "CH_AEV-H_4.1" ;
@@ -22697,6 +22925,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_4> ;
     dc:title "Lieutenant du sous-préfet de Monthey. Réception de lois, arrêtés." .
 
+<id/archivalressource/CH_AEV-H_40>
+    alod:recordID "CH_AEV-H_40" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Collecte pour le Haut-Valais: correspondance et comptes concernant les dons et collectes faits pour les districts du Haut-Valais dévastés par la guerre." .
+
 <id/archivalressource/CH_AEV-H_40.1>
     alod:recordID "CH_AEV-H_40.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -23267,6 +23501,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_40> ;
     dc:title "Lettre du comité central de secours à la chambre administrative du Valais. Notes d'expéditions." .
 
+<id/archivalressource/CH_AEV-H_41>
+    alod:recordID "CH_AEV-H_41" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Route du Simplon." .
+
 <id/archivalressource/CH_AEV-H_41.1>
     alod:recordID "CH_AEV-H_41.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -23278,6 +23518,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_41> ;
     dc:title "Lettre de Heisser, chef du bureau du receveur général, au citoyen Devantéry, greffier du tribunal du district de Monthey : il demande l'envoi de fonds qui se trouvent dans les mains de Devantéry et dont il a un très pressant besoin, ainsi que les notes détaillées de ceux qui ont fourni à l'enregistrement ou aux émoluments de son tribunal. Les notaires doivent envoyer les copies des actes à la recette générale et Devantéry doit les en prévenir." .
+
+<id/archivalressource/CH_AEV-H_42>
+    alod:recordID "CH_AEV-H_42" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Documents divers concernant Michel-Ange-Bernard Mangourit." .
 
 <id/archivalressource/CH_AEV-H_42.1>
     alod:recordID "CH_AEV-H_42.1" ;
@@ -23339,6 +23585,18 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_42> ;
     dc:title "Copie d'une lettre du ministre des Finances au citoyen Rapinat, commissaire du gouvernement français en Suisse, concernant une note signée par les bourgmestres et bourgeois de Sion, au sujet de contrats." .
 
+<id/archivalressource/CH_AEV-H_43>
+    alod:recordID "CH_AEV-H_43" ;
+    locah:level <http://data.alod.ch/alod/level/item> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Recueil des délibérations du comité de Martigny et de pièces relatives à la Révolution de 1798." .
+
+<id/archivalressource/CH_AEV-H_44>
+    alod:recordID "CH_AEV-H_44" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Correspondance du préfet du district de Viège." .
+
 <id/archivalressource/CH_AEV-H_44.1>
     alod:recordID "CH_AEV-H_44.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -23398,6 +23656,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_44> ;
     dc:title "Le préfet de Rivaz au préfet du district de Viège. Lettre annonçant l'arrestation de Meinrad Peyer de Willisau, un dangereux malfaiteur, qui a résidé à Sion, Viège et Loèche. Il doit être livré au préfet du canton. Signalement." .
+
+<id/archivalressource/CH_AEV-H_5>
+    alod:recordID "CH_AEV-H_5" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Arrêtés, lettres, ordres, fournitures, proclamations." .
 
 <id/archivalressource/CH_AEV-H_5.1>
     alod:recordID "CH_AEV-H_5.1" ;
@@ -24472,6 +24736,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_5> ;
     dc:title "Sous-préfet de Saint-Maurice. Pamphlets et écrits révolutionnaires. Soldats déserteurs rentrant au foyer sans congé." .
+
+<id/archivalressource/CH_AEV-H_6>
+    alod:recordID "CH_AEV-H_6" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, signalements, listes, expulsions, demandes, etc." .
 
 <id/archivalressource/CH_AEV-H_6.1>
     alod:recordID "CH_AEV-H_6.1" ;
@@ -25925,6 +26195,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     dc:related <id/archivalressource/CH_AEV-H_6> ;
     dc:title "Inspecteur des milices Dufour. Liste des officiers, nominations." .
 
+<id/archivalressource/CH_AEV-H_7>
+    alod:recordID "CH_AEV-H_7" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, rapports, arrêtés, listes, démissions." .
+
 <id/archivalressource/CH_AEV-H_7.1>
     alod:recordID "CH_AEV-H_7.1" ;
     locah:level <http://data.alod.ch/alod/level/item> ;
@@ -26710,6 +26986,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_7> ;
     dc:title "De Lavallaz P. M., Collombey. Démission d'inspecteur de la milice du Haut-Valais." .
+
+<id/archivalressource/CH_AEV-H_8>
+    alod:recordID "CH_AEV-H_8" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Lettres, circulaires, passeports, patentes." .
 
 <id/archivalressource/CH_AEV-H_8.1>
     alod:recordID "CH_AEV-H_8.1" ;
@@ -28378,6 +28660,12 @@ Au verso: copie d'ordre envoyés par le sous-préfet de Loèche à ses agents.""
     locah:level <http://data.alod.ch/alod/level/item> ;
     dc:related <id/archivalressource/CH_AEV-H_8> ;
     dc:title "Julier Clavier de Loèche refuse la fonction d'accusateur public." .
+
+<id/archivalressource/CH_AEV-H_9>
+    alod:recordID "CH_AEV-H_9" ;
+    locah:level <http://data.alod.ch/alod/level/series> ;
+    dc:related <id/archivalressource/CH_AEV-H> ;
+    dc:title "Bons, fournitures, réclamations." .
 
 <id/archivalressource/CH_AEV-H_9.1>
     alod:recordID "CH_AEV-H_9.1" ;
