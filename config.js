@@ -25,15 +25,17 @@ var patchResponseHeaders = function (res, headers) {
       'Server',
       'Vary'];
 
-    fieldList.forEach(function (field) {
-      if (field in res._headers) {
-        delete res._headers[field];
-      }
+    if ('_headers' in res) {
+      fieldList.forEach(function (field) {
+        if (field in res._headers) {
+          delete res._headers[field];
+        }
 
-      if (field.toLowerCase() in res._headers) {
-        delete res._headers[field.toLowerCase()];
-      }
-    });
+        if (field.toLowerCase() in res._headers) {
+          delete res._headers[field.toLowerCase()];
+        }
+      });
+    }
 
     // cors header
     headers['Access-Control-Allow-Origin'] = '*';
