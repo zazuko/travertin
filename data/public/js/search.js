@@ -164,6 +164,11 @@ var ResultTable = React.createClass({
     var self = this;
 
     $('#search').on('click', self.search);
+    $('#search-string').keypress(function (event) {
+      if (event.which == 13) {
+        self.search();
+      }
+    });
   },
   componentWillUnmount: function() {
     var self = this;
