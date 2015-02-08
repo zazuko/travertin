@@ -29,7 +29,9 @@
 
             <locah:level>
                 <xsl:if test="@otherlevel='Document'">
-                    <xsl:attribute name="http://data.alod.ch/alod/level/item" />
+                    <xsl:attribute name="rdf:resource">
+                        <xsl:text>http://data.alod.ch/alod/level/item</xsl:text>
+                    </xsl:attribute>
                 </xsl:if>
                 <!-- <xsl:value-of select="@otherlevel" />-->
             </locah:level>
