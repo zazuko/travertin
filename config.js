@@ -81,14 +81,12 @@ module.exports = {
         'q': {
           variable: '%searchstring%',
           required: true
+        },
+        'graph': {
+          variable: '?g',
+          type: 'NamedNode'
         }
       }
-      /*queryTemplate: fs.readFileSync(path.join(__dirname, 'data/sparql/index-browse.sparql')).toString(),
-      variables: {
-        'q': {
-          variable: '?title'
-        }
-      }*/
     }
   },
   HandlerClass: require('./lib/sparql-handler'),
