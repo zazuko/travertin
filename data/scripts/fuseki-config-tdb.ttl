@@ -7,7 +7,8 @@
 @prefix text:    <http://jena.apache.org/text#> .
 @prefix dc:      <http://purl.org/dc/elements/1.1/> .
 @prefix locah:   <http://data.archiveshub.ac.uk/def/> .
-@prefix skos:    <http://www.w3.org/2004/02/skos/core#>
+@prefix skos:    <http://www.w3.org/2004/02/skos/core#> .
+@prefix alod:    <http://data.alod.ch/alod/> .
 
 [] rdf:type fuseki:Server ;
    # Timeout - server-wide default: milliseconds.
@@ -108,6 +109,16 @@ text:TextIndexSolr    rdfs:subClassOf   text:TextIndex .
          # locah:note
          [ text:field "note" ;
            text:predicate locah:note ;
+           #text:analyzer [ a text:LowerCaseKeywordAnalyzer ]
+         ]
+         # dc:description
+         [ text:field "description" ;
+           text:predicate dc:description ;
+           #text:analyzer [ a text:LowerCaseKeywordAnalyzer ]
+         ]
+         # alod:supertitle
+         [ text:field "supertitle" ;
+           text:predicate alod:supertitle ;
            #text:analyzer [ a text:LowerCaseKeywordAnalyzer ]
          ]
          ) .
