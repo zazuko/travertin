@@ -1,0 +1,15 @@
+{
+  "search": {
+    "placeholder": "Ga luegu",
+    "submit": "Losschicku",
+    "no_hits": "nix Gfunde"
+  },
+  "archives": {
+    "bs": "Basel-Stadt",
+    "vs": "Wallis",
+    "ne": "Neueburg",
+    "ge": "Gänf",
+    "bar": "Ds Archiv bim Bund",
+    "all": "alli"
+  }
+}
