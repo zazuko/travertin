@@ -295,9 +295,7 @@ var ResultTable = React.createClass({
   }
 });
 
-var createResultTable = React.createFactory(ResultTable);
 
-
-var results = createResultTable({id: 'results', resultsPerPage: 10});
-
-React.render(results, document.getElementById('results'));
+window.ui = {
+  createResultTable: React.createFactory(ResultTable)
+};
