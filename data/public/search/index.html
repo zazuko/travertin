@@ -44,8 +44,16 @@
 	<script src="/js/bootstrap.js"></script>
 	<script src="/js/i18next.js"></script>
 	<script src="/js/jsonld.js"></script>
-<script>i18n.init({ fallbackLng: ['de','fr','en'] }, function (t) { $('body').i18n(); });</script>
 	<script src="/js/react.js"></script>
 	<script src="/js/search.js"></script>
+	<script>
+		i18n.init({ fallbackLng: ['de','fr','en'] }, function (t) {
+			$('body').i18n();
+
+			var results = ui.createResultTable({id: 'results', resultsPerPage: 10});
+
+			React.render(results, document.getElementById('results'));
+		});
+	</script>
 </body>
 </html>

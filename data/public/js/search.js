@@ -43,6 +43,9 @@ var ResultTable = React.createClass({
 
         self.updateCache();
         self.updateDetails();
+      })
+      .catch(function () {
+        self.setState({page: page, data: []});
       });
   },
   turnPage: function (direction, event) {
@@ -73,6 +76,10 @@ var ResultTable = React.createClass({
     }))
       .then(function (allDetails) {
         return Promise.all(allDetails.map(function (details) {
+          if (!('dc:relation' in details)) {
+            return Promise.resolve();
+          }
+
           return self.loadDetails(details['dc:relation']['@id']);
         }));
       });
@@ -82,8 +89,6 @@ var ResultTable = React.createClass({
       self = this,
       searchGraph = $('#search-graph').val(),
       searchString = $('#search-string').val();
-
-    console.log(searchGraph);
 
     var doRequest = function (searchString, searchGraph, page) {
       return new Promise(function (resolve, reject) {
@@ -271,7 +276,9 @@ var ResultTable = React.createClass({
         )),
       React.DOM.tbody({}, rows));
 
-    var noEntries = React.DOM.p({}, i18n.t('search.no_hits', { defaultValue: "zero hits" }));
+    var searchString = $('#search-string').val();
+
+    var noEntries = React.DOM.p({}, i18n.t('search.no_hits', { defaultValue: "" }));
 
     var pageIsNotEmpty = function (page) {
       if (!(page in self.state.cache)) {
@@ -290,14 +297,12 @@ var ResultTable = React.createClass({
           React.DOM.a({href: '#', onClick: self.turnPage.bind(self, +1)}, 'Next')) : null));
 
     return React.DOM.div({},
-      self.state.data.length > 0 ? table : noEntries,
+      self.state.data.length > 0 ? table : searchString != '' ? noEntries : '',
       pager);
   }
 });
 
-var createResultTable = React.createFactory(ResultTable);
 
-
-var results = createResultTable({id: 'results', resultsPerPage: 10});
-
-React.render(results, document.getElementById('results'));
+window.ui = {
+  createResultTable: React.createFactory(ResultTable)
+};
