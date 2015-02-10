@@ -14,4 +14,6 @@ $JENA_ROOT/bin/tdbloader --graph=http://data.alod.ch/graph/generic --loc=$DB_HOM
 sleep 2
 $JENA_ROOT/bin/tdbloader --graph=http://data.alod.ch/graph/vs --loc=$DB_HOME/DB ../graphs/vs.ttl
 sleep 2
+$JENA_ROOT/bin/tdbloader --graph=http://data.alod.ch/graph/inference --loc=$DB_HOME/DB ../graphs/inference-relation.ttl
+sleep 2
 java -cp $FUSEKI_HOME/fuseki-server.jar jena.textindexer --desc=/data/etc/fuseki.ttl
