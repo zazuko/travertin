@@ -1,0 +1,15 @@
+{
+  "search": {
+    "placeholder": "Search",
+    "submit": "submit",
+    "no_hits": "zero hits"
+  },
+  "archives": {
+    "bs": "Basel-Stadt",
+    "vs": "Valais",
+    "ne": "Neuchâtel",
+    "ge": "Geneva",
+    "bar": "Federal Archives",
+    "all": "all"
+  }
+}
