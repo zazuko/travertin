@@ -24,7 +24,14 @@
 
 					<button id="search" data-i18n="search.submit" class="btn btn-default">Submit</button>
 				</div>
+				<div class="navbar-form navbar-right">
+					<a href="?setLng=de">de</a>
+					<a href="?setLng=fr">fr</a>
+					<a href="?setLng=it">it</a>
+					<a href="?setLng=en">en</a>
+				</div>
 			</div>
+
 		</div>
 	</nav>
 
@@ -47,7 +54,7 @@
 	<script src="/js/react.js"></script>
 	<script src="/js/search.js"></script>
 	<script>
-		i18n.init({ fallbackLng: ['de','fr','en'] }, function (t) {
+		i18n.init({ fallbackLng: ['de','fr','it','en'] }, function (t) {
 			$('body').i18n();
 
 			var results = ui.createResultTable({id: 'results', resultsPerPage: 10});
