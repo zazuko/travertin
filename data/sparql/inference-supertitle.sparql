@@ -1,22 +1,43 @@
-PREFIX dc: <http://purl.org/dc/elements/1.1/>    
-PREFIX locah: <http://data.archiveshub.ac.uk/def/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX alod: <http://data.alod.ch/alod/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX locah: <http://data.archiveshub.ac.uk/def/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX level: <http://localhost:3030/alod/level>
+PREFIX bs: <http://localhost:3030/alod/bs>
+PREFIX bar: <http://localhost:3030/alod/bar>
+PREFIX ge: <http://localhost:3030/alod/ge>
+PREFIX ne: <http://localhost:3030/alod/ne>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX loc: <http://www.w3.org/2007/uwa/context/location.owl#>
 
 CONSTRUCT
 {
-  <http://data.staatsarchiv-bs.ch/id/archivalresource/CH-000027-1/pa-633c-a-12> skos:hiddenLabel ?supertitle
+  ?archresource skos:hiddenLabel ?supertitle
 }
 WHERE
 {
-  SELECT (group_concat(?title ; separator = ", ") AS ?supertitle) WHERE {
+  SELECT ?archresource  (group_concat(?title ; separator = ", ") AS ?supertitle) WHERE {
     GRAPH ?graph {
       {
-        <http://data.staatsarchiv-bs.ch/id/archivalresource/CH-000027-1/pa-633c-a-12> dc:title ?title .
-      } UNION
-      {
-        <http://data.staatsarchiv-bs.ch/id/archivalresource/CH-000027-1/pa-633c-a-12> dc:relation+ ?relation .
-        ?relation dc:title ?title .
-      }  
-   }
-  }
+        SELECT ?title ?archresource WHERE {
+          GRAPH ?graph {
+            {
+              ?archresource a locah:ArchivalResource ;
+              dc:title ?title .
+            } UNION
+            {
+              ?archresource dc:relation+ ?relation .
+              ?relation dc:title ?title .
+            }
+          }
+        }
+      }
+    }
+  } GROUP BY ?archresource
 }
