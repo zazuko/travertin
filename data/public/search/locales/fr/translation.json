@@ -1,0 +1,15 @@
+{
+  "search": {
+    "placeholder": "Recherche",
+    "submit": "Envoyer",
+    "no_hits": "aucun résultat"
+  },
+  "archives": {
+    "bs": "Bâle-Ville",
+    "vs": "Valais",
+    "ne": "Neuchâtel",
+    "ge": "Genève",
+    "bar": "Archives fédérales",
+    "all": "tous"
+  }
+}

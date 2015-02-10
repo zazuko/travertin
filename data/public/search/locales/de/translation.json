@@ -1,0 +1,15 @@
+{
+  "search": {
+    "placeholder": "Suchen",
+    "submit": "Abschicken",
+    "no_hits": "keine Treffer"
+  },
+  "archives": {
+    "bs": "Basel-Stadt",
+    "vs": "Wallis",
+    "ne": "Neuenburg",
+    "ge": "Genf",
+    "bar": "Bundesarchiv",
+    "all": "alle"
+  }
+}

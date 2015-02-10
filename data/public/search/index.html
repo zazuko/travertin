@@ -10,19 +10,19 @@
 			<div class="collapse navbar-collapse">
 				<div class="navbar-form navbar-left" role="search">
 					<div class="form-group">
-						<input id="search-string" type="text" class="form-control" placeholder="Search" autofocus>
+						<input id="search-string" data-i18n="[placeholder]search.placeholder;" type="text" class="form-control" placeholder="Search" autofocus>
 					</div>
 
 					<select id="search-graph" class="form-control">
-						<option value="">alle</option>
-						<option value="http://data.alod.ch/graph/bs">Basel-Stadt</option>
-						<option value="http://data.alod.ch/graph/ne">Neuenburg</option>
-						<option value="http://data.alod.ch/graph/ge">Genf</option>
-						<option value="http://data.alod.ch/graph/vs">Wallis</option>
-						<option value="http://data.alod.ch/graph/bar">Bundesarchiv</option>
+						<option data-i18n="archives.all" value="">alle</option>
+						<option data-i18n="archives.bs" value="http://data.alod.ch/graph/bs">Basel-Stadt</option>
+						<option data-i18n="archives.ge" value="http://data.alod.ch/graph/ge">Genève</option>
+						<option data-i18n="archives.ne" value="http://data.alod.ch/graph/ne">Neuchâtel</option>
+						<option data-i18n="archives.vs" value="http://data.alod.ch/graph/vs">Valais</option>
+						<option data-i18n="archives.bar" value="http://data.alod.ch/graph/bar">Bundesarchiv</option>
 					</select>
 
-					<button id="search" class="btn btn-default">Submit</button>
+					<button id="search" data-i18n="search.submit" class="btn btn-default">Submit</button>
 				</div>
 			</div>
 		</div>
@@ -42,7 +42,9 @@
 
 	<script src="/js/jquery.js"></script>
 	<script src="/js/bootstrap.js"></script>
+	<script src="/js/i18next.js"></script>
 	<script src="/js/jsonld.js"></script>
+<script>i18n.init({ fallbackLng: ['de','fr','en'] }, function (t) { $('body').i18n(); });</script>
 	<script src="/js/react.js"></script>
 	<script src="/js/search.js"></script>
 </body>

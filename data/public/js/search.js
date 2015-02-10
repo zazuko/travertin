@@ -271,7 +271,7 @@ var ResultTable = React.createClass({
         )),
       React.DOM.tbody({}, rows));
 
-    var noEntries = React.DOM.p({}, 'keine Treffer');
+    var noEntries = React.DOM.p({}, i18n.t('search.no_hits', { defaultValue: "zero hits" }));
 
     var pageIsNotEmpty = function (page) {
       if (!(page in self.state.cache)) {
