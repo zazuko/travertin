@@ -1,0 +1,15 @@
+{
+  "search": {
+    "placeholder": “?",
+    "submit": “?",
+    "no_hits": “?"
+  },
+  "archives": {
+    "bs": "Basilea Città",
+    "vs": "Vallese",
+    "ne": "Neuchâtel",
+    "ge": "Ginevra",
+    "bar": "Archivio federale",
+    "all": “?"
+  }
+}
