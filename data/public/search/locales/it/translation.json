@@ -1,8 +1,8 @@
 {
   "search": {
-    "placeholder": "?",
-    "submit": "?",
-    "no_hits": "?"
+    "placeholder": "Cerca",
+    "submit": "invia"
+    "no_hits": "nessun risultato"
   },
   "archives": {
     "bs": "Basilea Città",
@@ -10,6 +10,6 @@
     "ne": "Neuchâtel",
     "ge": "Ginevra",
     "bar": "Archivio federale",
-    "all": "?"
+    "all": "tutti"
   }
 }
