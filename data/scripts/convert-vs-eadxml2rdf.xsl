@@ -15,6 +15,8 @@
                 <xsl:text>http://data.vs.alod.ch/id/archivalressource/</xsl:text>
                 <xsl:value-of select="./did/unitid" />
             </xsl:attribute>
+            
+            <rdf:type rdf:resource="locah:ArchivalResource"/>
 
             <dc:title>
                 <xsl:value-of select="./did/unittitle" />
