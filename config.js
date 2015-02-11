@@ -45,6 +45,7 @@ var patchResponseHeaders = function (res, headers) {
 
     // vary header
     headers['Vary'] = 'Accept';
+    if('Content-Type' in headers && headers['Content-Type'].indexOf('utf-8') < 0) { headers['Content-Type'] = headers['Content-Type'] + '; charset=utf-8;'; }
   }
 
   return headers;
