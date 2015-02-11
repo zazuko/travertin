@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# ALOD Präsentation
+
+Bundesarchiv, 12. Februar 2015
+
+---
+
+# Agenda
+
+1. Einführung
+2. Deep-dive
+3. ...
+
+---
+
+# Einführung
+
+
+---
+
+# ALOD Ziele
+
+Aus der Perspektive vom BAR & den Kantonen
+
+* Erfahrungen sammeln mit Linked Data Erstellung & Publikation
+* Eine Demo, wie man Datensatz-übergreifend suchen kann
+
+---
+
+background-image: url(img/web_documents.png)
+
+# Web of Documents
+
+---
+
+background-image: url(img/web_url.png)
+
+# Web of Documents: URL als eindeutiger Identifikator
+
+---
+
+background-image: url(img/web_url.png)
+
+# Web of Documents: URL als eindeutiger Identifikator
+
+---
+
+background-image: url(img/proposal.gif)
+
+# Wer hats erfunden?
+
+Nicht die Schweizer, aber beim CERN in Genf
+
+---
+
+background-image: url(img/Evolution.png)
+
+# Entwicklung des Web
+
+---
+
+background-image: url(img/web_documents.png)
+
+# Soweit so gut
+
+---
+
+background-image: url(img/China-News.png)
+
+# Verstehen Sie Chinesisch?
+
+---
+
+background-image: url(img/web_documents.png)
+
+# Dezentrale Datenbanken
+
+* Daten in Silos
+* Teilweise auf dem Web verfügbar
+* Zwischen den Datenbanken herrscht Sprachverwirrung
+* Sowohl technisch wie inhaltlich (Semantik)
+* Datensatzübergreifende Suche und Verlinkung ist nicht möglich
+
+---
+
+background-image: url(img/Pieter_Bruegel-Tower_Of_Babel.jpg)
+
+# Babylonsiche Sprachverwirrung
+
+---
+
+# Zentrale Datenhaltung als Lösung?
+
+Kaum realistisch:
+* Es gibt nicht eine Wahrheit
+* Entspricht in der Schweiz nicht der föderalen Arbeitsweise
+* Funktioniert selbst in nicht föderalen Systemen eher selten
+* Technisch wie inhaltlich ein Handstand
+
+---
+
+# Dezentraler Lösungsansatz
+
+Was wären Anforderungen?
+* Ein gemeinsames Austauschformat
+* Semantik muss Teil der Daten sein
+* Mehrsprachigkeit muss im Kern unterstützt sein
+* Muss jegwelche Beziehungen zwischen Daten ausdrücken können
+* Beziehungen zwischen Datensätzen/Silos können ausgedrückt werden
+* Dezentrale Datenhaltung/Pflege muss möglich sein
+* Datensatzübergreiffende Abfragen müssen möglich sein
+
+---
+
+background-image: url(img/Things.jpg)
+
+# Dies auszudrücken muss möglich sein
+
+---
+
+# Linked Data als Lösungsansatz
+
+* RDF als Lingua Franca
+* Schemas & Ontologien für die Semantik
+* Web (HTTP) als Transportmedium
+* Links (URIs) als (dezentrale) Identifikatoren
+* Mehrsprachigkeit im Datenmodell
+* SPARQL als standartisierte Abfragesprache
+
+---
+
+# Datenmodell
+
+![Ein Ding](img/AThing.png)
+
+---
+
+# RDF Datenmodell
+
+![Ein Ding mit URIs](img/AThing2.png)
+
+---
+
+# Wenn wir das anwenden
+
+![Clearup Things](img/TheFarSide-ClearUpThings.jpg)
+
+---
+
+# Der Unterschied zum bisherigen Web
+
+![URLs vs URIs](img/URL-vs-URI.png)
+
+---
+
+# Beispiel: Peter Ochs
+
+* Kommt im Datensatz von Basel vor
+* Gibts in Wikipedia
+* Gibts in GND und F TODO
+
+
+
+
+---
+
+Ablauf
+* Die Brücke zu Daten machen, sprich Datenbanken mti Dokumenten als Seite
+* Dann zeigen, dass dies quasi die China Sprachverwirrung ist. Ich muss mich mit den Daten auskennen
+* Es herrscht Babylonische Sprachverwirrung
+* Dann zu Maschinenlesbarkeit überehen um das Problem zu löse
+
+---
+
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
