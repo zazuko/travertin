@@ -2,7 +2,19 @@
   "search": {
     "placeholder": "Suchen",
     "submit": "Abschicken",
-    "no_hits": "keine Treffer"
+    "no_hits": "keine Treffer",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "table": {
+      "number": "Nr.",
+      "title": "Titel",
+      "from": "Von",
+      "to": "Bis",
+      "notes": "Notizen",
+      "level": "Ebene",
+      "id": "ID",
+      "category": "Kategorie"
+    }
   },
   "archives": {
     "bs": "Basel-Stadt",

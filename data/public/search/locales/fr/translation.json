@@ -2,7 +2,19 @@
   "search": {
     "placeholder": "Recherche",
     "submit": "Envoyer",
-    "no_hits": "aucun résultat"
+    "no_hits": "aucun résultat",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "table": {
+      "number": "Nr.",
+      "title": "Titel",
+      "from": "Von",
+      "to": "Bis",
+      "notes": "Notizen",
+      "level": "Ebene",
+      "id": "ID",
+      "category": "Kategorie"
+    }
   },
   "archives": {
     "bs": "Bâle-Ville",

@@ -265,14 +265,14 @@ var ResultTable = React.createClass({
     var table = React.DOM.table({className: 'table table-bordered', id: 'results-table'},
       React.DOM.thead({},
         React.DOM.tr({},
-          React.DOM.th({className: 'col-xs-1'}, 'Nr.'),
-          React.DOM.th({className: 'col-xs-4'}, 'Titel'),
-          React.DOM.th({className: 'col-xs-1'}, 'von'),
-          React.DOM.th({className: 'col-xs-1'}, 'bis'),
-          React.DOM.th({className: 'col-xs-1'}, 'Notiz'),
-          React.DOM.th({className: 'col-xs-1'}, 'Ebene'),
-          React.DOM.th({className: 'col-xs-1'}, 'ID'),
-          React.DOM.th({className: 'col-xs-1'}, 'Kategorie')
+          React.DOM.th({className: 'col-xs-1'}, i18n.t('search.table.number', {defaultValue: 'No.'})),
+          React.DOM.th({className: 'col-xs-4'}, i18n.t('search.table.title', {defaultValue: 'Title'})),
+          React.DOM.th({className: 'col-xs-1'}, i18n.t('search.table.from', {defaultValue: 'From'})),
+          React.DOM.th({className: 'col-xs-1'}, i18n.t('search.table.to', {defaultValue: 'To'})),
+          React.DOM.th({className: 'col-xs-1'}, i18n.t('search.table.notes', {defaultValue: 'Notes'})),
+          React.DOM.th({className: 'col-xs-1'}, i18n.t('search.table.level', {defaultValue: 'Level'})),
+          React.DOM.th({className: 'col-xs-1'}, i18n.t('search.table.id', {defaultValue: 'ID'})),
+          React.DOM.th({className: 'col-xs-1'}, i18n.t('search.table.category', {defaultValue: 'Category'}))
         )),
       React.DOM.tbody({}, rows));
 
@@ -292,9 +292,9 @@ var ResultTable = React.createClass({
     var pager = React.DOM.nav({},
       React.DOM.ul({className: 'pager'},
         pageIsNotEmpty(self.state.page-1) ? React.DOM.li({className: 'previous'},
-          React.DOM.a({href: '#', onClick: self.turnPage.bind(self, -1)}, 'Previous')) : null,
+          React.DOM.a({href: '#', onClick: self.turnPage.bind(self, -1)}, i18n.t('search.previous', {defaultValue: 'Previous'}))) : null,
         pageIsNotEmpty(self.state.page+1) ? React.DOM.li({className: 'next'},
-          React.DOM.a({href: '#', onClick: self.turnPage.bind(self, +1)}, 'Next')) : null));
+          React.DOM.a({href: '#', onClick: self.turnPage.bind(self, +1)}, i18n.t('search.next', {defaultValue: 'Next'}))) : null));
 
     return React.DOM.div({},
       self.state.data.length > 0 ? table : searchString != '' ? noEntries : '',
