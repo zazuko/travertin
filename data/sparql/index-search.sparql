@@ -16,14 +16,16 @@ PREFIX ne: <http://localhost:3030/alod/ne>
 PREFIX text: <http://jena.apache.org/text#>
 
 CONSTRUCT {
-    ?sub a locah:ArchivalResource ;
-    dc:title ?title ;
-    locah:level ?level;
-} WHERE
-
-{
-  GRAPH ?g  {
-    ?sub text:query (dc:title %searchstring%) .
+  ?sub a locah:ArchivalResource ;
+  dc:title ?title ;
+  locah:level ?level;
+}
+WHERE {
+  GRAPH <http://data.alod.ch/graph/inference-supertitle> {
+    ?sub text:query (skos:hiddenLabel %searchstring%) .
+  }
+  GRAPH ?g {
     ?sub dc:title ?title .
-	?sub locah:level ?level;
-}}
+    ?sub locah:level ?level;
+  }
+}
