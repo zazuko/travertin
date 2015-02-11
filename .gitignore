@@ -1,3 +1,4 @@
 .idea
 data/graph.ttl
 node_modules
+npm-debug.log

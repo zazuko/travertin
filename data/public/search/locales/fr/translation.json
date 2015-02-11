@@ -1,27 +1,27 @@
 {
-  "search": {
-    "placeholder": "Recherche",
-    "submit": "Envoyer",
-    "no_hits": "aucun résultat",
-    "next": "Weiter",
-    "previous": "Zurück",
-    "table": {
-      "number": "Nr.",
-      "title": "Titel",
-      "from": "Von",
-      "to": "Bis",
-      "notes": "Notizen",
-      "level": "Ebene",
-      "id": "ID",
-      "category": "Kategorie"
-    }
-  },
-  "archives": {
-    "bs": "Bâle-Ville",
-    "vs": "Valais",
-    "ne": "Neuchâtel",
-    "ge": "Genève",
-    "bar": "Archives fédérales",
-    "all": "tous"
-  }
+ "search": {
+   "placeholder": "Recherche",
+   "submit": "Envoyer",
+   "no_hits": "aucun résultat",
+   "next": "Suivant",
+   "previous": "Retour",
+   "table": {
+     "number": "N°",
+     "title": "Titre",
+     "from": "De",
+     "to": "à",
+     "notes": "Notices",
+     "level": "Couche",
+     "id": "ID",
+     "category": "Catégorie"
+   }
+ },
+ "archives": {
+   "bs": "Bâle-Ville",
+   "vs": "Valais",
+   "ne": "Neuchâtel",
+   "ge": "Genève",
+   "bar": "Archives fédérales",
+   "all": "tous"
+ }
 }
