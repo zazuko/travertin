@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/css/bootstrap.css" />
+</head>
+<body>
+ <nav class="navbar navbar-default">
+	 <div class="container-fluid">
+		 <div class="collapse navbar-collapse">
+			 <div class="navbar-form navbar-right">
+				 <a href="?setLng=de">de</a>
+				 <a href="?setLng=fr">fr</a>
+				 <a href="?setLng=it">it</a>
+				 <a href="?setLng=en">en</a>
+			 </div>
+		 </div>
+	 </div>
+ </nav>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-1">
+				<img class="img-responsive" src="/images/Coat_of_arms_of_Switzerland.svg" />
+			</div>
+
+			<div class="col-xs-11">
+				<h1 data-i18n="headline">ALOD</h1>
+				<h2 data-i18n="subheading">Archive Linked Open Data</h2>
+
+				<p>
+					<a data-i18n="search.link" href="/search/">Here</a>
+					<span data-i18n="search.text">
+						you can search the archive.
+     </span>
+				</p>
+
+				<p>
+					<a data-i18n="sparql.link" href="/sparql/">SPARQL</a>
+					<span data-i18n="sparql.text">
+						queries can be executed with the browser interface.
+					</span>
+				</p>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="/js/jquery.js"></script>
+	<script src="/js/bootstrap.js"></script>
+	<script src="/js/i18next.js"></script>
+	<script>
+		i18n.init({ fallbackLng: ['de','fr','it','en'] }, function (t) {
+			$('body').i18n();
+		});
+	</script>
+</body>
+</html>
