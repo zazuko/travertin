@@ -1,0 +1,71 @@
+http://data.bnf.fr/sparql
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX bnf-onto: <http://data.bnf.fr/ontology/bnf-onto/> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?sub ?label WHERE
+{
+
+?sub rdfs:label ?label .
+ BIND(STR(?label) AS ?strVal)
+ FILTER(STRSTARTS(?strVal, "Timbre"))
+
+}
+
+
+-> verpasst die Sprache Virtuoso scheint @fr nicht zu mögen
+
+--
+
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX bnf-onto: <http://data.bnf.fr/ontology/bnf-onto/> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?pred ?obj WHERE
+{
+<http://data.bnf.fr/ark:/12148/cb119336763> ?pred ?obj .
+
+}
+
+--
+
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX bnf-onto: <http://data.bnf.fr/ontology/bnf-onto/> 
+PREFIX dcterms: <http://purl.org/dc/terms/> 
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+SELECT ?sub ?label WHERE
+{
+?sub skos:prefLabel ?label .
+ FILTER ( LANGMATCHES(lang(?label),"fr") )
+ BIND(STR(?label) AS ?strVal)
+ FILTER(STRSTARTS(?strVal, "Timbre"))
+}
+
+--
+
+SELECT ?sub ?label WHERE
+{
+?sub skos:prefLabel ?label .
+ FILTER ( LANGMATCHES(lang(?label),"fr") )
+ BIND(STR(?label) AS ?strVal)
+ FILTER(STRSTARTS(?strVal, "Timbre"))
+}
+
+
+--
+
+
+  
