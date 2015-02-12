@@ -8,17 +8,19 @@ PREFIX alod: <http://data.alod.ch/alod/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX locah: <http://data.archiveshub.ac.uk/def/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
-PREFIX level: <http://localhost:3030/alod/level>
-PREFIX bs: <http://localhost:3030/alod/bs>
-PREFIX bar: <http://localhost:3030/alod/bar>
-PREFIX ge: <http://localhost:3030/alod/ge>
-PREFIX ne: <http://localhost:3030/alod/ne>
+PREFIX level: <http://data.alod.ch/graph/generic>
+PREFIX bs: <http://data.alod.ch/graph/bs>
+PREFIX bar: <http://data.alod.ch/graph/bar>
+PREFIX ge: <http://data.alod.ch/graph/ge>
+PREFIX ne: <http://data.alod.ch/graph/ne>
+PREFIX vs: <http://data.alod.ch/graph/vs>
 
 SELECT (count(DISTINCT ?sBS) AS ?BScount)
        (count(DISTINCT ?sNE) AS ?NEcount)
        (count(DISTINCT ?sGE) AS ?GEcount)
+       (count(DISTINCT ?sVS) AS ?VScount)
        (count(DISTINCT ?sBAR) AS ?BARcount)
-       ((?BScount + ?NEcount + ?GEcount + ?BARcount) AS ?total ) WHERE 
+       ((?BScount + ?NEcount + ?GEcount + ?VScount + ?BARcount) AS ?total ) WHERE 
 {
   {
     GRAPH bs: {
@@ -32,10 +34,13 @@ SELECT (count(DISTINCT ?sBS) AS ?BScount)
     GRAPH ge: {
       ?sGE a locah:ArchivalResource
     }
-  }
-   UNION {
+  } UNION {
     GRAPH bar: {
       ?sBAR a locah:ArchivalResource
+    }
+  } UNION {
+    GRAPH vs: {
+      ?sVS a locah:ArchivalResource
     }
   }
 }
