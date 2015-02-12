@@ -3,17 +3,17 @@
     "placeholder": "Ga naluegu",
     "submit": "Losschicku",
     "no_hits": "nix Gfunde",
-    "next": "Weiter",
-    "previous": "Zurück",
+    "next": "Witer",
+    "previous": "Zrug",
     "table": {
-      "number": "Nr.",
-      "title": "Titel",
-      "from": "Von",
-      "to": "Bis",
-      "notes": "Notizen",
-      "level": "Ebene",
-      "id": "ID",
-      "category": "Kategorie"
+      "number": "Numer",
+      "title": "dr Titel",
+      "from": "va",
+      "to": "bis",
+      "notes": "gschribus",
+      "level": "äbeni",
+      "id": "namu",
+      "category": "igornud"
     }
   },
   "archives": {
