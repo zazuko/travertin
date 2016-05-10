@@ -14,6 +14,7 @@
   <script src="dist/yasgui.bundled.js"></script>
 	 <script type="text/javascript">
 		 YASGUI.YASQE.defaults.sparql.endpoint = 'http://data.alod.ch/alod/sparql';
+         YASGUI.YASQE.defaults.value = "SELECT * WHERE { GRAPH ?graph {\n ?sub ?pred ?obj .\n}} \nLIMIT 10";
 
 		 var yasgui = YASGUI(document.getElementById('showcase'));
 
