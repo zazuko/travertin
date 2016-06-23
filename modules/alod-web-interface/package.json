@@ -1,0 +1,29 @@
+{
+  "name": "alod-web-interface",
+  "description": "Web interface for aLOD",
+  "version": "0.0.1",
+  "homepage": "https://github.com/zazukoians/alod-web-interface",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zazukoians/alod-web-interface.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zazukoians/alod-web-interface/issues"
+  },
+  "dependencies": {},
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.js"
+  },
+  "devDependencies": {
+    "bluebird": "^3.4.0",
+    "browserify": "^13.0.1",
+    "clusterize.js": "^0.16.0",
+    "inherits": "^2.0.1",
+    "isomorphic-fetch": "^2.2.1",
+    "rdf-fetch": "^0.3.2",
+    "rdf2h": "^0.3.0",
+    "shelljs": "^0.7.0",
+    "sparql-http-client", "^1.0.0"
+  }
+}
