@@ -33,6 +33,7 @@ function SearchResultList (options) {
     scrollId: 'scrollArea',
     contentId: 'contentArea',
     dummyRow: SearchResultList.dummyRow,
+    pageSize: options.pageSize,
     preload: options.preload,
     callbacks: {
       loadRows: this.loadRows.bind(this)
@@ -68,7 +69,7 @@ SearchResultList.prototype.fetchPage = function (offset) {
   var query = this.options.searchSparql
     .replace('${searchString}', this.query)
     .replace('${offset}', offset)
-    .replace('${limit}', 10)
+    .replace('${limit}', this.options.pageSize)
 
   return this.client.postQuery(query).then(function (res) {
     return res.graph
@@ -117,6 +118,7 @@ Promise.all([
     endpointUrl: 'http://data.alod.ch/alod/sparql',
     searchSparql: searchSparql,
     countSparql: countSparql,
+    pageSize: 10,
     preload: 30,
     matcher: matcher
   })

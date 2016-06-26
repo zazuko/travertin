@@ -23,6 +23,8 @@ ClusterizePaging.prototype.init = function (length) {
     this.rows.push(this.options.dummyRow)
   }
 
+  this.loading = new Array(Math.ceil(this.rows.length / this.options.pageSize))
+
   return this.loadRows(0)
 }
 
@@ -58,18 +60,22 @@ ClusterizePaging.prototype.loadRows = function (offset, end) {
     return Promise.resolve()
   }
 
+  var page = Math.floor(offset / this.options.pageSize)
+
+  offset = page * this.options.pageSize
+
+  // check if the current page is already loading
+  if (this.loading[page]) {
+    return Promise.resolve()
+  }
+
+  this.loading[page] = true
+
   return Promise.resolve().then(function () {
     return self.options.callbacks.loadRows(self.rows, offset)
   }).then(function (rows) {
     self.rows = rows
     self.update(self.rows)
-
-    // init page size options if not given
-    if (!self.options.pageSize) {
-      self.options.pageSize = rows.filter(function (row) {
-        return row !== self.options.dummyRow
-      }).length
-    }
 
     console.log('fetched: ' + offset + '(' + end + ')')
 
