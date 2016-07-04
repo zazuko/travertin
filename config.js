@@ -73,7 +73,7 @@ module.exports = {
     }
   },
   sparqlSearch: {
-    path: '/alod/search',
+    path: '/query',
     options: {
       endpointUrl:'http://data.admin.ch:3030/alod/sparql',
       resultsPerPage: 10,
