@@ -68,14 +68,14 @@ module.exports = {
   sparqlProxy: {
     path: '/alod/sparql',
     options: {
-      endpointUrl:'http://localhost:3030/alod/sparql',
+      endpointUrl:'http://data.admin.ch:3030/alod/sparql',
       queryOperation: 'urlencoded'
     }
   },
   sparqlSearch: {
     path: '/alod/search',
     options: {
-      endpointUrl:'http://localhost:3030/alod/sparql',
+      endpointUrl:'http://data.admin.ch:3030/alod/sparql',
       resultsPerPage: 10,
       queryTemplate: fs.readFileSync(path.join(__dirname, 'data/sparql/index-search.sparql')).toString(),
       variables: {
@@ -92,7 +92,7 @@ module.exports = {
   },
   HandlerClass: require('./lib/sparql-handler'),
   handlerOptions: {
-    endpointUrl: 'http://localhost:3030/alod/sparql',
+    endpointUrl: 'http://data.admin.ch:3030/alod/sparql',
     buildQuery: buildQuery,
     buildExistsQuery: buildExistsQuery
   }
