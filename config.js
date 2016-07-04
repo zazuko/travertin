@@ -25,7 +25,7 @@ var patchResponseHeaders = function (res, headers) {
       'Server',
       'Vary'];
 
-    if ('_headers' in res) {
+    if (res._headers) {
       fieldList.forEach(function (field) {
         if (field in res._headers) {
           delete res._headers[field];
@@ -45,19 +45,18 @@ var patchResponseHeaders = function (res, headers) {
 
     // vary header
     headers['Vary'] = 'Accept';
-    if('Content-Type' in headers && headers['Content-Type'].indexOf('utf-8') < 0) { headers['Content-Type'] = headers['Content-Type'] + '; charset=utf-8;'; }
   }
 
   return headers;
 };
 
 module.exports = {
-  app: 'zazuko-alod',
+  app: 'trifid-ld',
   logger: {
     level: 'debug'
   },
   listener: {
-    port: 9091
+    port: 80
   },
   expressSettings: {
     'trust proxy': 'loopback',
@@ -69,13 +68,14 @@ module.exports = {
   sparqlProxy: {
     path: '/alod/sparql',
     options: {
-      endpointUrl:'http://localhost:3030/alod/sparql'
+      endpointUrl:'http://data.admin.ch:3030/alod/sparql',
+      queryOperation: 'urlencoded'
     }
   },
   sparqlSearch: {
-    path: '/alod/search',
+    path: '/query',
     options: {
-      endpointUrl:'http://localhost:3030/alod/sparql',
+      endpointUrl:'http://data.admin.ch:3030/alod/sparql',
       resultsPerPage: 10,
       queryTemplate: fs.readFileSync(path.join(__dirname, 'data/sparql/index-search.sparql')).toString(),
       variables: {
@@ -92,65 +92,8 @@ module.exports = {
   },
   HandlerClass: require('./lib/sparql-handler'),
   handlerOptions: {
-    endpointUrl: 'http://localhost:3030/alod/sparql',
+    endpointUrl: 'http://data.admin.ch:3030/alod/sparql',
     buildQuery: buildQuery,
     buildExistsQuery: buildExistsQuery
   }
 };
-
-
-/*global.rdf = require('rdf-interfaces');
-require('rdf-ext')(rdf);
-
-var
-  fs = require('fs'),
-  graphSplit = require('./lib/graph-split')(rdf);
-
-
-var init = function () {
-  var config = this;
-
-  var importGraph = function (filename) {
-    return new Promise(function (resolve) {
-      rdf.parseTurtle(fs.readFileSync(filename).toString(), function (graph) {
-        resolve(graph);
-      });
-    });
-  };
-
-  return Promise.all([
-    importGraph('./data/graphs/bar.ttl'),
-    importGraph('./data/graphs/ne.ttl')
-  ]).then(function (graphs) {
-    var mergedGraph = rdf.createGraph();
-
-    graphs.forEach(function (graph) {
-      mergedGraph.addAll(graph);
-    });
-
-    config.handlerOptions.storeOptions = {
-      graph: mergedGraph,
-      split: graphSplit.subjectIriSplit
-    };
-  });
-};
-
-
-module.exports = {
-  app: 'zazuko-alod',
-  logger: {
-    level: 'debug'
-  },
-  listener: {
-    port: 9091
-  },
-  expressSettings: {
-    'trust proxy': 'loopback'
-  },
-  init: init,
-  HandlerClass: require('./lib/ldp-module-handler'),
-  handlerOptions: {
-    rdf: rdf,
-    StoreClass: graphSplit.SplitStore
-  }
-};*/
