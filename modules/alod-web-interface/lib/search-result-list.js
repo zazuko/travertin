@@ -55,7 +55,7 @@ SearchResultList.prototype.resultLength = function () {
   var query = this.options.countSparql.replace('${searchString}', this.query)
 
   return this.client.postQuery(query).then(function (res) {
-    var triple = res.graph.match(null, 'http://example/query-base#numberOfResults').toArray().shift()
+    var triple = res.graph.match(null, 'http://voc.zazuko.com/zack#numberOfResults').toArray().shift()
 
     if (!triple) {
       return 0

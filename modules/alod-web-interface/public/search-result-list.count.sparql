@@ -5,7 +5,7 @@ PREFIX  rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
 
 CONSTRUCT {
-  _:b0 <#numberOfResults> ?count
+  _:b0 :numberOfResults ?count
 } WHERE {
   SELECT (COUNT(?sub) as ?count) {
           { GRAPH <http://data.alod.ch/graph/inference-supertitle>
