@@ -2,31 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>search-result-list</title>
+  <title>Zack</title>
 
-  <link href="clusterize.css" rel="stylesheet">
+  <link href="zack.css" rel="stylesheet">
 </head>
 <body>
 
-<input id="query" type="text">
-<button id="search">search</button>
-
+<div class="query-box" >
+    <input id="query" type="text">
+    <button id="search">search</button>
+</div>
 <div class="clusterize">
-  <table>
-    <thead>
-    <tr>
-      <th>Headers</th>
-    </tr>
-    </thead>
-  </table>
   <div id="scrollArea" class="clusterize-scroll">
-    <table>
-      <tbody id="contentArea" class="clusterize-content">
-      <tr class="clusterize-no-data">
-        <td>Loading data…</td>
-      </tr>
-      </tbody>
-    </table>
+    <div id="contentArea" class="clusterize-content">
+      <div class="clusterize-no-data">Loading data…</div>
+    </div>
   </div>
 </div>
 

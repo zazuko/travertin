@@ -83,12 +83,12 @@ SearchResultList.prototype.loadRows = function (rows, offset) {
     var subjects = archivalResources(page)
 
     subjects.forEach(function (subject, index) {
-      /* var level = page.match(subject, 'http://data.archiveshub.ac.uk/def/level').toArray().shift()
+      var level = page.match(subject, 'http://data.archiveshub.ac.uk/def/level').toArray().shift()
       var title = page.match(subject, 'http://purl.org/dc/elements/1.1/title').toArray().shift()
 
-      rows[offset + index] = '<tr><td><a href="' + subject.toString() + '">' + level.object.toString() + ' - ' + title.object.toString() + '</a></td></tr>' */
+      rows[offset + index] = '<div class="zack-result"><a href="' + subject.toString() + '">' + level.object.toString() + ' - ' + title.object.toString() + '</a></div>'
 
-      rows[offset + index] = self.renderer.render(page, subject.toString())
+//      rows[offset + index] = self.renderer.render(page, subject.toString())
     })
 
     return rows
