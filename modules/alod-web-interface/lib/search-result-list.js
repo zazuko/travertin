@@ -95,7 +95,7 @@ SearchResultList.prototype.loadRows = function (rows, offset) {
   })
 }
 
-SearchResultList.dummyRow = '<tr><td><p></p></td></tr>'
+SearchResultList.dummyRow = '<div class="zack-result"></div>'
 
 // patch mediaType -> parser map
 rdfFetch.defaults.formats.parsers['application/octet-stream'] = rdfFetch.defaults.formats.parsers['text/turtle']
@@ -106,11 +106,11 @@ Promise.all([
   }),
   fetch('search-result-list.count.sparql').then(function (res) {
     return res.text()
-  }),
-  rdfFetch('//rawgit.com/zazukoians/trifid-ld/master/data/public/rdf2h/matchers.ttl').then(function (res) {
+  })
+  /*  rdfFetch('//rawgit.com/zazukoians/trifid-ld/master/data/public/rdf2h/matchers.ttl').then(function (res) {
     return res.graph
   })
-  /* rdfFetch('//cdn.zazuko.com/rdf2h/rdf2h.github.io/v0.0.1/2015/rdf2h-points.ttl').then(function (res) {
+  rdfFetch('//cdn.zazuko.com/rdf2h/rdf2h.github.io/v0.0.1/2015/rdf2h-points.ttl').then(function (res) {
     return res.graph
   }) */
 ]).spread(function (searchSparql, countSparql, matcher) {
@@ -123,8 +123,9 @@ Promise.all([
     matcher: matcher
   })
 
-  $('#search').click(function () {
-    list.search($('#query').val())
-  })
+  document.getElementById('query').onkeyup = function () {
+    list.search(document.getElementById('query').value)
+  }
+
 })
 

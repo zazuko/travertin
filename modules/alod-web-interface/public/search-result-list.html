@@ -8,11 +8,16 @@
 </head>
 <body>
 
-<div class="query-box" >
-    <input id="query" type="text">
-    <button id="search">search</button>
+<div class="zack-query-box" >
+    <input id="query" class="zack-query-input zack-big" type="text">
+    <select id="filter" data-query-filter="http://data.archiveshub.ac.uk/def/" class="zack-filter-select zack-big">
+        <option selected>-</option>
+        <option value="http://data.alod.ch/alod/level/fond">Fonds</option>
+        <option value="http://data.alod.ch/alod/level/item">Series</option>
+        <option value="http://data.alod.ch/alod/level/series">Items</option>
+    </select>
 </div>
-<div class="clusterize">
+<div class="zack-result-list">
   <div id="scrollArea" class="clusterize-scroll">
     <div id="contentArea" class="clusterize-content">
       <div class="clusterize-no-data">Loading data…</div>
@@ -20,7 +25,6 @@
   </div>
 </div>
 
-<script src="//code.jquery.com/jquery-2.2.4.js"></script>
 <script src="search-result-list.js"></script>
 </body>
 </html>
