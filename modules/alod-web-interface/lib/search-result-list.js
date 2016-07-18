@@ -115,11 +115,11 @@ Promise.all([
   }) */
 ]).spread(function (searchSparql, countSparql, matcher) {
   var list = new SearchResultList({
-    endpointUrl: 'http://data.alod.ch/alod/sparql',
+    endpointUrl: 'http://data.admin.ch:3030/alod/query',
     searchSparql: searchSparql,
     countSparql: countSparql,
-    pageSize: 10,
-    preload: 30,
+    pageSize: 100,
+    preload: 300,
     matcher: matcher
   })
 
