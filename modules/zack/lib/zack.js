@@ -44,7 +44,7 @@ function SearchResultList (options) {
     }
   })
 
-  this.search() //preload resultlist
+  this.search(document.getElementById('query').value) //preload resultlist
 }
 
 SearchResultList.prototype.search = function (query, offset) {
@@ -88,19 +88,39 @@ SearchResultList.prototype.loadRows = function (rows, offset) {
   var self = this
 
   return this.fetchPage(offset).then(function (page) {
+
+    // to be replaced by templating engine
     var subjects = archivalResources(page)
 
     subjects.forEach(function (subject, index) {
       var level = page.match(subject, 'http://data.archiveshub.ac.uk/def/level').toArray().shift()
-      var title = page.match(subject, 'http://purl.org/dc/elements/1.1/title').toArray().shift()
-      var referenceCode = page.match(subject, 'http://data.alod.ch/alod/referenceCode').toArray().shift()
 
       var levelString = level.toString()
       var levelShort = levelString.substring(levelString.lastIndexOf('/') + 1, levelString.length-3)
-        console.log(levelShort)
       var levelColor = colorHash.hex(levelShort)
 
-      rows[offset + index] = '<div class="zack-result"><div class="result-level-wrap"><div class="vertical-text result-level" style="background-color: ' + levelColor  +'">' + levelShort + '</div></div><div class="result-main"><a href="' + subject.toString() + '">' + title.object.toString() + '</a></br><i>' + referenceCode.object.toString() + '</i></div></div>'
+      var title = page.match(subject, 'http://purl.org/dc/elements/1.1/title').toArray().shift()
+
+      var referenceCode = page.match(subject, 'http://data.alod.ch/alod/referenceCode').toArray().shift()
+      var recordId = page.match(subject, 'http://data.alod.ch/alod/recordID').toArray().shift()
+
+      var referenceString = recordId.object.toString()
+      if (referenceCode) {
+          referenceString = referenceCode.object.toString()
+      }
+
+      var intervalStarts = page.match(subject, 'http://www.w3.org/2006/time#intervalStarts').toArray().shift()
+
+      var timeTick = ''
+      if (intervalStarts) {
+          var year = parseInt(intervalStarts.object.toString().substring(0,4))
+          if (! isNaN(year)) {
+            var percent = (year - 1700) / 3
+            timeTick = '<div style="left: ' + percent + '%;" class="result-time-tick"></div>'
+          }
+      }
+
+      rows[offset + index] = '<div class="zack-result"><div class="result-level-wrap"><div class="vertical-text result-level" style="background-color: ' + levelColor  +'">' + levelShort + '</div></div>' + '<div class="result-main">' + timeTick + '<a href="' + subject.toString() + '">' + title.object.toString() + '</a></br><i>' + referenceString + '</i></div></div>'
 
 //      rows[offset + index] = self.renderer.render(page, subject.toString())
     })
@@ -143,8 +163,8 @@ Promise.all([
     endpointUrl: 'http://data.admin.ch:3030/alod/query',
     searchSparql: searchSparql,
     countSparql: countSparql,
-    pageSize: 10,
-    preload: 30,
+    pageSize: 20,
+    preload: 80,
     matcher: matcher
   })
 

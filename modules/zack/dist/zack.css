@@ -13,6 +13,11 @@ body {
     right: 20px;
 }
 
+.zack-filter {
+    padding-top: 2px;
+    display: none;
+}
+
 .zack-overview {
     background-color:rgba(0,0,0,0.1);
     position: fixed;
@@ -30,6 +35,7 @@ body {
     height: 70px;
     border-top: 2px solid black;
     overflow: hidden;
+    position: relative;
 }
 
 .zack-result-list {
@@ -61,10 +67,37 @@ body {
     color: white;
 }
 
+.result-time-tick {
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #000;
+    position: absolute;
+}
 
 .result-main {
     width: 30%;
     margin-left: 30px;
+}
+
+.filter-item {
+    font-size: 10px;
+    background-color: white;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.filter-item:after {
+    content: "x";
+    margin-left: 5px;
+    font-weight: 600;
+    color: red;
 }
 
 /* max-height - the only parameter in this file that needs to be edited.
