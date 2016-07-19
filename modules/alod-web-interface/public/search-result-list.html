@@ -4,18 +4,25 @@
   <meta charset="UTF-8">
   <title>Zack</title>
 
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,400italic,700italic,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link href="normalize.css" rel="stylesheet">
+  <link href="skeleton.css" rel="stylesheet">
   <link href="zack.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="zack-query-box" >
-    <input id="query" class="zack-query-input zack-big" type="text">
-    <select id="filter" data-query-filter="http://data.archiveshub.ac.uk/def/" class="zack-filter-select zack-big">
-        <option selected>-</option>
-        <option value="http://data.alod.ch/alod/level/fond">Fonds</option>
-        <option value="http://data.alod.ch/alod/level/item">Series</option>
-        <option value="http://data.alod.ch/alod/level/series">Items</option>
-    </select>
+<div class="zack-query-box row">
+    <div class="eight columns">
+        <input id="query" class="zack-query-input zack-big twelve columns" type="text" placeholder="Refine Results with Keywords.">
+    </div>
+    <div class="four columns">
+        <select id="filter" data-query-filter="http://data.archiveshub.ac.uk/def/" class="zack-filter-select zack-big u-pull-right">
+            <option selected>-</option>
+            <option value="http://data.alod.ch/alod/level/fond">Fonds</option>
+            <option value="http://data.alod.ch/alod/level/item">Series</option>
+            <option value="http://data.alod.ch/alod/level/series">Items</option>
+        </select>
+    </div>
 </div>
 <div class="zack-result-list">
   <div id="scrollArea" class="clusterize-scroll">
@@ -24,7 +31,20 @@
     </div>
   </div>
 </div>
-
+<div class="zack-overview">
+    <div class="row">
+        <div class="ten columns">
+            <b>timeline</b></br>
+            Filter documents to be
+            after <input id="from" type="date"> and 
+            before <input id="to" type="date">.
+        </div>
+        <div class="two columns">
+            <div id="count" class="zack-count zack-big">
+            </div>
+        </div>
+    </div>
+</div>
 <script src="search-result-list.js"></script>
 </body>
 </html>

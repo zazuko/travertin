@@ -6,6 +6,7 @@ var rdfFetch = require('rdf-fetch')
 var RDF2h = require('rdf2h')
 var SparqlClient = require('sparql-http-client')
 var ClusterizePaging = require('./clusterize-paging')
+var debounce = require('debounce')
 
 SparqlClient.fetch = rdfFetch
 
@@ -33,20 +34,25 @@ function SearchResultList (options) {
     scrollId: 'scrollArea',
     contentId: 'contentArea',
     dummyRow: SearchResultList.dummyRow,
+    no_data_text: 'No results found matching the filters.',
     pageSize: options.pageSize,
     preload: options.preload,
     callbacks: {
       loadRows: this.loadRows.bind(this)
     }
   })
+
+  this.search() //preload resultlist
 }
 
 SearchResultList.prototype.search = function (query, offset) {
   var self = this
 
-  this.query = query
+  this.query = this.prepareSearchString(query)
 
   return this.resultLength().then(function (length) {
+    document.getElementById('count').innerHTML = length
+    document.getElementById('scrollArea').scrollTop = 0
     return self.clusterize.init(length)
   })
 }
@@ -95,6 +101,17 @@ SearchResultList.prototype.loadRows = function (rows, offset) {
   })
 }
 
+
+SearchResultList.prototype.prepareSearchString = function (searchString) {
+    if (typeof searchString === 'string' && searchString.trim() != '') {
+        //searchString = '\\\"'+searchString.replace('"','').trim()+'\\\"~'
+        searchString = searchString.replace('"','').trim()
+    } else {
+        searchString = '*'
+    }
+    return searchString
+}
+
 SearchResultList.dummyRow = '<div class="zack-result"></div>'
 
 // patch mediaType -> parser map
@@ -118,14 +135,14 @@ Promise.all([
     endpointUrl: 'http://data.admin.ch:3030/alod/query',
     searchSparql: searchSparql,
     countSparql: countSparql,
-    pageSize: 100,
-    preload: 300,
+    pageSize: 10,
+    preload: 30,
     matcher: matcher
   })
 
-  document.getElementById('query').onkeyup = function () {
+  document.getElementById('query').onkeyup = debounce(function () {
     list.search(document.getElementById('query').value)
-  }
+  }, 250)
 
 })
 

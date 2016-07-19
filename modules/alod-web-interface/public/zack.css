@@ -3,23 +3,32 @@ body {
     margin: 0px;
 }
 
-.zack-big {
-    text-size: 18pt;
-}
-
 .zack-query-box {
     background-color:rgba(0,0,0,0.2);
     position: fixed;
     z-index: 10000;
-    height: 50px;
+    padding: 8px;
     top: 20px;
     left: 50px;
     right: 50px;
 }
 
+.zack-overview {
+    background-color:rgba(0,0,0,0.1);
+    position: fixed;
+    max-height: 18%;
+    height: 18%;
+    z-index: 10000;
+    padding: 8px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+
 .zack-result {
     height: 70px;
-    border: 2px solid black;
+    border-top: 2px solid black;
     overflow: hidden;
 }
 
@@ -32,16 +41,10 @@ body {
 }
 
 .zack-big {
-    height: 26px; 
-    margin: 8px;
-    padding: 4px;
-    border: 0px white solid;
     font-size: 18px;
+    margin: 0;
 }
 
-.zack-query-input {
-    width: 80%;
-}
 /* max-height - the only parameter in this file that needs to be edited.
  * Change it to suit your needs. The rest is recommended to leave as is.
  */
@@ -66,8 +69,6 @@ body {
     margin-top: 80px;
 }
 
-/* centering message that appears when no data provided
- */
-.clusterize-no-data td{
-  text-align: center;
+.clusterize-no-data {
+    margin-left: 50px;
 }
