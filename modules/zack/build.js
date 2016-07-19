@@ -2,8 +2,9 @@ require('shelljs/global')
 
 mkdir('-p','dist')
 
-exec('browserify -d lib/search-result-list.js -o dist/search-result-list.js')
+exec('browserify -d lib/zack.js -o dist/zack.js')
 //cp('node_modules/clusterize.js/clusterize.css', 'dist/')
 cp('-r', 'public/*', 'dist/')
 
-cp('-r', 'dist/*', '../../data/public')
+mkdir('-p','../../data/public/zack')
+cp('-r', 'dist/*', '../../data/public/zack')

@@ -126,10 +126,10 @@ SearchResultList.dummyRow = '<div class="zack-result"></div>'
 rdfFetch.defaults.formats.parsers['application/octet-stream'] = rdfFetch.defaults.formats.parsers['text/turtle']
 
 Promise.all([
-  fetch('search-result-list.sparql').then(function (res) {
+  fetch('zack.sparql').then(function (res) {
     return res.text()
   }),
-  fetch('search-result-list.count.sparql').then(function (res) {
+  fetch('zack.count.sparql').then(function (res) {
     return res.text()
   })
   /*  rdfFetch('//rawgit.com/zazukoians/trifid-ld/master/data/public/rdf2h/matchers.ttl').then(function (res) {
