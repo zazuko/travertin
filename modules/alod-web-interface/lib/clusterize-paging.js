@@ -1,5 +1,6 @@
 var inherits = require('inherits')
 var Clusterize = require('clusterize.js')
+var debounce = require('debounce')
 
 function ClusterizePaging (options) {
   options = options || {}
@@ -28,11 +29,11 @@ ClusterizePaging.prototype.init = function (length) {
   return this.loadRows(0)
 }
 
-ClusterizePaging.prototype.handleScrollProgress = function (percentage) {
+ClusterizePaging.prototype.handleScrollProgress = debounce(function (percentage) {
   var offset = Math.floor(percentage * this.rows.length / 100)
 
   this.loadRows(offset)
-}
+}, 100)
 
 ClusterizePaging.prototype.loadRows = function (offset, end) {
   var self = this
