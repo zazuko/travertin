@@ -5,8 +5,10 @@ var fetch = require('isomorphic-fetch')
 var rdfFetch = require('rdf-fetch')
 var RDF2h = require('rdf2h')
 var SparqlClient = require('sparql-http-client')
-var ClusterizePaging = require('./clusterize-paging')
 var debounce = require('debounce')
+var ColorHash = require('color-hash')
+var colorHash = new ColorHash()
+var ClusterizePaging = require('./clusterize-paging')
 
 SparqlClient.fetch = rdfFetch
 
@@ -91,8 +93,14 @@ SearchResultList.prototype.loadRows = function (rows, offset) {
     subjects.forEach(function (subject, index) {
       var level = page.match(subject, 'http://data.archiveshub.ac.uk/def/level').toArray().shift()
       var title = page.match(subject, 'http://purl.org/dc/elements/1.1/title').toArray().shift()
+      var referenceCode = page.match(subject, 'http://data.alod.ch/alod/referenceCode').toArray().shift()
 
-      rows[offset + index] = '<div class="zack-result"><a href="' + subject.toString() + '">' + level.object.toString() + ' - ' + title.object.toString() + '</a></div>'
+      var levelString = level.toString()
+      var levelShort = levelString.substring(levelString.lastIndexOf('/') + 1, levelString.length-3)
+        console.log(levelShort)
+      var levelColor = colorHash.hex(levelShort)
+
+      rows[offset + index] = '<div class="zack-result"><div class="result-level-wrap"><div class="vertical-text result-level" style="background-color: ' + levelColor  +'">' + levelShort + '</div></div><div class="result-main"><a href="' + subject.toString() + '">' + title.object.toString() + '</a></br><i>' + referenceCode.object.toString() + '</i></div></div>'
 
 //      rows[offset + index] = self.renderer.render(page, subject.toString())
     })

@@ -9,8 +9,8 @@ body {
     z-index: 10000;
     padding: 8px;
     top: 20px;
-    left: 50px;
-    right: 50px;
+    left: 20px;
+    right: 20px;
 }
 
 .zack-overview {
@@ -45,6 +45,28 @@ body {
     margin: 0;
 }
 
+
+.result-level {
+    width: 70px;
+    height: 20px;
+    text-align: center;
+    color: white;
+}
+
+.result-level-wrap {
+    width: 20px;
+    height: 100%;
+    float: left;
+    text-align: center;
+    color: white;
+}
+
+
+.result-main {
+    width: 30%;
+    margin-left: 30px;
+}
+
 /* max-height - the only parameter in this file that needs to be edited.
  * Change it to suit your needs. The rest is recommended to leave as is.
  */
@@ -72,3 +94,19 @@ body {
 .clusterize-no-data {
     margin-left: 50px;
 }
+
+.space {
+    display: none;
+}
+
+.vertical-text {
+    transform: rotate(-90.0deg) translate(-100%, 0%) ;
+    transform-origin: top left;
+}
+
+@media (min-width: 550px) {
+    .space {
+        display: inherit;
+    }
+}
+
