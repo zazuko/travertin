@@ -45,7 +45,7 @@ ClusterizePaging.prototype.loadRows = function (offset, end) {
     end = this.rows.length
   }
 
-  var lastLoaded = this.rows.slice(offset).reduce(function (lastLoaded, row, index) {
+  var lastLoaded =  this.rows.slice(offset, end).reduce(function (lastLoaded, row, index) {
     if (row !== self.options.dummyRow) {
       return Math.max(lastLoaded, index + offset)
     }
