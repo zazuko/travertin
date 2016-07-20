@@ -1,5 +1,5 @@
 .idea
 data/graph.ttl
-modules/alod-web-interface/dist/
+modules/zack/dist/
 node_modules
 npm-debug.log
