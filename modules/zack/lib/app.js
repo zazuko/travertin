@@ -2,9 +2,15 @@ var Promise = require('bluebird')
 var colorHash = new (require('color-hash'))
 var debounce = require('debounce')
 var fetch = require('isomorphic-fetch')
+var Event = require('crab-event').Event
 var Zack = require('./zack')
 
 var app = {}
+
+app.events = {
+  search: new Event(),
+  resultLength: new Event()
+}
 
 function rowSubjects (page) {
   return page
@@ -57,6 +63,11 @@ function search () {
   app.zack.search(query)
 }
 
+function resultLength (length) {
+  document.getElementById('count').innerHTML = length
+  document.getElementById('scrollArea').scrollTop = 0
+}
+
 Promise.all([
   fetch('zack.sparql').then(function (res) {
     return res.text()
@@ -74,16 +85,16 @@ Promise.all([
     dummyRow: '<div class="zack-result"></div>',
     rowSubjects: rowSubjects,
     renderRow: renderRow,
-    onResultLength: function (length) {
-      document.getElementById('count').innerHTML = length
-      document.getElementById('scrollArea').scrollTop = 0
-    }
+    onResultLength: app.events.resultLength.trigger
   })
 
+  app.events.search.on(search)
+  app.events.resultLength.on(resultLength)
+
   document.getElementById('query').onkeyup = debounce(function () {
-    search()
+    app.events.search.trigger()
   }, 250)
 
-  search()
+  app.events.search.trigger()
 })
 
