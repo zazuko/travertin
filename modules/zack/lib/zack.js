@@ -1,33 +1,16 @@
-/* global $ */
-
-var Promise = require('bluebird')
-var fetch = require('isomorphic-fetch')
 var rdfFetch = require('rdf-fetch')
-var RDF2h = require('rdf2h')
 var SparqlClient = require('sparql-http-client')
-var debounce = require('debounce')
-var ColorHash = require('color-hash')
-var colorHash = new ColorHash()
 var ClusterizePaging = require('./clusterize-paging')
 
 SparqlClient.fetch = rdfFetch
 
-function archivalResources (graph) {
-  return graph
-    .match(null, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://data.archiveshub.ac.uk/def/ArchivalResource')
-    .map(function (triple) {
-      return triple.subject
-    })
-}
-
-function SearchResultList (options) {
+function Zack (options) {
   this.options = options || {}
 
   this.client = new SparqlClient({
+    endpointUrl: options.endpointUrl,
     updateUrl: options.endpointUrl
   })
-
-  this.renderer = new RDF2h(options.matchers)
 
   this.rows = []
 
@@ -35,7 +18,7 @@ function SearchResultList (options) {
     rows: this.rows,
     scrollId: 'scrollArea',
     contentId: 'contentArea',
-    dummyRow: SearchResultList.dummyRow,
+    dummyRow: options.dummyRow,
     no_data_text: 'No results found matching the filters.',
     pageSize: options.pageSize,
     preload: options.preload,
@@ -43,23 +26,23 @@ function SearchResultList (options) {
       loadRows: this.loadRows.bind(this)
     }
   })
-
-  this.search(document.getElementById('query').value) //preload resultlist
 }
 
-SearchResultList.prototype.search = function (query, offset) {
+Zack.prototype.search = function (query, offset) {
   var self = this
 
-  this.query = this.prepareSearchString(query)
+  this.query = query
 
   return this.resultLength().then(function (length) {
-    document.getElementById('count').innerHTML = length
-    document.getElementById('scrollArea').scrollTop = 0
+    if (self.options.onResultLength) {
+      self.options.onResultLength(length)
+    }
+
     return self.clusterize.init(length)
   })
 }
 
-SearchResultList.prototype.resultLength = function () {
+Zack.prototype.resultLength = function () {
   var query = this.options.countSparql.replace('${searchString}', this.query)
 
   return this.client.postQuery(query).then(function (res) {
@@ -73,7 +56,7 @@ SearchResultList.prototype.resultLength = function () {
   })
 }
 
-SearchResultList.prototype.fetchPage = function (offset) {
+Zack.prototype.fetchPage = function (offset) {
   var query = this.options.searchSparql
     .replace('${searchString}', this.query)
     .replace('${offset}', offset)
@@ -84,93 +67,18 @@ SearchResultList.prototype.fetchPage = function (offset) {
   })
 }
 
-SearchResultList.prototype.loadRows = function (rows, offset) {
+Zack.prototype.loadRows = function (rows, offset) {
   var self = this
 
   return this.fetchPage(offset).then(function (page) {
-
-    // to be replaced by templating engine
-    var subjects = archivalResources(page)
+    var subjects = self.options.rowSubjects(page)
 
     subjects.forEach(function (subject, index) {
-      var level = page.match(subject, 'http://data.archiveshub.ac.uk/def/level').toArray().shift()
-
-      var levelString = level.toString()
-      var levelShort = levelString.substring(levelString.lastIndexOf('/') + 1, levelString.length-3)
-      var levelColor = colorHash.hex(levelShort)
-
-      var title = page.match(subject, 'http://purl.org/dc/elements/1.1/title').toArray().shift()
-
-      var referenceCode = page.match(subject, 'http://data.alod.ch/alod/referenceCode').toArray().shift()
-      var recordId = page.match(subject, 'http://data.alod.ch/alod/recordID').toArray().shift()
-
-      var referenceString = recordId.object.toString()
-      if (referenceCode) {
-          referenceString = referenceCode.object.toString()
-      }
-
-      var intervalStarts = page.match(subject, 'http://www.w3.org/2006/time#intervalStarts').toArray().shift()
-
-      var timeTick = ''
-      if (intervalStarts) {
-          var year = parseInt(intervalStarts.object.toString().substring(0,4))
-          if (! isNaN(year)) {
-            var percent = (year - 1700) / 3
-            timeTick = '<div style="left: ' + percent + '%;" class="result-time-tick"></div>'
-          }
-      }
-
-      rows[offset + index] = '<div class="zack-result"><div class="result-level-wrap"><div class="vertical-text result-level" style="background-color: ' + levelColor  +'">' + levelShort + '</div></div>' + '<div class="result-main">' + timeTick + '<a href="' + subject.toString() + '">' + title.object.toString() + '</a></br><i>' + referenceString + '</i></div></div>'
-
-//      rows[offset + index] = self.renderer.render(page, subject.toString())
+      rows[offset + index] = self.options.renderRow(page, subject)
     })
 
     return rows
   })
 }
 
-
-SearchResultList.prototype.prepareSearchString = function (searchString) {
-    if (typeof searchString === 'string' && searchString.trim() != '') {
-        //searchString = '\\\"'+searchString.replace('"','').trim()+'\\\"~'
-        searchString = searchString.replace('"','').trim()
-    } else {
-        searchString = '*'
-    }
-    return searchString
-}
-
-SearchResultList.dummyRow = '<div class="zack-result"></div>'
-
-// patch mediaType -> parser map
-rdfFetch.defaults.formats.parsers['application/octet-stream'] = rdfFetch.defaults.formats.parsers['text/turtle']
-
-Promise.all([
-  fetch('zack.sparql').then(function (res) {
-    return res.text()
-  }),
-  fetch('zack.count.sparql').then(function (res) {
-    return res.text()
-  })
-  /*  rdfFetch('//rawgit.com/zazukoians/trifid-ld/master/data/public/rdf2h/matchers.ttl').then(function (res) {
-    return res.graph
-  })
-  rdfFetch('//cdn.zazuko.com/rdf2h/rdf2h.github.io/v0.0.1/2015/rdf2h-points.ttl').then(function (res) {
-    return res.graph
-  }) */
-]).spread(function (searchSparql, countSparql, matcher) {
-  var list = new SearchResultList({
-    endpointUrl: 'http://data.admin.ch:3030/alod/query',
-    searchSparql: searchSparql,
-    countSparql: countSparql,
-    pageSize: 20,
-    preload: 80,
-    matcher: matcher
-  })
-
-  document.getElementById('query').onkeyup = debounce(function () {
-    list.search(document.getElementById('query').value)
-  }, 250)
-
-})
-
+module.exports = Zack
