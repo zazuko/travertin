@@ -18,7 +18,7 @@ function Zack (options) {
     rows: this.rows,
     scrollId: 'scrollArea',
     contentId: 'contentArea',
-    dummyRow: options.dummyRow,
+    dummyRow: options.dummyResult,
     no_data_text: 'No results found matching the filters.',
     pageSize: options.pageSize,
     preload: options.preload,
@@ -33,16 +33,16 @@ Zack.prototype.search = function (query, offset) {
 
   this.query = query
 
-  return this.resultLength().then(function (length) {
-    if (self.options.onResultLength) {
-      self.options.onResultLength(length)
+  return this.fetchResultLength().then(function (length) {
+    if (self.options.onLoadedResultLength) {
+      self.options.onLoadedResultLength(length)
     }
 
     return self.clusterize.init(length)
   })
 }
 
-Zack.prototype.resultLength = function () {
+Zack.prototype.fetchResultLength = function () {
   var query = this.options.countSparql.replace('${searchString}', this.query)
 
   return this.client.postQuery(query).then(function (res) {
@@ -67,14 +67,20 @@ Zack.prototype.fetchPage = function (offset) {
   })
 }
 
+Zack.prototype.resultSubjects = function (page) {
+  return page.match(null, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', this.options.resultType).map(function (triple) {
+    return triple.subject
+  })
+}
+
 Zack.prototype.loadRows = function (offset) {
   var self = this
 
   return this.fetchPage(offset).then(function (page) {
-    var subjects = self.options.rowSubjects(page)
+    var subjects = self.resultSubjects(page)
 
     return subjects.map(function (subject, index) {
-      return self.options.renderRow(page, subject)
+      return self.options.renderResult(page, subject)
     })
   })
 }

@@ -2,7 +2,7 @@ var colorHash = new (require('color-hash'))
 
 var renderer = {}
 
-renderer.renderRow = function (page, subject) {
+renderer.renderResult = function (page, subject) {
   var level = page.match(subject, 'http://data.archiveshub.ac.uk/def/level').toArray().shift()
 
   var levelString = level.toString()

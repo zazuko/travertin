@@ -9,15 +9,7 @@ var app = {}
 
 app.events = {
   search: new Event(),
-  resultLength: new Event()
-}
-
-function rowSubjects (page) {
-  return page
-    .match(null, 'http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'http://data.archiveshub.ac.uk/def/ArchivalResource')
-    .map(function (triple) {
-      return triple.subject
-    })
+  loadedResultLength: new Event()
 }
 
 function search () {
@@ -32,7 +24,7 @@ function search () {
   app.zack.search(query)
 }
 
-function resultLength (length) {
+function loadedResultLength (length) {
   document.getElementById('count').innerHTML = length
   document.getElementById('scrollArea').scrollTop = 0
 }
@@ -51,14 +43,14 @@ Promise.all([
     countSparql: countSparql,
     pageSize: 20,
     preload: 80,
-    dummyRow: '<div class="zack-result"></div>',
-    rowSubjects: rowSubjects,
-    renderRow: renderer.renderRow,
-    onResultLength: app.events.resultLength.trigger
+    dummyResult: '<div class="zack-result"></div>',
+    resultType: 'http://data.archiveshub.ac.uk/def/ArchivalResource',
+    renderResult: renderer.renderResult,
+    onLoadedResultLength: app.events.loadedResultLength.trigger
   })
 
   app.events.search.on(search)
-  app.events.resultLength.on(resultLength)
+  app.events.loadedResultLength.on(loadedResultLength)
 
   document.getElementById('query').onkeyup = debounce(function () {
     app.events.search.trigger()
