@@ -28,17 +28,24 @@ QueryBuilder.prototype.attach = function (zack) {
   zack.buildSearchQuery = this.buildSearchQuery.bind(this)
 }
 
-QueryBuilder.prototype.buildCountQuery = function () {
-  console.log(this.filters)
+QueryBuilder.prototype.buildFilters = function () {
+  var filters = ''
 
-  return this.countQueryTemplate.replace('${searchString}', this.zack.query)
+  if (this.filters.level) {
+    filters += '?sub <http://data.archiveshub.ac.uk/def/level> <' + this.filters.level + '> .\n'
+  }
+
+  return filters
+}
+
+QueryBuilder.prototype.buildCountQuery = function () {
+  return this.countQueryTemplate.replace('${searchString}', this.zack.query).replace('${filters}', this.buildFilters())
 }
 
 QueryBuilder.prototype.buildSearchQuery = function (offset) {
-  console.log(this.filters)
-
   return this.searchQueryTemplate
     .replace('${searchString}', this.zack.query)
+    .replace('${filters}', this.buildFilters())
     .replace('${offset}', offset)
     .replace('${limit}', this.zack.options.pageSize)
 }

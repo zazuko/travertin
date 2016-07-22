@@ -17,12 +17,14 @@ app.options = {
 app.events = {
   dateFromChange: new Event(),
   dateToChange: new Event(),
+  levelChange: new Event(),
   loadedResultLength: new Event(),
   search: new Event()
 }
 
 app.filters = {
   from: null,
+  level: null,
   to: null
 }
 
@@ -43,6 +45,40 @@ function loadedResultLength (length) {
   document.getElementById('scrollArea').scrollTop = 0
 }
 
+function initUi () {
+  // query field
+  document.getElementById('query').onkeyup = debounce(function () {
+    app.events.search.trigger()
+  }, 250)
+
+  // level dropdown
+  document.getElementById('level-filter').onchange = function (event) {
+    app.events.levelChange.trigger(event.target.value)
+  }
+
+  // date from input
+  document.getElementById('from').onblur = function (event) {
+    var value = null
+
+    if (event.target.value) {
+      value = new Date(event.target.value)
+    }
+
+    app.events.dateFromChange.trigger(value)
+  }
+
+  // date to input
+  document.getElementById('to').onblur = function (event) {
+    var value = null
+
+    if (event.target.value) {
+      value = new Date(event.target.value)
+    }
+
+    app.events.dateToChange.trigger(value)
+  }
+}
+
 var queryBuilder = new QueryBuilder(app.filters)
 
 queryBuilder.init().then(function () {
@@ -60,38 +96,26 @@ queryBuilder.init().then(function () {
 
   app.events.search.on(search)
   app.events.loadedResultLength.on(loadedResultLength)
+
+  // level filter
+  app.events.levelChange.on(function (level) {
+    app.filters.level = level
+  })
+  app.events.levelChange.on(app.events.search.trigger)
+
+  // date from filter
   app.events.dateFromChange.on(function (date) {
     app.filters.from = date
   })
   app.events.dateFromChange.on(app.events.search.trigger)
+
+  // date to filter
   app.events.dateToChange.on(function (date) {
     app.filters.to = date
   })
   app.events.dateToChange.on(app.events.search.trigger)
 
-  document.getElementById('query').onkeyup = debounce(function () {
-    app.events.search.trigger()
-  }, 250)
-
-  document.getElementById('from').onblur = function (event) {
-    var value = null
-
-    if (event.target.value) {
-      value = new Date(event.target.value)
-    }
-
-    app.events.dateFromChange.trigger(value)
-  }
-
-  document.getElementById('to').onblur = function (event) {
-    var value = null
-
-    if (event.target.value) {
-      value = new Date(event.target.value)
-    }
-
-    app.events.dateToChange.trigger(value)
-  }
+  initUi()
 
   app.events.search.trigger()
 })
