@@ -61,7 +61,6 @@ ClusterizePaging.prototype.loadRows = function (offset, direction, end) {
 
   offset = page * this.options.pageSize
 
-
   return self.loadPage(offset, page).then(function (length) {
     offset += length * direction
 
