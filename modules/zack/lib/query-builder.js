@@ -1,7 +1,9 @@
 var Promise = require('bluebird')
 var fetch = require('isomorphic-fetch')
 
-function QueryBuilder () {}
+function QueryBuilder (filters) {
+  this.filters = filters
+}
 
 QueryBuilder.prototype.init = function () {
   var self = this
@@ -27,10 +29,14 @@ QueryBuilder.prototype.attach = function (zack) {
 }
 
 QueryBuilder.prototype.buildCountQuery = function () {
+  console.log(this.filters)
+
   return this.countQueryTemplate.replace('${searchString}', this.zack.query)
 }
 
 QueryBuilder.prototype.buildSearchQuery = function (offset) {
+  console.log(this.filters)
+
   return this.searchQueryTemplate
     .replace('${searchString}', this.zack.query)
     .replace('${offset}', offset)

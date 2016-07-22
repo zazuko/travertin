@@ -15,8 +15,15 @@ app.options = {
 }
 
 app.events = {
-  search: new Event(),
-  loadedResultLength: new Event()
+  dateFromChange: new Event(),
+  dateToChange: new Event(),
+  loadedResultLength: new Event(),
+  search: new Event()
+}
+
+app.filters = {
+  from: null,
+  to: null
 }
 
 function search () {
@@ -36,7 +43,7 @@ function loadedResultLength (length) {
   document.getElementById('scrollArea').scrollTop = 0
 }
 
-var queryBuilder = new QueryBuilder()
+var queryBuilder = new QueryBuilder(app.filters)
 
 queryBuilder.init().then(function () {
   app.zack = new Zack({
@@ -53,10 +60,38 @@ queryBuilder.init().then(function () {
 
   app.events.search.on(search)
   app.events.loadedResultLength.on(loadedResultLength)
+  app.events.dateFromChange.on(function (date) {
+    app.filters.from = date
+  })
+  app.events.dateFromChange.on(app.events.search.trigger)
+  app.events.dateToChange.on(function (date) {
+    app.filters.to = date
+  })
+  app.events.dateToChange.on(app.events.search.trigger)
 
   document.getElementById('query').onkeyup = debounce(function () {
     app.events.search.trigger()
   }, 250)
+
+  document.getElementById('from').onblur = function (event) {
+    var value = null
+
+    if (event.target.value) {
+      value = new Date(event.target.value)
+    }
+
+    app.events.dateFromChange.trigger(value)
+  }
+
+  document.getElementById('to').onblur = function (event) {
+    var value = null
+
+    if (event.target.value) {
+      value = new Date(event.target.value)
+    }
+
+    app.events.dateToChange.trigger(value)
+  }
 
   app.events.search.trigger()
 })
