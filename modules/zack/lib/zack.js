@@ -42,8 +42,12 @@ Zack.prototype.search = function (query, offset) {
   })
 }
 
+Zack.prototype.buildCountQuery = function () {
+  return this.options.countQueryTemplate.replace('${searchString}', this.query)
+}
+
 Zack.prototype.fetchResultLength = function () {
-  var query = this.options.countSparql.replace('${searchString}', this.query)
+  var query = this.buildCountQuery()
 
   return this.client.postQuery(query).then(function (res) {
     var triple = res.graph.match(null, 'http://voc.zazuko.com/zack#numberOfResults').toArray().shift()
@@ -56,11 +60,15 @@ Zack.prototype.fetchResultLength = function () {
   })
 }
 
-Zack.prototype.fetchPage = function (offset) {
-  var query = this.options.searchSparql
+Zack.prototype.buildSearchQuery = function (offset) {
+  return this.options.searchQueryTemplate
     .replace('${searchString}', this.query)
     .replace('${offset}', offset)
     .replace('${limit}', this.options.pageSize)
+}
+
+Zack.prototype.fetchPage = function (offset) {
+  var query = this.buildSearchQuery(offset)
 
   return this.client.postQuery(query).then(function (res) {
     return res.graph

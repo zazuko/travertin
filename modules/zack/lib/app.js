@@ -1,13 +1,18 @@
-var Promise = require('bluebird')
 var debounce = require('debounce')
-var fetch = require('isomorphic-fetch')
 var renderer = require('./renderer')
 var Event = require('crab-event').Event
+var QueryBuilder = require('./query-builder')
 var Zack = require('./zack')
 
 var app = {}
 
 window.app = app
+
+app.options = {
+  endpointUrl: 'http://data.admin.ch:3030/alod/query',
+  pageSize: 20,
+  preload: 80
+}
 
 app.events = {
   search: new Event(),
@@ -31,25 +36,20 @@ function loadedResultLength (length) {
   document.getElementById('scrollArea').scrollTop = 0
 }
 
-Promise.all([
-  fetch('zack.sparql').then(function (res) {
-    return res.text()
-  }),
-  fetch('zack.count.sparql').then(function (res) {
-    return res.text()
-  })
-]).spread(function (searchSparql, countSparql, matcher) {
+var queryBuilder = new QueryBuilder()
+
+queryBuilder.init().then(function () {
   app.zack = new Zack({
-    endpointUrl: 'http://data.admin.ch:3030/alod/query',
-    searchSparql: searchSparql,
-    countSparql: countSparql,
-    pageSize: 20,
-    preload: 80,
+    endpointUrl: app.options.endpointUrl,
+    pageSize: app.options.pageSize,
+    preload: app.options.preload,
     dummyResult: '<div class="zack-result"></div>',
     resultType: 'http://data.archiveshub.ac.uk/def/ArchivalResource',
     renderResult: renderer.renderResult,
     onLoadedResultLength: app.events.loadedResultLength.trigger
   })
+
+  queryBuilder.attach(app.zack)
 
   app.events.search.on(search)
   app.events.loadedResultLength.on(loadedResultLength)
@@ -60,4 +60,3 @@ Promise.all([
 
   app.events.search.trigger()
 })
-
