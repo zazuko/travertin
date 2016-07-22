@@ -41,7 +41,7 @@ ClusterizePaging.prototype.loadRows = function (offset, direction, end) {
 
   offset = offset || 0
   direction = direction || 1
-  end = end || (offset + this.options.preload * direction)
+  end = Math.max(0, end || (offset + this.options.preload * direction))
 
   var lastLoaded = -1
 
