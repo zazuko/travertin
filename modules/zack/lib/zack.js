@@ -67,17 +67,15 @@ Zack.prototype.fetchPage = function (offset) {
   })
 }
 
-Zack.prototype.loadRows = function (rows, offset) {
+Zack.prototype.loadRows = function (offset) {
   var self = this
 
   return this.fetchPage(offset).then(function (page) {
     var subjects = self.options.rowSubjects(page)
 
-    subjects.forEach(function (subject, index) {
-      rows[offset + index] = self.options.renderRow(page, subject)
+    return subjects.map(function (subject, index) {
+      return self.options.renderRow(page, subject)
     })
-
-    return rows
   })
 }
 

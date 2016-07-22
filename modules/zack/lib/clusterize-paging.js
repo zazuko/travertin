@@ -26,66 +26,71 @@ ClusterizePaging.prototype.init = function (length) {
 
   this.loading = new Array(Math.ceil(this.rows.length / this.options.pageSize))
 
-  return this.loadRows(0)
+  return this.loadRows()
 }
 
 ClusterizePaging.prototype.handleScrollProgress = debounce(function (percentage) {
   var offset = Math.floor(percentage * this.rows.length / 100)
 
   this.loadRows(offset)
+  this.loadRows(offset, -1)
 }, 100)
 
-ClusterizePaging.prototype.loadRows = function (offset, end) {
+ClusterizePaging.prototype.loadRows = function (offset, direction, end) {
   var self = this
 
-  end = end || (offset + this.options.preload)
+  offset = offset || 0
+  direction = direction || 1
+  end = end || (offset + this.options.preload * direction)
 
-  // load all
-  if (end < offset) {
-    end = this.rows.length
-  }
+  var lastLoaded = -1
 
-  var lastLoaded = this.rows.slice(offset, end).reduce(function (lastLoaded, row, index) {
-    if (lastLoaded !== -1 && row !== self.options.dummyRow) {
-      return Math.max(lastLoaded, index + offset)
+  for (var index = offset; (index - end) * direction <= 0; index += direction) {
+    if (this.rows[index] !== self.options.dummyRow) {
+      lastLoaded = index
+    } else {
+      break
     }
-
-    return lastLoaded
-  }, -1)
+  }
 
   if (lastLoaded !== -1) {
     offset = lastLoaded
-  }
-
-  if (offset >= end) {
-    return Promise.resolve()
   }
 
   var page = Math.floor(offset / this.options.pageSize)
 
   offset = page * this.options.pageSize
 
-  // check if the current page is already loading
-  if (this.loading[page]) {
-    return Promise.resolve()
-  }
 
-  this.loading[page] = true
-
-  return Promise.resolve().then(function () {
-    return self.options.callbacks.loadRows(self.rows, offset)
-  }).then(function (rows) {
-    self.rows = rows
-    self.update(self.rows)
-
-    console.log('fetched: ' + offset + '(' + end + ')')
-
-    offset += self.options.pageSize
+  return self.loadPage(offset, page).then(function (length) {
+    offset += length * direction
 
     // load more results?
-    if (offset < end) {
-      return self.loadRows(offset, end)
+    if ((offset - end) * direction <= 0) {
+      return self.loadRows(offset, direction, end)
     }
+  })
+}
+
+ClusterizePaging.prototype.loadPage = function (offset, page) {
+  var self = this
+
+  // check if the current page is already loading
+  if (this.loading[page]) {
+    return Promise.resolve(this.options.pageSize)
+  }
+
+  return Promise.resolve().then(function () {
+    self.loading[page] = true
+
+    return self.options.callbacks.loadRows(offset)
+  }).then(function (rows) {
+    self.rows.splice.apply(self.rows, [offset, rows.length].concat(rows))
+    self.update(self.rows)
+
+    console.log('fetched: ' + offset + '(' + rows.length + ')')
+
+    return rows.length
   })
 }
 
