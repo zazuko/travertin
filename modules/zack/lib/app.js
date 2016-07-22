@@ -7,6 +7,8 @@ var Zack = require('./zack')
 
 var app = {}
 
+window.app = app
+
 app.events = {
   search: new Event(),
   loadedResultLength: new Event()
