@@ -36,6 +36,16 @@ QueryBuilder.prototype.buildFilters = function () {
     filters += IND + '?sub <http://data.archiveshub.ac.uk/def/level> <' + this.filters.level + '> .\n'
   }
 
+  if (this.filters.to) {
+    filters += IND +'?sub <http://www.w3.org/2006/time#intervalEnds> ?end.\n' +
+               IND + 'FILTER (?end <= xsd:date(\''+this.filters.to.toISOString().slice(0,10)+'\'))\n'
+  }
+
+  if (this.filters.from) {
+    filters += IND + '?sub <http://www.w3.org/2006/time#intervalStarts> ?start.\n' +
+               IND + 'FILTER (?start >= xsd:date(\''+this.filters.from.toISOString().slice(0,10)+'\'))\n'
+  }
+
   if (filters) {
     filters = '\n    GRAPH ?g {\n' + filters + '    \n    }'
   }
@@ -43,15 +53,15 @@ QueryBuilder.prototype.buildFilters = function () {
 }
 
 QueryBuilder.prototype.buildCountQuery = function () {
-  return this.countQueryTemplate.replace('${searchString}', this.zack.query).replace('${filters}', this.buildFilters())
+  return this.countQueryTemplate.replace(/\${searchString}/g, this.zack.query).replace(/\${filters}/g, this.buildFilters())
 }
 
 QueryBuilder.prototype.buildSearchQuery = function (offset) {
   return this.searchQueryTemplate
-    .replace('${searchString}', this.zack.query)
-    .replace('${filters}', this.buildFilters())
-    .replace('${offset}', offset)
-    .replace('${limit}', this.zack.options.pageSize)
+    .replace(/\${searchString}/g, this.zack.query)
+    .replace(/\${filters}/g, this.buildFilters())
+    .replace(/\${offset}/g, offset)
+    .replace(/\${limit}/g, this.zack.options.pageSize)
 }
 
 module.exports = QueryBuilder

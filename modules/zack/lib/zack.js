@@ -14,6 +14,9 @@ function Zack (options) {
 
   this.rows = []
 
+  this.start = ''
+  this.end = ''
+
   this.clusterize = new ClusterizePaging({
     rows: this.rows,
     scrollId: 'scrollArea',
@@ -43,20 +46,31 @@ Zack.prototype.search = function (query, offset) {
 }
 
 Zack.prototype.buildCountQuery = function () {
-  return this.options.countQueryTemplate.replace('${searchString}', this.query)
+  return this.options.countQueryTemplate.replace(/\${searchString}/g, this.query)
 }
 
 Zack.prototype.fetchResultLength = function () {
   var query = this.buildCountQuery()
 
   return this.client.postQuery(query).then(function (res) {
-    var triple = res.graph.match(null, 'http://voc.zazuko.com/zack#numberOfResults').toArray().shift()
+    var count = res.graph.match(null, 'http://voc.zazuko.com/zack#numberOfResults').toArray().shift()
 
-    if (!triple) {
+    var querystart = res.graph.match(null, 'http://voc.zazuko.com/zack#queryStart').toArray().shift()
+    var queryend = res.graph.match(null, 'http://voc.zazuko.com/zack#queryEnd').toArray().shift()
+
+    if (!querystart && !queryend) {
+        this.start = ''
+        this.end = ''
+    } else {
+        this.start = new Date(querystart.object.nominalValue)
+        this.end = new Date(queryend.object.nominalValue)
+    }
+
+    if (!count) {
       return 0
     }
 
-    return parseInt(triple.object.nominalValue)
+    return parseInt(count.object.nominalValue)
   })
 }
 
