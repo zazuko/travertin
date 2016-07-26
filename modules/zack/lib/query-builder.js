@@ -29,15 +29,15 @@ QueryBuilder.prototype.attach = function (zack) {
 }
 
 QueryBuilder.prototype.buildFilters = function () {
-  var ind = '      '
+  const IND = '      '
   var filters = ''
 
   if (this.filters.level) {
-    filters += ind + '?sub <http://data.archiveshub.ac.uk/def/level> <' + this.filters.level + '> .\n'
+    filters += IND + '?sub <http://data.archiveshub.ac.uk/def/level> <' + this.filters.level + '> .\n'
   }
 
   if (filters) {
-    filters = '\n    GRAPH ?g {\n' + filters + '    \n}'
+    filters = '\n    GRAPH ?g {\n' + filters + '    \n    }'
   }
   return filters
 }
