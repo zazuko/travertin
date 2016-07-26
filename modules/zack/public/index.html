@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>aLOD Search :: Zack ☇</title>
+  <title>Zack</title>
 
   <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,400italic,700italic,300&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
   <link href="normalize.css" rel="stylesheet">
@@ -13,17 +11,25 @@
 </head>
 <body>
 
-<div class="zack-query-box row">
-    <div class="eight columns">
-        <input id="query" class="zack-query-input zack-big twelve columns" type="text" placeholder="Refine Results with Keywords.">
+<div class="zack-query-box">
+    <div class="row">
+        <div class="eight columns">
+            <input autofocus id="query" class="zack-query-input zack-big twelve columns" type="text" placeholder="Refine Results with Keywords.">
+        </div>
+        <div class="four columns space">
+            <select id="level-filter"  data-query-filter="http://data.archiveshub.ac.uk/def/level" class="zack-filter-select zack-big u-pull-right">
+                <option value='' selected>-</option>
+                <option value="http://data.alod.ch/alod/level/fond">Fonds</option>
+                <option value="http://data.alod.ch/alod/level/subfond">Sub-Fonds</option>
+                <option value="http://data.alod.ch/alod/level/item">Series</option>
+                <option value="http://data.alod.ch/alod/level/file">Files</option>
+                <option value="http://data.alod.ch/alod/level/series">Items</option>
+            </select>
+        </div>
     </div>
-    <div class="four columns space">
-        <select id="level-filter" data-query-filter="http://data.archiveshub.ac.uk/def/level" class="zack-filter-select zack-big u-pull-right">
-            <option value="" selected>-</option>
-            <option value="http://data.alod.ch/alod/level/fond">Fonds</option>
-            <option value="http://data.alod.ch/alod/level/item">Items</option>
-            <option value="http://data.alod.ch/alod/level/series">Series</option>
-        </select>
+    <div class="zack-filter">
+            <div data-filter-type="subhierarchy" data-object="http://data.staatsarchiv-bs.ch/id/archivalresource/CH-000027-1/pa-633" class="filter-item">Fonds: Archiv der Familie Ochs genannt His</div>
+            <div data-filter-type="constraint" data-predicate="http://data.alod.ch/alod/conceptTag" data-object="tribunal civil" class="filter-item">Concept: trinunal civil</div>
     </div>
 </div>
 <div class="zack-result-list">
@@ -41,9 +47,8 @@
             after <input id="from" type="date"> and 
             before <input id="to" type="date">.
         </div>
-        <div class="two columns space">
-            <div id="count" class="zack-count zack-big">
-            </div>
+        <div class="two columns space u-pull-right">
+            <span id="count" class="zack-count zack-big"></span> <i>Results</i>
         </div>
     </div>
 </div>

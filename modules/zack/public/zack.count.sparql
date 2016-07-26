@@ -10,9 +10,6 @@ CONSTRUCT {
   SELECT (COUNT(?sub) as ?count) {
     GRAPH <http://data.alod.ch/graph/inference-supertitle> {
       (?sub ?score ?literal) text:query (skos:hiddenLabel "${searchString}") .
-    }
-    GRAPH ?g {
-      ${filters}
-    }
+    }${filters}
   }
 }
