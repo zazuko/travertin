@@ -15,18 +15,13 @@ app.options = {
 }
 
 app.events = {
-  dateFromChange: new Event(),
-  dateToChange: new Event(),
-  levelChange: new Event(),
+  filterChange: new Event(),
   loadedResultLength: new Event(),
-  search: new Event()
+  search: new Event(),
+  updateFilters: new Event()
 }
 
-app.filters = {
-  from: null,
-  level: null,
-  to: null
-}
+app.filters = []
 
 function search () {
   var query = document.getElementById('query').value
@@ -45,41 +40,58 @@ function loadedResultLength (length) {
   document.getElementById('scrollArea').scrollTop = 0
 }
 
+function updateFilters () {
+  var elements = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'))
+
+  app.filters = elements.map(function (element, index) {
+    var filter = {}
+
+    filter.operator = element.getAttribute('data-filter')
+    filter.predicate = element.getAttribute('data-predicate')
+    filter.termType = element.getAttribute('data-term-type') || 'Literal'
+    filter.variable = 'filter' + index
+
+    var eventName = 'onchange'
+    var getValue = function (element) {
+      return element.value
+    }
+
+    if (element.nodeName.toLowerCase() === 'input' && element.type.toLowerCase() === 'date') {
+      eventName = 'onblur'
+
+      getValue = function (element) {
+        if (element.value) {
+          return 'xsd:date(\'' + element.value + '\')'
+        } else {
+          return null
+        }
+      }
+    }
+
+    filter.value = getValue(element)
+
+    if (eventName) {
+      element[eventName] = function (event) {
+        filter.value = getValue(element)
+
+        app.events.filterChange.trigger()
+      }
+    }
+
+    return filter
+  })
+
+  app.events.filterChange.trigger()
+}
+
 function initUi () {
   // query field
   document.getElementById('query').onkeyup = debounce(function () {
     app.events.search.trigger()
   }, 250)
-
-  // level dropdown
-  document.getElementById('level-filter').onchange = function (event) {
-    app.events.levelChange.trigger(event.target.value)
-  }
-
-  // date from input
-  document.getElementById('from').onblur = function (event) {
-    var value = null
-
-    if (event.target.value) {
-      value = new Date(event.target.value)
-    }
-
-    app.events.dateFromChange.trigger(value)
-  }
-
-  // date to input
-  document.getElementById('to').onblur = function (event) {
-    var value = null
-
-    if (event.target.value) {
-      value = new Date(event.target.value)
-    }
-
-    app.events.dateToChange.trigger(value)
-  }
 }
 
-var queryBuilder = new QueryBuilder(app.filters)
+var queryBuilder = new QueryBuilder()
 
 queryBuilder.init().then(function () {
   app.zack = new Zack({
@@ -96,26 +108,14 @@ queryBuilder.init().then(function () {
 
   app.events.search.on(search)
   app.events.loadedResultLength.on(loadedResultLength)
-
-  // level filter
-  app.events.levelChange.on(function (level) {
-    app.filters.level = level
+  app.events.updateFilters.on(updateFilters)
+  app.events.filterChange.on(function () {
+    queryBuilder.filters = app.filters
+    app.events.search.trigger()
   })
-  app.events.levelChange.on(app.events.search.trigger)
-
-  // date from filter
-  app.events.dateFromChange.on(function (date) {
-    app.filters.from = date
-  })
-  app.events.dateFromChange.on(app.events.search.trigger)
-
-  // date to filter
-  app.events.dateToChange.on(function (date) {
-    app.filters.to = date
-  })
-  app.events.dateToChange.on(app.events.search.trigger)
 
   initUi()
+  updateFilters()
 
   app.events.search.trigger()
 })

@@ -17,7 +17,7 @@
             <input autofocus id="query" class="zack-query-input zack-big twelve columns" type="text" placeholder="Refine Results with Keywords.">
         </div>
         <div class="four columns space">
-            <select id="level-filter"  data-query-filter="http://data.archiveshub.ac.uk/def/level" class="zack-filter-select zack-big u-pull-right">
+            <select id="level-filter"  data-filter="=" data-predicate="http://data.archiveshub.ac.uk/def/level" data-term-type="NamedNode" class="zack-filter-select zack-big u-pull-right">
                 <option value='' selected>-</option>
                 <option value="http://data.alod.ch/alod/level/fond">Fonds</option>
                 <option value="http://data.alod.ch/alod/level/subfond">Sub-Fonds</option>
@@ -44,8 +44,8 @@
         <div class="ten columns">
             <b>timeline</b></br>
             Filter documents to be
-            after <input id="from" type="date"> and 
-            before <input id="to" type="date">.
+            after <input id="from" type="date" data-filter=">=" data-predicate="http://www.w3.org/2006/time#intervalStarts"> and
+            before <input id="to" type="date" data-filter="<=" data-predicate="http://www.w3.org/2006/time#intervalEnds">.
         </div>
         <div class="two columns space u-pull-right">
             <span id="count" class="zack-count zack-big"></span> <i>Results</i>

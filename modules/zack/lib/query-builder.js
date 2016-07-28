@@ -2,7 +2,7 @@ var Promise = require('bluebird')
 var fetch = require('isomorphic-fetch')
 
 function QueryBuilder (filters) {
-  this.filters = filters
+  this.filters = filters || []
 }
 
 QueryBuilder.prototype.init = function () {
@@ -29,27 +29,30 @@ QueryBuilder.prototype.attach = function (zack) {
 }
 
 QueryBuilder.prototype.buildFilters = function () {
-  const IND = '      '
-  var filters = ''
+  var ind = '      '
 
-  if (this.filters.level) {
-    filters += IND + '?sub <http://data.archiveshub.ac.uk/def/level> <' + this.filters.level + '> .\n'
+  var filters = this.filters.filter(function (filter) {
+    return filter.value
+  })
+
+  if (filters.length === 0) {
+    return ''
   }
 
-  if (this.filters.to) {
-    filters += IND +'?sub <http://www.w3.org/2006/time#intervalEnds> ?end.\n' +
-               IND + 'FILTER (?end <= xsd:date(\''+this.filters.to.toISOString().slice(0,10)+'\'))\n'
-  }
+  var sparql = filters.map(function (filter) {
+    if (filter.operator === '=') {
+      if (filter.termType === 'NamedNode') {
+        return ind + '?sub <' + filter.predicate + '> <' + filter.value + '> .\n'
+      }
+    } else {
+      return ind + '?sub <' + filter.predicate + '> ?' + filter.variable + ' .\n' +
+        ind + 'FILTER (?' + filter.variable + ' ' + filter.operator + ' ' + filter.value + ')'
+    }
+  }).join('\n')
 
-  if (this.filters.from) {
-    filters += IND + '?sub <http://www.w3.org/2006/time#intervalStarts> ?start.\n' +
-               IND + 'FILTER (?start >= xsd:date(\''+this.filters.from.toISOString().slice(0,10)+'\'))\n'
-  }
+  sparql = '\n    GRAPH ?g {\n' + sparql + '    \n    }'
 
-  if (filters) {
-    filters = '\n    GRAPH ?g {\n' + filters + '    \n    }'
-  }
-  return filters
+  return sparql
 }
 
 QueryBuilder.prototype.buildCountQuery = function () {
