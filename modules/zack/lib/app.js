@@ -56,7 +56,17 @@ app.updateFilters = function () {
 
     var eventName = 'onchange'
     var getValue = function (element) {
-      return element.value || element.getAttribute('data-value')
+      var value = element.value || element.getAttribute('data-value')
+
+      if (!value) {
+        return null
+      }
+
+      if (filter.termType === 'NamedNode') {
+        return '<' + value + '>'
+      } else {
+        return '"' + value + '"' // TODO: escape literal
+      }
     }
 
     if (element.nodeName.toLowerCase() === 'input' && element.type.toLowerCase() === 'date') {
@@ -141,7 +151,7 @@ queryBuilder.init().then(function () {
   app.events.search.on(search)
   app.events.loadedResultLength.on(loadedResultLength)
   app.events.filterChange.on(function () {
-    queryBuilder.filters = app.filters
+    queryBuilder.setFilters(app.filters)
     app.events.search.trigger()
   })
 
