@@ -51,7 +51,7 @@ function updateFilters () {
     filter.operator = element.getAttribute('data-filter')
     filter.inverse = element.getAttribute('data-inverse') !== null
     filter.predicate = element.getAttribute('data-predicate')
-    filter.termType = element.getAttribute('data-term-type') || 'Literal'
+    filter.termType = element.getAttribute('data-named-node') !== null ? 'NamedNode' : 'Literal'
     filter.variable = 'filter' + index
 
     var eventName = 'onchange'
