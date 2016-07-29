@@ -76,7 +76,6 @@ body {
 }
 
 .result-main {
-    width: 30%;
     margin-left: 30px;
 }
 
@@ -97,6 +96,25 @@ body {
     margin-left: 5px;
     font-weight: 600;
     color: red;
+}
+
+.filterable {
+    font-size: 10px;
+    background-color: lightgray;
+    line-height: 95%;
+    margin: 2px 4px 2px 4px;
+    padding: 2px 4px 2px 4px;
+    border-radius: 5px;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+}
+
+.filterable:after {
+   margin-left: 5px;
+   font-weight: 600;
+   color: green;
+   content: "⑅"
 }
 
 /* max-height - the only parameter in this file that needs to be edited.
