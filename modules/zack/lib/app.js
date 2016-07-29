@@ -43,7 +43,9 @@ function loadedResultLength (length) {
 function updateFilters () {
   var elements = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'))
 
-  app.filters = elements.map(function (element, index) {
+  app.filters = elements.filter(function (element) {
+    return element.getAttribute('disabled') === null
+  }).map(function (element, index) {
     var filter = {}
 
     filter.operator = element.getAttribute('data-filter')
@@ -53,7 +55,7 @@ function updateFilters () {
 
     var eventName = 'onchange'
     var getValue = function (element) {
-      return element.value
+      return element.value || element.getAttribute('data-value')
     }
 
     if (element.nodeName.toLowerCase() === 'input' && element.type.toLowerCase() === 'date') {
