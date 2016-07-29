@@ -11,14 +11,14 @@ window.app = app
 app.options = {
   endpointUrl: 'http://data.admin.ch:3030/alod/query',
   pageSize: 20,
-  preload: 80
+  preload: 80,
+  filterContainer: 'filter-container'
 }
 
 app.events = {
   filterChange: new Event(),
   loadedResultLength: new Event(),
-  search: new Event(),
-  updateFilters: new Event()
+  search: new Event()
 }
 
 app.filters = []
@@ -40,7 +40,7 @@ function loadedResultLength (length) {
   document.getElementById('scrollArea').scrollTop = 0
 }
 
-function updateFilters () {
+app.updateFilters = function () {
   var elements = Array.prototype.slice.call(document.querySelectorAll('[data-filter]'))
 
   app.filters = elements.filter(function (element) {
@@ -87,6 +87,21 @@ function updateFilters () {
   app.events.filterChange.trigger()
 }
 
+app.addFilter = function (label, operator, predicate, value, options) {
+  options = options || {}
+
+  var html = '<div data-filter="' + operator + '" ' +
+    (options.inverse ? 'data-inverse ' : '') +
+    'data-predicate="' + predicate + '" ' +
+    'data-value="' + value + '" ' +
+    (options.namedNode ? 'data-named-node ' : '') +
+    'class="filter-item">' + label + '</div>'
+
+  document.getElementById(app.options.filterContainer).innerHTML += html
+
+  app.updateFilters()
+}
+
 function initUi () {
   // query field
   document.getElementById('query').onkeyup = debounce(function () {
@@ -111,14 +126,13 @@ queryBuilder.init().then(function () {
 
   app.events.search.on(search)
   app.events.loadedResultLength.on(loadedResultLength)
-  app.events.updateFilters.on(updateFilters)
   app.events.filterChange.on(function () {
     queryBuilder.filters = app.filters
     app.events.search.trigger()
   })
 
   initUi()
-  updateFilters()
+  app.updateFilters()
 
   app.events.search.trigger()
 })
