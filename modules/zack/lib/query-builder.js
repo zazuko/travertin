@@ -43,6 +43,8 @@ QueryBuilder.prototype.buildFilters = function () {
     if (filter.operator === '=') {
       if (filter.termType === 'NamedNode') {
         return ind + '?sub <' + filter.predicate + '> <' + filter.value + '> .\n'
+      } else if (filter.termType === 'Literal') {
+        return ind + '?sub <' + filter.predicate + '> "' + filter.value + '" .\n' // TODO: escape literal
       }
     } else {
       return ind + '?sub <' + filter.predicate + '> ?' + filter.variable + ' .\n' +
