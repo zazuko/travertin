@@ -49,6 +49,7 @@ function updateFilters () {
     var filter = {}
 
     filter.operator = element.getAttribute('data-filter')
+    filter.inverse = element.getAttribute('data-inverse') !== null
     filter.predicate = element.getAttribute('data-predicate')
     filter.termType = element.getAttribute('data-term-type') || 'Literal'
     filter.variable = 'filter' + index

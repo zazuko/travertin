@@ -42,9 +42,13 @@ QueryBuilder.prototype.buildFilters = function () {
   var sparql = filters.map(function (filter) {
     if (filter.operator === '=') {
       if (filter.termType === 'NamedNode') {
-        return ind + '?sub <' + filter.predicate + '> <' + filter.value + '> .\n'
+        if (!filter.inverse) {
+          return ind + '?sub <' + filter.predicate + '> <' + filter.value + '> .'
+        } else {
+          return ind + '<' + filter.value + '> <' + filter.predicate + '>  ?sub .'
+        }
       } else if (filter.termType === 'Literal') {
-        return ind + '?sub <' + filter.predicate + '> "' + filter.value + '" .\n' // TODO: escape literal
+        return ind + '?sub <' + filter.predicate + '> "' + filter.value + '" .' // TODO: escape literal
       }
     } else {
       return ind + '?sub <' + filter.predicate + '> ?' + filter.variable + ' .\n' +
