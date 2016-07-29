@@ -28,7 +28,9 @@ renderer.renderResult = function (page, subject) {
   var maintenanceAgencyCode = page.match(subject, 'http://data.archiveshub.ac.uk/def/maintenanceAgencyCode').toArray().shift()
   var agency = ''
   if (maintenanceAgencyCode) {
-      maintenanceAgency = '<div data-predicate="'+maintenanceAgencyCode.predicate.toString()+'" class="filterable" onclick="addFilter(this)">'+maintenanceAgencyCode.object.toString()+'</div>'
+      maintenanceAgency = '<div data-filterable="=" data-predicate="' + maintenanceAgencyCode.predicate.toString() + '" ' +
+        ' data-value="' + maintenanceAgencyCode.object.toString() + '" ' +
+        ' class="filterable" onclick="app.addFilter(this)">' + maintenanceAgencyCode.object.toString() + '</div>'
   }
 
   var intervalStarts = page.match(subject, 'http://www.w3.org/2006/time#intervalStarts').toArray().shift()

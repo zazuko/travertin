@@ -88,6 +88,20 @@ app.updateFilters = function () {
 }
 
 app.addFilter = function (label, operator, predicate, value, options) {
+  if (arguments.length === 1) {
+    var element = arguments[0]
+
+    var label = element.textContent
+    var operator = element.getAttribute('data-filterable')
+    var predicate = element.getAttribute('data-predicate')
+    var value = element.value || element.getAttribute('data-value')
+    var options = {
+      namedNode: element.getAttribute('data-named-node') !== null
+    }
+
+    return app.addFilter(label, operator, predicate, value, options)
+  }
+
   options = options || {}
 
   var html = '<div data-filter="' + operator + '" ' +
