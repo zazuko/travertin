@@ -97,6 +97,11 @@ app.updateFilters = function () {
   app.events.filterChange.trigger()
 }
 
+app.removeFilter = function (element) {
+    element.parentNode.removeChild(element)
+    app.updateFilters()
+}
+
 app.addFilter = function (label, operator, predicate, value, options) {
   if (arguments.length === 1) {
     var element = arguments[0]
@@ -119,7 +124,7 @@ app.addFilter = function (label, operator, predicate, value, options) {
     'data-predicate="' + predicate + '" ' +
     'data-value="' + value + '" ' +
     (options.namedNode ? 'data-named-node ' : '') +
-    'class="filter-item">' + label + '</div>'
+    'class="filter-item" onclick="app.removeFilter(this)">' + label + '</div>'
 
   document.getElementById(app.options.filterContainer).innerHTML += html
 
