@@ -6,6 +6,8 @@ PREFIX  skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX  xsd: <http://www.w3.org/2001/XMLSchema#>
 
 CONSTRUCT {
+  :query :result ?sub .
+  ?sub a :resultItem .
   ?sub ?pred ?obj .
   ?sub :score ?score .
 } WHERE {
