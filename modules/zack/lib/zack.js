@@ -36,9 +36,17 @@ Zack.prototype.search = function (query, offset) {
 
   this.query = query
 
+  if (this.options.onFetching) {
+    this.options.onFetching()
+  }
+
   return this.fetchResultLength().then(function (length) {
     if (self.options.onLoadedResultLength) {
       self.options.onLoadedResultLength(length)
+    }
+
+    if (self.options.onFetched) {
+      self.options.onFetched()
     }
 
     return self.clusterize.init(length)
@@ -106,8 +114,16 @@ Zack.prototype.resultSubjects = function (page) {
 Zack.prototype.loadRows = function (offset) {
   var self = this
 
+  if (this.options.onFetching) {
+    this.options.onFetching()
+  }
+
   return this.fetchPage(offset).then(function (page) {
     var subjects = self.resultSubjects(page)
+
+    if (self.options.onFetched) {
+      self.options.onFetched()
+    }
 
     return subjects.map(function (subject, index) {
       return self.options.renderResult(page, subject)

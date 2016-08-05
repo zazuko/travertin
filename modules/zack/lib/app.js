@@ -18,10 +18,14 @@ app.options = {
 }
 
 app.events = {
+  fetched: new Event(),
+  fetching: new Event(),
   filterChange: new Event(),
   loadedResultLength: new Event(),
   search: new Event()
 }
+
+app.isFetching = false
 
 app.filters = []
 
@@ -170,18 +174,35 @@ function initZack () {
     dummyResult: '<div class="zack-result"></div>',
     resultType: 'http://data.archiveshub.ac.uk/def/ArchivalResource',
     renderResult: renderer.renderResult,
+    onFetched: app.events.fetched.trigger,
+    onFetching: app.events.fetching.trigger,
     onLoadedResultLength: app.events.loadedResultLength.trigger
   })
 
+  // replace default filter query builder methods
   app.zack.buildCountFilterQuery = app.queryBuilder.createBuilder(app.queryTemplates.count)
   app.zack.buildSearchFilterQuery = app.queryBuilder.createBuilder(app.queryTemplates.search)
 
-  app.events.search.on(search)
-  app.events.loadedResultLength.on(loadedResultLength)
+  // connect events
+
+  app.events.fetched.on(function () {
+    console.log('fetched')
+    app.isFetching = false
+  })
+
+  app.events.fetching.on(function () {
+    console.log('fetching')
+    app.isFetching = true
+  })
+
   app.events.filterChange.on(function () {
     app.queryBuilder.setFilters(app.filters)
     app.events.search.trigger()
   })
+
+  app.events.loadedResultLength.on(loadedResultLength)
+
+  app.events.search.on(search)
 }
 
 initQueryBuilder().then(function () {
