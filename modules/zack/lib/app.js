@@ -1,4 +1,6 @@
+var Promise = require('bluebird')
 var debounce = require('debounce')
+var fetch = require('isomorphic-fetch')
 var renderer = require('./renderer')
 var Event = require('crab-event').Event
 var QueryBuilder = require('./query-builder')
@@ -136,11 +138,31 @@ function initUi () {
   document.getElementById('query').onkeyup = debounce(function () {
     app.events.search.trigger()
   }, 250)
+
+  app.updateFilters()
+
+  app.events.search.trigger()
 }
 
-var queryBuilder = new QueryBuilder()
+function initQueryBuilder () {
+  app.queryBuilder = new QueryBuilder()
 
-queryBuilder.init().then(function () {
+  return Promise.all([
+    fetch('zack.sparql').then(function (res) {
+      return res.text()
+    }),
+    fetch('zack.count.sparql').then(function (res) {
+      return res.text()
+    })
+  ]).spread(function (search, count) {
+    app.queryTemplates = {
+      search: search,
+      count: count
+    }
+  })
+}
+
+function initZack () {
   app.zack = new Zack({
     endpointUrl: app.options.endpointUrl,
     pageSize: app.options.pageSize,
@@ -151,17 +173,19 @@ queryBuilder.init().then(function () {
     onLoadedResultLength: app.events.loadedResultLength.trigger
   })
 
-  queryBuilder.attach(app.zack)
+  app.zack.buildCountFilterQuery = app.queryBuilder.createBuilder(app.queryTemplates.count)
+  app.zack.buildSearchFilterQuery = app.queryBuilder.createBuilder(app.queryTemplates.search)
 
   app.events.search.on(search)
   app.events.loadedResultLength.on(loadedResultLength)
   app.events.filterChange.on(function () {
-    queryBuilder.setFilters(app.filters)
+    app.queryBuilder.setFilters(app.filters)
     app.events.search.trigger()
   })
+}
 
-  initUi()
-  app.updateFilters()
-
-  app.events.search.trigger()
+initQueryBuilder().then(function () {
+  return initZack()
+}).then(function () {
+  return initUi()
 })

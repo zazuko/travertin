@@ -45,8 +45,12 @@ Zack.prototype.search = function (query, offset) {
   })
 }
 
+Zack.prototype.buildCountFilterQuery = function () {
+  return this.options.countQueryTemplate
+}
+
 Zack.prototype.buildCountQuery = function () {
-  return this.options.countQueryTemplate.replace(/\${searchString}/g, this.query)
+  return this.buildCountFilterQuery().replace(/\${searchString}/g, this.query)
 }
 
 Zack.prototype.fetchResultLength = function () {
@@ -74,8 +78,12 @@ Zack.prototype.fetchResultLength = function () {
   })
 }
 
-Zack.prototype.buildSearchQuery = function (offset) {
+Zack.prototype.buildSearchFilterQuery = function () {
   return this.options.searchQueryTemplate
+}
+
+Zack.prototype.buildSearchQuery = function (offset) {
+  return this.buildSearchFilterQuery()
     .replace('${searchString}', this.query)
     .replace('${offset}', offset)
     .replace('${limit}', this.options.pageSize)

@@ -1,36 +1,17 @@
-var Promise = require('bluebird')
 var clone = require('lodash/clone')
-var fetch = require('isomorphic-fetch')
 
 function QueryBuilder (filters) {
   this.setFilters(filters || [])
-}
-
-QueryBuilder.prototype.init = function () {
-  var self = this
-
-  return Promise.all([
-    fetch('zack.sparql').then(function (res) {
-      return res.text()
-    }),
-    fetch('zack.count.sparql').then(function (res) {
-      return res.text()
-    })
-  ]).spread(function (searchQueryTemplate, countQueryTemplate) {
-    self.searchQueryTemplate = searchQueryTemplate
-    self.countQueryTemplate = countQueryTemplate
-  })
 }
 
 QueryBuilder.prototype.setFilters = function (filters) {
   this.filters = QueryBuilder.compactFilters(filters)
 }
 
-QueryBuilder.prototype.attach = function (zack) {
-  this.zack = zack
-
-  zack.buildCountQuery = this.buildCountQuery.bind(this)
-  zack.buildSearchQuery = this.buildSearchQuery.bind(this)
+QueryBuilder.prototype.createBuilder = function (template) {
+  return function () {
+    return template.replace(/\${filters}/g, this.buildFilters())
+  }.bind(this)
 }
 
 QueryBuilder.prototype.buildFilters = function () {
@@ -61,18 +42,6 @@ QueryBuilder.prototype.buildFilters = function () {
   sparql = '\n    GRAPH ?g {\n' + sparql + '    \n    }'
 
   return sparql
-}
-
-QueryBuilder.prototype.buildCountQuery = function () {
-  return this.countQueryTemplate.replace(/\${searchString}/g, this.zack.query).replace(/\${filters}/g, this.buildFilters())
-}
-
-QueryBuilder.prototype.buildSearchQuery = function (offset) {
-  return this.searchQueryTemplate
-    .replace(/\${searchString}/g, this.zack.query)
-    .replace(/\${filters}/g, this.buildFilters())
-    .replace(/\${offset}/g, offset)
-    .replace(/\${limit}/g, this.zack.options.pageSize)
 }
 
 QueryBuilder.compactFilters = function (filters) {
