@@ -22,19 +22,17 @@ QueryBuilder.prototype.buildFilters = function () {
   }
 
   var sparql = this.filters.map(function (filter) {
+    var propertyPathPrefix = filter.propertyPathPrefix || ''
+
     if (filter.operator === '=') {
-      if (!filter.inverse) {
-        return ind + '?sub <' + filter.predicate + '> ' + filter.value + ' .'
-      } else {
-        return ind + filter.value + ' <' + filter.predicate + '>  ?sub .'
-      }
+      return ind + '?sub ' + propertyPathPrefix + '<' + filter.predicate + '> ' + filter.value + ' .'
     } else if (filter.operator === 'IN') {
       var value = '(' + filter.value.join(', ') + ')'
 
-      return ind + '?sub <' + filter.predicate + '> ?' + filter.variable + ' .\n' +
+      return ind + '?sub ' + propertyPathPrefix + '<' + filter.predicate + '> ?' + filter.variable + ' .\n' +
         ind + 'FILTER (?' + filter.variable + ' ' + filter.operator + ' ' + value + ')'
     } else {
-      return ind + '?sub <' + filter.predicate + '> ?' + filter.variable + ' .\n' +
+      return ind + '?sub ' + propertyPathPrefix + '<' + filter.predicate + '> ?' + filter.variable + ' .\n' +
         ind + 'FILTER (?' + filter.variable + ' ' + filter.operator + ' ' + filter.value + ')'
     }
   }).join('\n')

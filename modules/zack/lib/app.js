@@ -55,8 +55,8 @@ app.updateFilters = function () {
     var filter = {}
 
     filter.operator = element.getAttribute('data-filter')
-    filter.inverse = element.getAttribute('data-inverse') !== null
     filter.predicate = element.getAttribute('data-predicate')
+    filter.propertyPathPrefix = element.getAttribute('data-property-path-prefix')
     filter.termType = element.getAttribute('data-named-node') !== null ? 'NamedNode' : 'Literal'
     filter.variable = 'filter' + index
 
@@ -117,7 +117,8 @@ app.addFilter = function (label, operator, predicate, value, options) {
     predicate = element.getAttribute('data-predicate')
     value = element.value || element.getAttribute('data-value')
     options = {
-      namedNode: element.getAttribute('data-named-node') !== null
+      namedNode: element.getAttribute('data-named-node') !== null,
+      propertyPathPrefix: element.getAttribute('data-property-path-prefix')
     }
 
     return app.addFilter(label, operator, predicate, value, options)
@@ -126,8 +127,8 @@ app.addFilter = function (label, operator, predicate, value, options) {
   options = options || {}
 
   var html = '<div data-filter="' + operator + '" ' +
-    (options.inverse ? 'data-inverse ' : '') +
     'data-predicate="' + predicate + '" ' +
+    (options.propertyPathPrefix ? 'data-property-path-prefix="' + options.propertyPathPrefix + '" ' : '') +
     'data-value="' + value + '" ' +
     (options.namedNode ? 'data-named-node ' : '') +
     'class="filter-item" onclick="app.removeFilter(this)">' + label + '</div>'
