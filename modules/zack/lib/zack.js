@@ -63,11 +63,11 @@ Zack.prototype.fetchResultLength = function () {
     var queryend = res.graph.match(null, 'http://voc.zazuko.com/zack#queryEnd').toArray().shift()
 
     if (!querystart && !queryend) {
-        this.start = ''
-        this.end = ''
+      this.start = ''
+      this.end = ''
     } else {
-        this.start = new Date(querystart.object.nominalValue)
-        this.end = new Date(queryend.object.nominalValue)
+      this.start = new Date(querystart.object.nominalValue)
+      this.end = new Date(queryend.object.nominalValue)
     }
 
     if (!count) {

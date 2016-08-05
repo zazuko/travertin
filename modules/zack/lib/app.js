@@ -100,19 +100,19 @@ app.updateFilters = function () {
 }
 
 app.removeFilter = function (element) {
-    element.parentNode.removeChild(element)
-    app.updateFilters()
+  element.parentNode.removeChild(element)
+  app.updateFilters()
 }
 
 app.addFilter = function (label, operator, predicate, value, options) {
   if (arguments.length === 1) {
     var element = arguments[0]
 
-    var label = element.textContent
-    var operator = element.getAttribute('data-filterable')
-    var predicate = element.getAttribute('data-predicate')
-    var value = element.value || element.getAttribute('data-value')
-    var options = {
+    label = element.textContent
+    operator = element.getAttribute('data-filterable')
+    predicate = element.getAttribute('data-predicate')
+    value = element.value || element.getAttribute('data-value')
+    options = {
       namedNode: element.getAttribute('data-named-node') !== null
     }
 
