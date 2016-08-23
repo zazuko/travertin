@@ -1,6 +1,7 @@
 var rdfFetch = require('rdf-fetch')
 var SparqlClient = require('sparql-http-client')
 var ClusterizePaging = require('./clusterize-paging')
+var Timeline = require('./timeline')
 
 SparqlClient.fetch = rdfFetch
 
@@ -76,6 +77,7 @@ Zack.prototype.fetchResultLength = function () {
     } else {
       this.start = new Date(querystart.object.nominalValue)
       this.end = new Date(queryend.object.nominalValue)
+      Timeline.render(this.start, this.end)
     }
 
     if (!count) {

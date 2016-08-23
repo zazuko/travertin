@@ -11,6 +11,7 @@
     "url": "https://github.com/zazukoians/alod-web-interface/issues"
   },
   "dependencies": {
+    "d3": "^4.2.2",
     "lodash": "^4.14.1"
   },
   "license": "MIT",

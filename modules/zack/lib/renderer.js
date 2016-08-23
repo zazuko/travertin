@@ -24,6 +24,11 @@ renderer.renderResult = function (page, subject) {
   }
   var reference = '<i>' + referenceString + '</i>'
 
+  var levelFilter = '<span data-filterable="=" data-predicate="http://purl.org/dc/terms/hasPart"' +
+      ' data-property-path-prefix="^" data-property-path-postfix="+" data-label="' + levelShort +': ' + title.object.toString() + '" data-value="' + subject + '" ' + 
+      ' class="level-filterable" onclick="app.addFilter(this)">⑅</span>'
+
+
   var maintenanceAgencyCode = page.match(subject, 'http://data.archiveshub.ac.uk/def/maintenanceAgencyCode').toArray().shift()
   var maintenanceAgency = ''
   if (maintenanceAgencyCode) {
@@ -36,14 +41,17 @@ renderer.renderResult = function (page, subject) {
 
   var timeTick = ''
   if (intervalStarts) {
-    var year = parseInt(intervalStarts.object.toString().substring(0, 4))
-    if (!isNaN(year)) {
-      var percent = (year - 1700) / 3
-      timeTick = '<div style="left: ' + percent + '%;" class="result-time-tick"></div>'
+    var date = new Date(intervalStarts.object.toString())
+    var range = window.end - window.start
+    var width = document.getElementById('zack-timeline').offsetWidth - 40
+    if (date instanceof Date && !isNaN(date.valueOf())) {
+        console.log(date, title.object.toString())
+      var offset = (( width / range  ) * (date - window.start)) + 20
+      timeTick = '<div style="left: ' + offset + 'px;" class="result-time-tick"></div>'
     }
   }
 
-  rendering = '<div class="zack-result row"><div class="one-third column"><div class="result-level-wrap"><div class="vertical-text result-level" style="background-color: ' + levelColor + '">' + levelShort + '</div></div>' + '<div class="result-main">' + timeTick + titleString + '</br>' + reference + '</div></div><div class="two-thirds column">' + maintenanceAgency + '</div></div>'
+  rendering = '<div class="zack-result row"><div class="one-third column"><div class="result-level-wrap"><div class="vertical-text result-level" style="background-color: ' + levelColor + '">' + levelShort + '</div></div>' + '<div class="result-main">' + timeTick + titleString + levelFilter + '</br>' + reference + '</div></div><div class="two-thirds column">' + maintenanceAgency + '</div></div>'
 
   return rendering
 }

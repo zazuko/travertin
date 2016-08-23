@@ -10,6 +10,10 @@ var app = {}
 
 window.app = app
 
+window.onresize = function() {
+  debounce(function () {app.events.filterChange.trigger()}, 250)
+};
+
 app.options = {
   endpointUrl: 'http://data.admin.ch:3030/alod/query',
   pageSize: 20,
@@ -112,7 +116,7 @@ app.addFilter = function (label, operator, predicate, value, options) {
   if (arguments.length === 1) {
     var element = arguments[0]
 
-    label = element.textContent
+    label = element.getAttribute('data-label') || element.textContent
     operator = element.getAttribute('data-filterable')
     predicate = element.getAttribute('data-predicate')
     value = element.value || element.getAttribute('data-value')
