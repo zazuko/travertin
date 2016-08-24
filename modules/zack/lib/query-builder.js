@@ -23,16 +23,17 @@ QueryBuilder.prototype.buildFilters = function () {
 
   var sparql = this.filters.map(function (filter) {
     var propertyPathPrefix = filter.propertyPathPrefix || ''
+    var propertyPathPostfix = filter.propertyPathPostfix || ''
 
     if (filter.operator === '=') {
-      return ind + '?sub ' + propertyPathPrefix + '<' + filter.predicate + '> ' + filter.value + ' .'
+      return ind + '?sub ' + propertyPathPrefix + '<' + filter.predicate + '>' + propertyPathPostfix + ' ' + filter.value + ' .'
     } else if (filter.operator === 'IN') {
       var value = '(' + filter.value.join(', ') + ')'
 
-      return ind + '?sub ' + propertyPathPrefix + '<' + filter.predicate + '> ?' + filter.variable + ' .\n' +
+      return ind + '?sub ' + propertyPathPrefix + '<' + filter.predicate + '>' + propertyPathPostfix + ' ?' + filter.variable + ' .\n' +
         ind + 'FILTER (?' + filter.variable + ' ' + filter.operator + ' ' + value + ')'
     } else {
-      return ind + '?sub ' + propertyPathPrefix + '<' + filter.predicate + '> ?' + filter.variable + ' .\n' +
+      return ind + '?sub ' + propertyPathPrefix + '<' + filter.predicate + '>' + propertyPathPostfix + ' ?' + filter.variable + ' .\n' +
         ind + 'FILTER (?' + filter.variable + ' ' + filter.operator + ' ' + filter.value + ')'
     }
   }).join('\n')
