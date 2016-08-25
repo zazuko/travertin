@@ -26,7 +26,7 @@ renderer.renderResult = function (page, subject) {
 
   var levelFilter = '<span data-filterable="=" data-predicate="http://purl.org/dc/terms/hasPart"' +
       ' data-property-path-prefix="^" data-property-path-postfix="+" data-label="' + levelShort +': ' + title.object.toString() + '" data-value="' + subject + '" ' + 
-      ' class="level-filterable" onclick="app.addFilter(this)">⑅</span>'
+      ' data-named-node class="level-filterable" onclick="app.addFilter(this)">⑅</span>'
 
 
   var maintenanceAgencyCode = page.match(subject, 'http://data.archiveshub.ac.uk/def/maintenanceAgencyCode').toArray().shift()
