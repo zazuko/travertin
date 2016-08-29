@@ -4,6 +4,7 @@ var fetch = require('isomorphic-fetch')
 var renderer = require('./renderer')
 var Event = require('crab-event').Event
 var QueryBuilder = require('./query-builder')
+var Timeline = require('./timeline')
 var Zack = require('./zack')
 
 var app = {}
@@ -29,7 +30,8 @@ app.events = {
   search: new Event()
 }
 
-app.isFetching = false
+app.isFetching = 0
+app.renderTimeline = false
 
 app.filters = []
 
@@ -146,6 +148,21 @@ app.addFilter = function (label, operator, predicate, value, options) {
 }
 
 function initUi () {
+  app.events.loadedResultLength.on(function () {
+    app.renderTimeline = true
+  })
+
+  app.events.fetched.on(function () {
+    setTimeout(function () {
+      if (app.renderTimeline && !app.isFetching) {
+        console.log('timeline render')
+        Timeline.render(app.zack.start, app.zack.end)
+
+        app.renderTimeline = false
+      }
+    }, 1)
+  })
+
   // query field
   document.getElementById('query').onkeyup = debounce(function () {
     app.events.search.trigger()
@@ -195,12 +212,12 @@ function initZack () {
 
   app.events.fetched.on(function () {
     console.log('fetched')
-    app.isFetching = false
+    app.isFetching--
   })
 
   app.events.fetching.on(function () {
     console.log('fetching')
-    app.isFetching = true
+    app.isFetching++
   })
 
   app.events.filterChange.on(function () {

@@ -1,7 +1,6 @@
 var rdfFetch = require('rdf-fetch')
 var SparqlClient = require('sparql-http-client')
 var ClusterizePaging = require('./clusterize-paging')
-var Timeline = require('./timeline')
 
 SparqlClient.fetch = rdfFetch
 
@@ -63,6 +62,7 @@ Zack.prototype.buildCountQuery = function () {
 }
 
 Zack.prototype.fetchResultLength = function () {
+  var self = this
   var query = this.buildCountQuery()
 
   return this.client.postQuery(query).then(function (res) {
@@ -72,12 +72,11 @@ Zack.prototype.fetchResultLength = function () {
     var queryend = res.graph.match(null, 'http://voc.zazuko.com/zack#queryEnd').toArray().shift()
 
     if (!querystart && !queryend) {
-      this.start = ''
-      this.end = ''
+      self.start = ''
+      self.end = ''
     } else {
-      this.start = new Date(querystart.object.nominalValue)
-      this.end = new Date(queryend.object.nominalValue)
-      Timeline.render(this.start, this.end)
+      self.start = new Date(querystart.object.nominalValue)
+      self.end = new Date(queryend.object.nominalValue)
     }
 
     if (!count) {
