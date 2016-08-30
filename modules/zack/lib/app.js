@@ -13,9 +13,9 @@ var app = {}
 window.app = app
 
 window.onresize = function () {
-  debounce(function () {
-    app.events.filterChange.trigger()
-  }, 250)
+  // debounce(function () {
+  app.events.resize.trigger()
+  // }, 250)
 }
 
 app.options = {
@@ -29,6 +29,7 @@ app.events = {
   fetched: new Event(),
   fetching: new Event(),
   filterChange: new Event(),
+  resize: new Event(),
   resultMetadata: new Event(),
   search: new Event()
 }
@@ -53,6 +54,15 @@ function search () {
 function resultMetadata (metadata) {
   document.getElementById('count').innerHTML = metadata.length
   document.getElementById('scrollArea').scrollTop = 0
+}
+
+function updateTimeline () {
+  app.timeline.render(app.zack.start, app.zack.end)
+}
+
+function updateHistogram () {
+  app.histogram.render(app.zack.query)
+  app.renderHistogram = false
 }
 
 app.updateFilters = function () {
@@ -151,26 +161,29 @@ app.addFilter = function (label, operator, predicate, value, options) {
 }
 
 function initUi () {
-  // timeline & histogram
+  // timeline
   app.timeline = new Timeline()
 
+  app.events.resize.on(updateTimeline)
+  app.events.resultMetadata.on(updateTimeline)
+
+  // histogram
   app.histogram = new Histogram()
   app.histogram.buildQuery = app.queryBuilder.createBuilder(app.queryTemplates.histogram)
 
-  app.events.resultMetadata.on(function (metadata) {
-    app.timeline.render(metadata.start, metadata.end)
-
+  app.events.resultMetadata.on(function () {
     app.renderHistogram = true
   })
 
   app.events.fetched.on(function () {
     setTimeout(function () {
       if (app.renderHistogram && !app.isFetching) {
-        app.histogram.render(app.zack.query)
-        app.renderHistogram = false
+        updateHistogram()
       }
     }, 1)
   })
+
+  app.events.resize.on(updateHistogram)
 
   // query field
   document.getElementById('query').onkeyup = debounce(function () {
