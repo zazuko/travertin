@@ -1,8 +1,8 @@
 var d3 = require('d3')
 
-var timeline = {}
+function Timeline () {}
 
-timeline.render = function (start, end) {
+Timeline.prototype.render = function (start, end) {
 
     var eleWidth = document.getElementById('zack-timeline').offsetWidth
 
@@ -33,4 +33,4 @@ timeline.render = function (start, end) {
         .call(xAxis)
     }
 
-module.exports = timeline
+module.exports = Timeline

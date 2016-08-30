@@ -3,6 +3,7 @@ var debounce = require('debounce')
 var fetch = require('isomorphic-fetch')
 var renderer = require('./renderer')
 var Event = require('crab-event').Event
+var Histogram = require('./histogram')
 var QueryBuilder = require('./query-builder')
 var Timeline = require('./timeline')
 var Zack = require('./zack')
@@ -149,11 +150,13 @@ app.addFilter = function (label, operator, predicate, value, options) {
 
 function initUi () {
   // timeline & histogram
-  app.histogram = {}
+  app.timeline = new Timeline()
+
+  app.histogram = new Histogram()
   app.histogram.buildQuery = app.queryBuilder.createBuilder(app.queryTemplates.histogram)
 
   app.events.resultMetadata.on(function (metadata) {
-    Timeline.render(metadata.start, metadata.end)
+    app.timeline.render(metadata.start, metadata.end)
 
     app.renderHistogram = true
   })
@@ -161,12 +164,7 @@ function initUi () {
   app.events.fetched.on(function () {
     setTimeout(function () {
       if (app.renderHistogram && !app.isFetching) {
-        var query = app.histogram.buildQuery()
-          .replace(/\${searchString}/g, app.zack.query)
-          .replace(/\${width}/g, window.innerWidth)
-
-        console.log('histogram query:' + query)
-
+        app.histogram.render(app.zack.query)
         app.renderHistogram = false
       }
     }, 1)
