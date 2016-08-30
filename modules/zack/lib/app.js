@@ -31,7 +31,7 @@ app.events = {
 }
 
 app.isFetching = 0
-app.renderTimeline = false
+app.renderHistogram = false
 
 app.filters = []
 
@@ -148,17 +148,26 @@ app.addFilter = function (label, operator, predicate, value, options) {
 }
 
 function initUi () {
+  // timeline & histogram
+  app.histogram = {}
+  app.histogram.buildQuery = app.queryBuilder.createBuilder(app.queryTemplates.histogram)
+
   app.events.loadedResultLength.on(function () {
-    app.renderTimeline = true
+    Timeline.render(app.zack.start, app.zack.end)
+
+    app.renderHistogram = true
   })
 
   app.events.fetched.on(function () {
     setTimeout(function () {
-      if (app.renderTimeline && !app.isFetching) {
-        console.log('timeline render')
-        Timeline.render(app.zack.start, app.zack.end)
+      if (app.renderHistogram && !app.isFetching) {
+        var query = app.histogram.buildQuery()
+          .replace(/\${searchString}/g, app.zack.query)
+          .replace(/\${width}/g, window.innerWidth)
 
-        app.renderTimeline = false
+        console.log('histogram query:' + query)
+
+        app.renderHistogram = false
       }
     }, 1)
   })
@@ -182,11 +191,15 @@ function initQueryBuilder () {
     }),
     fetch('zack.count.sparql').then(function (res) {
       return res.text()
+    }),
+    fetch('zack.histogram.sparql').then(function (res) {
+      return res.text()
     })
-  ]).spread(function (search, count) {
+  ]).spread(function (search, count, histogram) {
     app.queryTemplates = {
       search: search,
-      count: count
+      count: count,
+      histogram: histogram
     }
   })
 }
