@@ -24,10 +24,14 @@ renderer.renderResult = function (page, subject) {
   }
   var reference = '<i>' + referenceString + '</i>'
 
-  var levelFilter = '<span data-filterable="=" data-predicate="http://purl.org/dc/terms/hasPart"' +
-      ' data-property-path-prefix="^" data-property-path-postfix="+" data-label="' + levelShort +': ' + title.object.toString() + '" data-value="' + subject + '" ' + 
-      ' data-named-node class="level-filterable" onclick="app.addFilter(this)">⑅</span>'
-
+  var levelFilter = '<span data-filterable="="' +
+      ' data-predicate="http://purl.org/dc/terms/hasPart"' +
+      ' data-property-path-prefix="^"' +
+      ' data-property-path-postfix="+"' +
+      ' data-label="' + levelShort + ': ' + title.object.toString() + '"' +
+      ' data-value="' + subject + '" ' +
+      ' data-named-node' +
+      ' class="level-filterable" onclick="app.addFilter(this)">⑅</span>'
 
   var maintenanceAgencyCode = page.match(subject, 'http://data.archiveshub.ac.uk/def/maintenanceAgencyCode').toArray().shift()
   var maintenanceAgency = ''
@@ -45,7 +49,7 @@ renderer.renderResult = function (page, subject) {
     var range = window.end - window.start
     var width = document.getElementById('zack-timeline').offsetWidth - 40
     if (date instanceof Date && !isNaN(date.valueOf())) {
-      var offset = (( width / range  ) * (date - window.start)) + 20
+      var offset = ((width / range) * (date - window.start)) + 20
       timeTick = '<div style="left: ' + offset + 'px;" class="result-time-tick"></div>'
     }
   }

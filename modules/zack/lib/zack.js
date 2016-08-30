@@ -99,9 +99,9 @@ Zack.prototype.buildSearchFilterQuery = function () {
 
 Zack.prototype.buildSearchQuery = function (offset) {
   return this.buildSearchFilterQuery()
-    .replace('${searchString}', this.query)
-    .replace('${offset}', offset)
-    .replace('${limit}', this.options.pageSize)
+    .replace('${searchString}', this.query) // eslint-disable-line no-template-curly-in-string
+    .replace('${offset}', offset) // eslint-disable-line no-template-curly-in-string
+    .replace('${limit}', this.options.pageSize) // eslint-disable-line no-template-curly-in-string
 }
 
 Zack.prototype.fetchPage = function (offset) {
