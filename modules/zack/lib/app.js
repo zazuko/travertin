@@ -26,7 +26,7 @@ app.events = {
   fetched: new Event(),
   fetching: new Event(),
   filterChange: new Event(),
-  loadedResultLength: new Event(),
+  resultMetadata: new Event(),
   search: new Event()
 }
 
@@ -47,8 +47,8 @@ function search () {
   app.zack.search(query)
 }
 
-function loadedResultLength (length) {
-  document.getElementById('count').innerHTML = length
+function resultMetadata (metadata) {
+  document.getElementById('count').innerHTML = metadata.length
   document.getElementById('scrollArea').scrollTop = 0
 }
 
@@ -152,8 +152,8 @@ function initUi () {
   app.histogram = {}
   app.histogram.buildQuery = app.queryBuilder.createBuilder(app.queryTemplates.histogram)
 
-  app.events.loadedResultLength.on(function () {
-    Timeline.render(app.zack.start, app.zack.end)
+  app.events.resultMetadata.on(function (metadata) {
+    Timeline.render(metadata.start, metadata.end)
 
     app.renderHistogram = true
   })
@@ -214,7 +214,7 @@ function initZack () {
     renderResult: renderer.renderResult,
     onFetched: app.events.fetched.trigger,
     onFetching: app.events.fetching.trigger,
-    onLoadedResultLength: app.events.loadedResultLength.trigger
+    onResultMetadata: app.events.resultMetadata.trigger
   })
 
   // replace default filter query builder methods
@@ -238,7 +238,7 @@ function initZack () {
     app.events.search.trigger()
   })
 
-  app.events.loadedResultLength.on(loadedResultLength)
+  app.events.resultMetadata.on(resultMetadata)
 
   app.events.search.on(search)
 }

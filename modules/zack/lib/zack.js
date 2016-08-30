@@ -41,15 +41,21 @@ Zack.prototype.search = function (query, offset) {
   }
 
   return this.fetchResultLength().then(function (length) {
-    if (self.options.onLoadedResultLength) {
-      self.options.onLoadedResultLength(length)
+    var metadata = {
+      length: length,
+      start: self.start,
+      end: self.end
+    }
+
+    if (self.options.onResultMetadata) {
+      self.options.onResultMetadata(metadata)
     }
 
     if (self.options.onFetched) {
       self.options.onFetched()
     }
 
-    return self.clusterize.init(length)
+    return self.clusterize.init(metadata)
   })
 }
 
