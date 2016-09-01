@@ -55,7 +55,7 @@ Zack.prototype.search = function (query, offset) {
       self.options.onFetched()
     }
 
-    return self.clusterize.init(metadata)
+    return self.clusterize.init(length)
   })
 }
 
