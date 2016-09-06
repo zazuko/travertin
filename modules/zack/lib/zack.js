@@ -26,7 +26,8 @@ function Zack (options) {
     pageSize: options.pageSize,
     preload: options.preload,
     callbacks: {
-      loadRows: this.loadRows.bind(this)
+      loadRows: this.loadRows.bind(this),
+      postRender: options.postRender
     }
   })
 }

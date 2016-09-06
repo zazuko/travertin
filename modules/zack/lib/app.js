@@ -223,6 +223,7 @@ function initZack () {
     dummyResult: '<div class="zack-result"></div>',
     resultType: 'http://data.archiveshub.ac.uk/def/ArchivalResource',
     renderResult: renderer.renderResult,
+    postRender: renderer.postRender,
     onFetched: app.events.fetched.trigger,
     onFetching: app.events.fetching.trigger,
     onResultMetadata: app.events.resultMetadata.trigger

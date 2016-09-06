@@ -6,11 +6,11 @@ body {
 .zack-query-box {
     background-color:rgba(0,0,0,0.2);
     position: fixed;
-    z-index: 10000;
     padding: 8px;
     top: 20px;
     left: 20px;
     right: 20px;
+    z-index: 10000;
 }
 
 .zack-filter {
@@ -22,7 +22,7 @@ body {
     position: fixed;
     max-height: 100px;
     height: 100px;
-    z-index: 10000;
+    z-index: 4000;
     padding-top: 8px;
     bottom: 0;
     left: 0;
@@ -74,6 +74,15 @@ body {
     text-align: center;
     color: white;
 }
+.result-time-cursor {
+    position: absolute;
+    width: 1px;
+    background-color: black;
+    top: 0px;
+    bottom: 0px;
+    z-index: 5000;
+    visibility: hidden;
+}
 
 .result-time-tick {
     width: 0; 
@@ -81,6 +90,15 @@ body {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-top: 6px solid #000;
+    position: absolute;
+    margin-left: -6px;
+}
+
+.result-time-tick-hover {
+    width: 12px; 
+    height: 6px; 
+    border: 0;
+    background-color: transparent;
     position: absolute;
     margin-left: -6px;
 }
@@ -141,25 +159,15 @@ body {
 }
 
 
-/* max-height - the only parameter in this file that needs to be edited.
- * Change it to suit your needs. The rest is recommended to leave as is.
- */
 .clusterize-scroll{
   overflow: auto;
   max-height: 100%;
 }
 
-/* By default extra tag .clusterize-keep-parity added to keep parity of rows.
- * Useful when used :nth-child(even/odd)
- */
 .clusterize-extra-row.clusterize-keep-parity{
   display: none;
 }
 
-/* During initialization clusterize adds tabindex to force the browser to keep focus
- * on the scrolling list, see issue #11
- * Outline removes default browser's borders for focused elements.
- */
 .clusterize-content{
     outline: 0;
     margin-top: 80px;

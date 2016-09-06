@@ -88,6 +88,7 @@ ClusterizePaging.prototype.loadPage = function (offset, page) {
     self.update(self.rows)
 
     console.log('fetched: ' + offset + '(' + rows.length + ')')
+    self.options.callbacks.postRender()
 
     return rows.length
   })

@@ -46,18 +46,37 @@ renderer.renderResult = function (page, subject) {
   var timeTick = ''
   if (intervalStarts) {
     var date = new Date(intervalStarts.object.toString())
-        console.log(intervalStarts.object.toString(), date)
+    console.log(intervalStarts.object.toString(), date)
     var range = window.app.zack.end - window.app.zack.start
     var width = document.getElementById('zack-timeline').offsetWidth - 40
     if (date instanceof Date && !isNaN(date.valueOf())) {
       var offset = ((width / range) * (date - window.app.zack.start)) + 20
-      timeTick = '<div style="left: ' + offset + 'px;" class="result-time-tick"></div>'
+      timeTick = '<div style="left: ' + offset + 'px;" class="result-time-tick"></div>' +
+        '<div style="left: ' + offset + 'px;" class="result-time-tick-hover"></div>'
     }
   }
 
   rendering = '<div class="zack-result row"><div class="one-third column"><div class="result-level-wrap"><div class="vertical-text result-level" style="background-color: ' + levelColor + '">' + levelShort + '</div></div>' + '<div class="result-main">' + timeTick + titleString + levelFilter + '</br>' + reference + '</div></div><div class="two-thirds column">' + maintenanceAgency + '</div></div>'
 
   return rendering
+}
+
+renderer.postRender = function () {
+  var cursorVisibility = function (val) {
+    document.getElementById('timeCursor').style.visibility = val
+  }
+
+  var cursorPosition = function (e) {
+    document.getElementById('timeCursor').style.left = e.clientX + "px"
+  }
+
+  Array.prototype.forEach.call(document.getElementsByClassName('result-time-tick-hover'), function (el) {
+    el.addEventListener('mouseover', function(){cursorVisibility('visible')})
+    el.addEventListener('touchenter', function(){cursorVisibility('visible')})
+    el.addEventListener('mouseout', function(){cursorVisibility('hidden')})
+    el.addEventListener('touchleave', function(){cursorVisibility('hidden')})
+    el.addEventListener('mousemove', cursorPosition)
+  })
 }
 
 module.exports = renderer
