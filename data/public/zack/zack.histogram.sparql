@@ -1,0 +1,90 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX alod: <http://data.alod.ch/alod/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX locah: <http://data.archiveshub.ac.uk/def/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX level: <http://localhost:3030/alod/level>
+PREFIX bs: <http://localhost:3030/alod/bs>
+PREFIX bar: <http://localhost:3030/alod/bar>
+PREFIX ge: <http://localhost:3030/alod/ge>
+PREFIX ne: <http://localhost:3030/alod/ne>
+PREFIX text: <http://jena.apache.org/text#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+
+SELECT (COUNT(?sub) as ?histo) ?bucket ?bucket_start ?bucket_end
+
+WHERE {
+
+  GRAPH <http://data.alod.ch/graph/inference-supertitle> {
+    ?sub text:query (skos:hiddenLabel "${searchString}") .
+  }
+  GRAPH ?g {
+    ?sub dc:title ?title .
+    ?sub locah:level ?level .
+    ?sub time:intervalEnds ?outer_end .
+    ?sub time:intervalStarts ?start .
+    FILTER( ?outer_end != "13- Jh-")
+    FILTER( strlen(str(?outer_end)) <= 10 )
+
+    BIND (IF( datatype(?outer_end) = xsd:date,
+              ?outer_end,
+              IF ( datatype(?outer_end) = xsd:gYear || strlen(?outer_end) = 4,
+                  xsd:date(concat(xsd:string(?outer_end),'-01-01')),
+                  IF ( strlen(?outer_end) = 8,
+                       xsd:date(concat(xsd:string(?outer_end),'01')),
+                       xsd:date(?outer_end)
+                     )
+                 )
+            ) AS ?end )
+
+    ${filters}
+  }
+
+  {
+SELECT (MIN(?_end) as ?min )(COUNT(?sub) as ?count) (day(MAX(?_end) - MIN(?_end))/${width}  as ?interval)
+
+WHERE {
+  GRAPH <http://data.alod.ch/graph/inference-supertitle> {
+    ?sub text:query (skos:hiddenLabel "${searchString}") .
+
+  }
+  GRAPH ?g {
+    ?sub dc:title ?title .
+    ?sub locah:level ?level .
+    ?sub time:intervalEnds ?__end .
+    ?sub time:intervalStarts ?__start .
+
+    FILTER( ?__end != "13- Jh-")
+    FILTER( strlen(str(?__end)) <= 10 )
+
+    BIND (IF( datatype(?__end) = xsd:date,
+              ?__end,
+              IF ( datatype(?__end) = xsd:gYear || strlen(?__end) = 4,
+                  xsd:date(concat(xsd:string(?__end),'-01-01')),
+                  IF ( strlen(?__end) = 8,
+                       xsd:date(concat(xsd:string(?__end),'01')),
+                       xsd:date(?__end)
+                     )
+                 )
+            ) AS ?_end )
+
+    ${filters}
+  }
+
+    }}
+
+  BIND (floor((day(?end - ?min)/?interval)) AS ?bucket)
+  BIND ((?min + xsd:duration(concat('P',xsd:string(floor(floor((day(?end - ?min)/?interval))*?interval)),'D'))) AS ?bucket_start )
+  BIND ((?min + xsd:duration(concat('P',xsd:string(floor(floor(((day(?end - ?min)+?interval)/?interval))*?interval)),'D'))) AS ?bucket_end )
+
+}
+
+GROUP BY ?bucket ?bucket_start ?bucket_end
+
+ORDER BY ?bucket

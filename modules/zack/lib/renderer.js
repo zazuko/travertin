@@ -46,10 +46,11 @@ renderer.renderResult = function (page, subject) {
   var timeTick = ''
   if (intervalStarts) {
     var date = new Date(intervalStarts.object.toString())
-    var range = window.end - window.start
+        console.log(intervalStarts.object.toString(), date)
+    var range = window.app.zack.end - window.app.zack.start
     var width = document.getElementById('zack-timeline').offsetWidth - 40
     if (date instanceof Date && !isNaN(date.valueOf())) {
-      var offset = ((width / range) * (date - window.start)) + 20
+      var offset = ((width / range) * (date - window.app.zack.start)) + 20
       timeTick = '<div style="left: ' + offset + 'px;" class="result-time-tick"></div>'
     }
   }

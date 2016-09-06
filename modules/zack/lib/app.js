@@ -13,9 +13,7 @@ var app = {}
 window.app = app
 
 window.onresize = function () {
-  // debounce(function () {
   app.events.resize.trigger()
-  // }, 250)
 }
 
 app.options = {
@@ -237,12 +235,12 @@ function initZack () {
   // connect events
 
   app.events.fetched.on(function () {
-    console.log('fetched')
+//    console.log('fetched')
     app.isFetching--
   })
 
   app.events.fetching.on(function () {
-    console.log('fetching')
+//    console.log('fetching')
     app.isFetching++
   })
 

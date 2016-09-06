@@ -12,6 +12,7 @@ CONSTRUCT {
 }
 WHERE {
   { 
+    #provides the overall count of all documents for the query
     SELECT (COUNT(?sub) as ?count) {
       GRAPH <http://data.alod.ch/graph/inference-supertitle> {
         (?sub ?score ?literal) text:query (skos:hiddenLabel "${searchString}") .
@@ -20,6 +21,7 @@ WHERE {
   }
   UNION
   {
+    #provides the first and last available document timestamp for the query
     SELECT (MIN(?resourcestart) as ?querystart) (MAX(?resourceend) as ?queryend) {
       GRAPH <http://data.alod.ch/graph/inference-supertitle> {
         (?sub ?score ?literal) text:query (skos:hiddenLabel "${searchString}") .
@@ -31,8 +33,9 @@ WHERE {
         OPTIONAL {
           ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourcestart .  
         }
-        FILTER( datatype(xsd:date(?resourcestart)) = xsd:date)
-        FILTER( datatype(xsd:date(?resourceend)) = xsd:date)
+        #check if a valid date can be build, either xsd:date or xsd:gYear, ignores actual datatype
+        FILTER( datatype(xsd:date(?resourcestart)) = xsd:date || datatype(xsd:date(CONCAT(?resourcestart,"-01-01"))) = xsd:date)
+        FILTER( datatype(xsd:date(?resourceend)) = xsd:date || datatype(xsd:date(CONCAT(?resourceend,"-01-01"))) = xsd:date)
       }
     }
   }
