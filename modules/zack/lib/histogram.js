@@ -36,23 +36,29 @@ Histogram.prototype.render = function (searchString, start, end) {
     res.json().then(function (histData) {
       data = histData.results.bindings
 
-      var values = [];
-      for (var i in data) {
-        values.push(data[i].histo.value)
-      }
-      var max = Math.max.apply(null, values)
-      var histogram = d3.select("#histogram")
+      var scale = d3.scalePow()
+        .exponent(0.5)
+        .domain([0, d3.max(data, function(d) {return parseInt(d.histo.value)})])
+        .range([0, that.height])
 
-      histogram.selectAll(".bar")
+/*      var colorScale = d3.scalePow()
+        .exponent(0.5)
+        .domain([0, d3.max(data, function(d) {return parseInt(d.histo.value)})])
+        .range(["darkblue","steelblue"])
+*/
+
+
+      d3.select("#histogram").selectAll(".bar")
         .data(data)
       .enter().append("rect")
         .attr("class", "bar")
         .attr("x", function(d) { return d.bucket.value + "px" })
         .attr("width", "1px")
-        .attr("y", function(d) { return that.height - (parseInt(d.histo.value) * (that.height / max))})
-        .attr("height", function(d) { return parseInt(d.histo.value) * (that.height / max)})
+ //       .attr("fill", function(d) { return colorScale(d.histo.value) })
+        .attr("y", function(d) { return that.height - scale(d.histo.value) })
+        .attr("height", function(d) { return scale(d.histo.value)})
           .append("title")
-          .text(function (d) {return that.tooltip(parseInt(d.histo.value), new Date(d.bucket_start.value), new Date(d.bucket_end.value))})
+          .text(function (d) {return that.tooltip(d.histo.value, new Date(d.bucket_start.value), new Date(d.bucket_end.value))})
       })
   })
 }
