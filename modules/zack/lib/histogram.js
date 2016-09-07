@@ -1,6 +1,13 @@
 var SparqlClient = require('sparql-http-client')
 
-function Histogram () {}
+function Histogram (options) {
+  this.options = options || {}
+
+  this.client = new SparqlClient({
+    endpointUrl: options.endpointUrl,
+    updateUrl: options.endpointUrl
+  })
+}
 
 Histogram.prototype.render = function (searchString) {
   var query = this.buildQuery()

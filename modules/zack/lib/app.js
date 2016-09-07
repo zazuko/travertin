@@ -166,7 +166,10 @@ function initUi () {
   app.events.resultMetadata.on(updateTimeline)
 
   // histogram
-  app.histogram = new Histogram()
+  app.histogram = new Histogram({
+    endpointUrl: app.options.endpointUrl
+  })
+
   app.histogram.buildQuery = app.queryBuilder.createBuilder(app.queryTemplates.histogram)
 
   app.events.resultMetadata.on(function () {
