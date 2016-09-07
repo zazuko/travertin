@@ -1,4 +1,7 @@
+var isomorphicFetch = require('isomorphic-fetch')
 var SparqlClient = require('sparql-http-client')
+
+SparqlClient.fetch = isomorphicFetch
 
 function Histogram (options) {
   this.options = options || {}
@@ -12,9 +15,11 @@ function Histogram (options) {
 Histogram.prototype.render = function (searchString) {
   var query = this.buildQuery()
     .replace(/\${searchString}/g, searchString)
-    .replace(/\${width}/g, window.innerWidth)
+    .replace(/\${width}/g, document.getElementById('zack-timeline').offsetWidth)
 
-  console.log('histogram query:' + query)
+  this.client.selectQuery(query).then(function (res) {
+    console.log(res)
+  })
 }
 
 module.exports = Histogram
