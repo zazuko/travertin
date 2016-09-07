@@ -46,7 +46,6 @@ renderer.renderResult = function (page, subject) {
   var timeTick = ''
   if (intervalStarts) {
     var date = new Date(intervalStarts.object.toString())
-    console.log(intervalStarts.object.toString(), date)
     var range = window.app.zack.end - window.app.zack.start
     var width = document.getElementById('zack-timeline').offsetWidth - 40
     if (date instanceof Date && !isNaN(date.valueOf())) {
@@ -68,7 +67,7 @@ renderer.postRender = function () {
 
   var cursorPosition = function (e) {
     document.getElementById('timeCursor').style.left = e.clientX + "px"
-  }
+  
 
   Array.prototype.forEach.call(document.getElementsByClassName('result-time-tick-hover'), function (el) {
     el.addEventListener('mouseover', function(){cursorVisibility('visible')})
