@@ -66,14 +66,14 @@ renderer.postRender = function () {
   }
 
   var cursorPosition = function (e) {
-    document.getElementById('timeCursor').style.left = e.clientX + "px"
+    document.getElementById('timeCursor').style.left = e.clientX + 'px'
   }
 
   Array.prototype.forEach.call(document.getElementsByClassName('result-time-tick-hover'), function (el) {
-    el.addEventListener('mouseover', function(){cursorVisibility('visible')})
-    el.addEventListener('touchenter', function(){cursorVisibility('visible')})
-    el.addEventListener('mouseout', function(){cursorVisibility('hidden')})
-    el.addEventListener('touchleave', function(){cursorVisibility('hidden')})
+    el.addEventListener('mouseover', function () { cursorVisibility('visible') })
+    el.addEventListener('touchenter', function () { cursorVisibility('visible') })
+    el.addEventListener('mouseout', function () { cursorVisibility('hidden') })
+    el.addEventListener('touchleave', function () { cursorVisibility('hidden') })
     el.addEventListener('mousemove', cursorPosition)
   })
 }

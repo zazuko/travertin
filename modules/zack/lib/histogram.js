@@ -1,3 +1,5 @@
+var SparqlClient = require('sparql-http-client')
+
 function Histogram () {}
 
 Histogram.prototype.render = function (searchString) {
@@ -5,7 +7,7 @@ Histogram.prototype.render = function (searchString) {
     .replace(/\${searchString}/g, searchString)
     .replace(/\${width}/g, window.innerWidth)
 
-//  console.log('histogram query:' + query)
+  console.log('histogram query:' + query)
 }
 
 module.exports = Histogram
