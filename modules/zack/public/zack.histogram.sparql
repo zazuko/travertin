@@ -12,55 +12,32 @@ WHERE {
     ?sub text:query (skos:hiddenLabel "${searchString}") .
   }
   GRAPH ?g {
-    ?sub time:intervalEnds ?outer_end .
-    ?sub time:intervalStarts ?start .
-    FILTER( ?outer_end != "13- Jh-")
-    FILTER( strlen(str(?outer_end)) <= 10 )
+    ?sub time:intervalStarts ?start_ .
+    FILTER( datatype(xsd:date(?start_)) = xsd:date || datatype(xsd:date(CONCAT(?start_,"-01-01"))) = xsd:date)
+    BIND ( IF(STRLEN(xsd:string(?start_)) = 4, xsd:date(CONCAT(?start_,"-01-01")), xsd:date(?start_)) AS ?start )
 
-    BIND (IF( datatype(?outer_end) = xsd:date,
-              ?outer_end,
-              IF ( datatype(?outer_end) = xsd:gYear || strlen(?outer_end) = 4,
-                  xsd:date(concat(xsd:string(?outer_end),'-01-01')),
-                  IF ( strlen(?outer_end) = 8,
-                       xsd:date(concat(xsd:string(?outer_end),'01')),
-                       xsd:date(?outer_end)
-                     )
-                 )
-            ) AS ?end )
     ${filters}
   }
 
   {
-    SELECT (MIN(?_end) as ?min )(COUNT(?sub) as ?count) (day(MAX(?_end) - MIN(?_end))/${width}  as ?interval)
+    SELECT ( MIN(?_start) as ?min ) ( COUNT(?sub) as ?count ) ( ( day( MAX(?_start) - MIN(?_start) ) / ${width} ) as ?interval )
     WHERE {
       GRAPH <http://data.alod.ch/graph/inference-supertitle> {
         ?sub text:query (skos:hiddenLabel "${searchString}") .
       }
       GRAPH ?g {
-        ?sub time:intervalEnds ?__end .
-        ?sub time:intervalStarts ?__start .
+        ?sub time:intervalStarts ?_start_ .
+        FILTER( datatype(xsd:date(?_start_)) = xsd:date || datatype(xsd:date(CONCAT(?_start_,"-01-01"))) = xsd:date)
+        BIND ( IF(STRLEN(xsd:string(?_start_)) = 4, xsd:date(CONCAT(?_start_,"-01-01")), xsd:date(?_start_)) AS ?_start )
 
-        FILTER( ?__end != "13- Jh-")
-        FILTER( strlen(str(?__end)) <= 10 )
-
-        BIND (IF( datatype(?__end) = xsd:date,
-                  ?__end,
-                  IF ( datatype(?__end) = xsd:gYear || strlen(?__end) = 4,
-                    xsd:date(concat(xsd:string(?__end),'-01-01')),
-                    IF ( strlen(?__end) = 8,
-                         xsd:date(concat(xsd:string(?__end),'01')),
-                         xsd:date(?__end)
-                       )
-                   )
-              ) AS ?_end )
         ${filters}
       }
     }
   }
 
-  BIND (floor((day(?end - ?min)/?interval)) AS ?bucket)
-  BIND ((?min + xsd:duration(concat('P',xsd:string(floor(floor((day(?end - ?min)/?interval))*?interval)),'D'))) AS ?bucket_start )
-  BIND ((?min + xsd:duration(concat('P',xsd:string(floor(floor(((day(?end - ?min)+?interval)/?interval))*?interval)),'D'))) AS ?bucket_end )
+  BIND (floor((day(?start - ?min)/?interval)) AS ?bucket)
+  BIND ((?min + xsd:duration(concat('P',xsd:string(floor(floor((day(?start - ?min)/?interval))*?interval)),'D'))) AS ?bucket_start )
+  BIND ((?min + xsd:duration(concat('P',xsd:string(floor(floor(((day(?start - ?min)+?interval)/?interval))*?interval)),'D'))) AS ?bucket_end )
 
 }
 

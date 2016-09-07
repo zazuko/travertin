@@ -2,12 +2,11 @@ var rdfFetch = require('rdf-fetch')
 var SparqlClient = require('sparql-http-client')
 var ClusterizePaging = require('./clusterize-paging')
 
-SparqlClient.fetch = rdfFetch
-
 function Zack (options) {
   this.options = options || {}
 
   this.client = new SparqlClient({
+    fetch: rdfFetch,
     endpointUrl: options.endpointUrl,
     updateUrl: options.endpointUrl
   })

@@ -56,6 +56,7 @@ function resultMetadata (metadata) {
 
 function updateTimeline () {
   app.timeline.render(app.zack.start, app.zack.end)
+  app.histogram.clear()
 }
 
 function updateHistogram () {
@@ -160,14 +161,15 @@ app.addFilter = function (label, operator, predicate, value, options) {
 
 function initUi () {
   // timeline
-  app.timeline = new Timeline()
+  app.timeline = new Timeline({margin: {top: 40, right: 20, bottom: 0, left: 20}})
 
   app.events.resize.on(updateTimeline)
   app.events.resultMetadata.on(updateTimeline)
 
   // histogram
   app.histogram = new Histogram({
-    endpointUrl: app.options.endpointUrl
+    endpointUrl: app.options.endpointUrl,
+    margin: {top: 0, right: 20, bottom: 0, left: 20}
   })
 
   app.histogram.buildQuery = app.queryBuilder.createBuilder(app.queryTemplates.histogram)

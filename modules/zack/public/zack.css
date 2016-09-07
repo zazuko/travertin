@@ -60,6 +60,11 @@ body {
   font: 10px sans-serif;
 }
 
+.bar {
+  fill: steelblue;
+  shape-rendering: crispEdges;
+}
+
 .result-level {
     width: 70px;
     height: 20px;

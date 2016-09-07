@@ -28,7 +28,7 @@ WHERE {
       }${filters}
       GRAPH ?t {
         OPTIONAL {
-          ?sub <http://www.w3.org/2006/time#intervalEnds> ?resourceend .
+          ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourceend .
         }
         OPTIONAL {
           ?sub <http://www.w3.org/2006/time#intervalStarts> ?resourcestart .  
