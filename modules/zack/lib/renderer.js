@@ -31,12 +31,13 @@ renderer.renderResult = function (page, subject) {
       ' data-label="' + levelShort + ': ' + title.object.toString() + '"' +
       ' data-value="' + subject + '" ' +
       ' data-named-node' +
-      ' class="level-filterable" onclick="app.addFilter(this)">⑅</span>'
+      ' class="level-filterable" onclick="app.addFilter(this)"></span>'
 
   var maintenanceAgencyCode = page.match(subject, 'http://data.archiveshub.ac.uk/def/maintenanceAgencyCode').toArray().shift()
   var maintenanceAgency = ''
   if (maintenanceAgencyCode) {
-    maintenanceAgency = '<div data-filterable="=" data-predicate="' + maintenanceAgencyCode.predicate.toString() + '" ' +
+    maintenanceAgency = '<div data-filterable="="' +
+      ' data-predicate="' + maintenanceAgencyCode.predicate.toString() + '" ' +
       ' data-value="' + maintenanceAgencyCode.object.toString() + '" ' +
       ' class="filterable" onclick="app.addFilter(this)">' + maintenanceAgencyCode.object.toString() + '</div>'
   }
