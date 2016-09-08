@@ -185,7 +185,7 @@ function initUi () {
     }, 1)
   })
 
-  app.events.resize.on(updateHistogram)
+  app.events.resize.on(debounce(updateHistogram, 500))
 
   // query field
   document.getElementById('query').onkeyup = debounce(function () {

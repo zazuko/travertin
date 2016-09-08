@@ -33,10 +33,12 @@ function Timeline (options) {
   }
   var filter = function (d, i, s) {
     if (s[0].id === 'from-handle') {
-      console.log('set-from', that.x.invert(event.x - that.margin.left))
+      d3.select(s[0]).attr('data-value', that.x.invert(event.x - that.margin.left).toISOString())
+      s[0].dispatchEvent(new Event('change'))
     }
     if (s[0].id === 'to-handle') {
-      console.log('set-to', that.x.invert(event.x - that.margin.left + that.handleWidth))
+      d3.select(s[0]).attr('data-value', that.x.invert(event.x - that.margin.left + that.handleWidth).toISOString())
+      s[0].dispatchEvent(new Event('change'))
     }
   }
 
@@ -45,6 +47,8 @@ function Timeline (options) {
   this.fromHandle = this.timelineHandles.append('rect')
       .attr('id', 'from-handle')
       .attr('class', 'handle')
+      .attr('data-filter', '>=')
+      .attr('data-predicate', 'http://www.w3.org/2006/time#intervalStarts')
       .attr('visibility', 'hidden')
       .attr('x', '0')
       .call(drag)
@@ -54,6 +58,8 @@ function Timeline (options) {
   this.toHandle = this.timelineHandles.append('rect')
       .attr('id', 'to-handle')
       .attr('class', 'handle')
+      .attr('data-filter', '<=')
+      .attr('data-predicate', 'http://www.w3.org/2006/time#intervalStarts')
       .attr('visibility', 'hidden')
       .attr('x', this.width - this.margin.left - this.margin.right - this.handleWidth)
       .call(drag)
