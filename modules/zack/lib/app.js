@@ -26,6 +26,7 @@ app.events = {
   fetched: new Event(),
   fetching: new Event(),
   filterChange: new Event(),
+  filterDuplicate: new Event(),
   resize: new Event(),
   resultMetadata: new Event(),
   search: new Event()
@@ -126,6 +127,17 @@ app.removeFilter = function (element) {
   app.updateFilters()
 }
 
+app.containsFilter = function (operator, predicate, value, options) {
+  return app.filters.some(function (filter) {
+    return filter.operator === operator &&
+        filter.predicate === predicate &&
+        filter.value === (options.namedNode ? '<' + value + '>' : '"' + value + '"') &&
+        filter.termType === (options.namedNode ? 'NamedNode' : 'Literal') &&
+        filter.propertyPathPrefix === options.propertyPathPrefix &&
+        filter.propertyPathPostfix === options.propertyPathPostfix
+  })
+}
+
 app.addFilter = function (label, operator, predicate, value, options) {
   if (arguments.length === 1) {
     var element = arguments[0]
@@ -144,6 +156,18 @@ app.addFilter = function (label, operator, predicate, value, options) {
   }
 
   options = options || {}
+
+  if (app.containsFilter(operator, predicate, value, options)) {
+    app.events.filterDuplicate.trigger({
+      label: label,
+      operator: operator,
+      predicate: predicate,
+      value: value,
+      options: options
+    })
+
+    return
+  }
 
   var html = '<div data-filter="' + operator + '" ' +
     'data-predicate="' + predicate + '" ' +
