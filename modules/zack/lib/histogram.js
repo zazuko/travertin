@@ -23,7 +23,7 @@ function Histogram (options) {
 }
 
 Histogram.prototype.clear = function () {
-  d3.select("#histogram").selectAll(".bar").remove()
+  d3.select('#histogram').selectAll('.bar').remove()
 }
 
 Histogram.prototype.render = function (searchString, start, end) {
@@ -41,11 +41,11 @@ Histogram.prototype.render = function (searchString, start, end) {
 
   this.request.then(function (res) {
     res.json().then(function (histData) {
-      data = histData.results.bindings
+      var data = histData.results.bindings
 
       var scale = d3.scalePow()
         .exponent(0.5)
-        .domain([0, d3.max(data, function(d) {return parseInt(d.histo.value)})])
+        .domain([0, d3.max(data, function (d) { return parseInt(d.histo.value) })])
         .range([0, that.height])
 
 /*      var colorScale = d3.scalePow()
@@ -54,19 +54,18 @@ Histogram.prototype.render = function (searchString, start, end) {
         .range(["darkblue","steelblue"])
 */
 
-
-      d3.select("#histogram").selectAll(".bar")
+      d3.select('#histogram').selectAll('.bar')
         .data(data)
-      .enter().append("rect")
-        .attr("class", "bar")
-        .attr("x", function(d) { return d.bucket.value + "px" })
-        .attr("width", "1px")
+      .enter().append('rect')
+        .attr('class', 'bar')
+        .attr('x', function (d) { return d.bucket.value + 'px' })
+        .attr('width', '1px')
  //       .attr("fill", function(d) { return colorScale(d.histo.value) })
-        .attr("y", function(d) { return that.height - scale(d.histo.value) })
-        .attr("height", function(d) { return scale(d.histo.value)})
-          .append("title")
-          .text(function (d) {return that.tooltip(d.histo.value, new Date(d.bucket_start.value), new Date(d.bucket_end.value))})
-      })
+        .attr('y', function (d) { return that.height - scale(d.histo.value) })
+        .attr('height', function (d) { return scale(d.histo.value) })
+          .append('title')
+          .text(function (d) { return that.tooltip(d.histo.value, new Date(d.bucket_start.value), new Date(d.bucket_end.value)) })
+    })
 
     this.request = null
   }).catch(function (err) {
@@ -77,8 +76,8 @@ Histogram.prototype.render = function (searchString, start, end) {
 }
 
 Histogram.prototype.tooltip = function (count, start, end) {
-    formatDate = d3.timeFormat("%d.%m.%Y")
-    return formatDate(start)+"-"+formatDate(end)+": "+count+" Resources";
+  var formatDate = d3.timeFormat('%d.%m.%Y')
+  return formatDate(start) + '-' + formatDate(end) + ': ' + count + ' Resources'
 }
 
 module.exports = Histogram
