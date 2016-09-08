@@ -1,3 +1,4 @@
+var cancelableFetch = require('./cancelable-fetch')
 var isomorphicFetch = require('isomorphic-fetch')
 var SparqlClient = require('sparql-http-client')
 var d3 = require('d3')
@@ -32,7 +33,13 @@ Histogram.prototype.render = function (searchString, start, end) {
 
   var that = this
 
-  this.client.selectQuery(query).then(function (res) {
+  if (this.request) {
+    this.request.cancel()
+  }
+
+  this.request = cancelableFetch(this.client.selectQuery(query))
+
+  this.request.then(function (res) {
     res.json().then(function (histData) {
       data = histData.results.bindings
 
@@ -60,6 +67,12 @@ Histogram.prototype.render = function (searchString, start, end) {
           .append("title")
           .text(function (d) {return that.tooltip(d.histo.value, new Date(d.bucket_start.value), new Date(d.bucket_end.value))})
       })
+
+    this.request = null
+  }).catch(function (err) {
+    if (err.message === 'user cancelation') {
+      // canceled fetch
+    }
   })
 }
 
