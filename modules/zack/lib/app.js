@@ -1,6 +1,5 @@
 var Promise = require('bluebird')
 var debounce = require('debounce')
-var fetch = require('isomorphic-fetch')
 var renderer = require('./renderer')
 var Event = require('crab-event').Event
 var Histogram = require('./histogram')
