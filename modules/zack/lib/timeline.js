@@ -43,8 +43,8 @@ Timeline.prototype.render = function (start, end) {
     .attr('height', this.height)
 
   d3.select('#timeline-axis')
-//    .transition()
-//    .duration(400)
+    .transition()
+    .duration(400)
     .call(xAxis)
 }
 
