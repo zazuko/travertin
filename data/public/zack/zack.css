@@ -20,8 +20,8 @@ body {
 .zack-overview {
     background-color:lightgray;
     position: fixed;
-    max-height: 100px;
-    height: 100px;
+    max-height: 65px;
+    height: 65px;
     z-index: 4000;
     padding-top: 8px;
     bottom: 0;

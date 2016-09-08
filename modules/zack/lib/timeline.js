@@ -29,15 +29,35 @@ function Timeline (options) {
 
   var that = this
   var move = function (d, i, s) {
-    d3.select(s[0]).attr('x', event.x - that.margin.left)
+    if (s[0].id === 'from-handle') {
+        d3.select(s[0]).attr('x', event.x - that.margin.left)
+    }
+    if (s[0].id === 'to-handle') {
+        d3.select(s[0]).attr('x', event.x - that.margin.left + that.handleWidth)
+    }
   }
   var filter = function (d, i, s) {
     if (s[0].id === 'from-handle') {
-      d3.select(s[0]).attr('data-value', that.x.invert(event.x - that.margin.left).toISOString())
+      var newFromDate = that.x.invert(event.x - that.margin.left).toISOString()
+      if (d3.select(s[0]).attr('data-value') == null || (new Date(d3.select(s[0]).attr('data-value')) < new Date(newFromDate)) ) {
+          d3.select(s[0]).attr('data-value', newFromDate)
+          d3.select(s[0]).style('fill', 'red')
+      } else {
+          d3.select(s[0]).attr('data-value', null)
+          d3.select(s[0]).style('fill', null)
+      }
       s[0].dispatchEvent(new Event('change'))
     }
+    var newToDate = that.x.invert(event.x - that.margin.left + that.handleWidth).toISOString()
     if (s[0].id === 'to-handle') {
-      d3.select(s[0]).attr('data-value', that.x.invert(event.x - that.margin.left + that.handleWidth).toISOString())
+       if (d3.select(s[0]).attr('data-value') == null || (new Date(d3.select(s[0]).attr('data-value')) > new Date(newToDate)) ) {
+          d3.select(s[0]).attr('data-value', newToDate)
+          d3.select(s[0]).style('fill', 'red')
+      } else {
+          d3.select(s[0]).attr('data-value', null)
+          d3.select(s[0]).style('fill', null)
+      }
+      d3.select(s[0]).attr('fill', 'red')
       s[0].dispatchEvent(new Event('change'))
     }
   }
@@ -80,17 +100,17 @@ Timeline.prototype.render = function (start, end) {
     .range([0, this.innerWidth])
 
   // axis with ticks
+  var resolutionMonth = d3.timeYears(start,end).length <= Math.floor(this.innerWidth / 100)
   this.xAxis = d3.axisBottom()
     .scale(this.x)
-    .tickFormat(d3.timeFormat('%Y'))
+    .tickFormat(resolutionMonth ? d3.timeFormat('%b %Y') : d3.timeFormat('%Y'))
     .tickValues(
         [start, end].concat( // add the first and last year
             d3.scaleUtc().domain(this.x.domain()) // use UTC domain
-              .ticks(Math.floor(this.innerWidth / 50)) // get ticks roughly 50px appart
+              .ticks(Math.floor(this.innerWidth / 100)) // get ticks roughly 50px appart
               .slice(0, -1) // remove the first and last tick
         )
     )
-
   // resize Container
   this.timelineContainer
     .attr('width', this.width)

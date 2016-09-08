@@ -16,14 +16,14 @@ function Histogram (options) {
     updateUrl: options.endpointUrl
   })
 
-  d3.select('#timeline-container')
+  this.histogram = d3.select('#timeline-container')
     .append('g')
     .attr('id', 'histogram')
     .attr('transform', 'translate(' + this.margin.left + ',' + this.margin.top + ')')
 }
 
 Histogram.prototype.clear = function () {
-  d3.select('#histogram').selectAll('.bar').remove()
+  this.histogram.selectAll('.bar').remove()
 }
 
 Histogram.prototype.render = function (searchString, start, end) {
@@ -41,7 +41,7 @@ Histogram.prototype.render = function (searchString, start, end) {
 
   this.request.then(function (res) {
     res.json().then(function (histData) {
-      var data = histData.results.bindings
+      var data = histData.results.bindings[0].bucket ? histData.results.bindings : []
 
       var scale = d3.scalePow()
         .exponent(0.5)
@@ -54,11 +54,11 @@ Histogram.prototype.render = function (searchString, start, end) {
         .range(["darkblue","steelblue"])
 */
 
-      d3.select('#histogram').selectAll('.bar')
+      that.histogram.selectAll('.bar')
         .data(data)
       .enter().append('rect')
         .attr('class', 'bar')
-        .attr('x', function (d) { return d.bucket.value + 'px' })
+        .attr('x', function (d) { return d.bucket.value  })
         .attr('width', '1px')
  //       .attr("fill", function(d) { return colorScale(d.histo.value) })
         .attr('y', function (d) { return that.height - scale(d.histo.value) })
