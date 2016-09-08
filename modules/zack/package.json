@@ -28,6 +28,7 @@
     "debounce": "^1.0.0",
     "inherits": "^2.0.1",
     "isomorphic-fetch": "^2.2.1",
+    "js-string-escape-cli": "^1.0.0",
     "rdf-fetch": "^0.3.2",
     "shelljs": "^0.7.0",
     "sparql-http-client": "^1.0.0",

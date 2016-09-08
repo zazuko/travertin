@@ -201,23 +201,13 @@ function initUi () {
 function initQueryBuilder () {
   app.queryBuilder = new QueryBuilder()
 
-  return Promise.all([
-    fetch('zack.sparql').then(function (res) {
-      return res.text()
-    }),
-    fetch('zack.count.sparql').then(function (res) {
-      return res.text()
-    }),
-    fetch('zack.histogram.sparql').then(function (res) {
-      return res.text()
-    })
-  ]).spread(function (search, count, histogram) {
-    app.queryTemplates = {
-      search: search,
-      count: count,
-      histogram: histogram
-    }
-  })
+  app.queryTemplates = {
+    search: require('../.build/zack-sparql'),
+    count: require('../.build/zack-count-sparql'),
+    histogram: require('../.build/zack-histogram-sparql')
+  }
+
+  return Promise.resolve()
 }
 
 function initZack () {
