@@ -1,3 +1,4 @@
+/* global Event */
 var d3 = require('d3')
 
 function Timeline (options) {
@@ -30,32 +31,32 @@ function Timeline (options) {
   var that = this
   var move = function (d, i, s) {
     if (s[0].id === 'from-handle') {
-        d3.select(s[0]).attr('x', event.x - that.margin.left)
+      d3.select(s[0]).attr('x', d3.event.x - that.margin.left)
     }
     if (s[0].id === 'to-handle') {
-        d3.select(s[0]).attr('x', event.x - that.margin.left + that.handleWidth)
+      d3.select(s[0]).attr('x', d3.event.x - that.margin.left + that.handleWidth)
     }
   }
   var filter = function (d, i, s) {
     if (s[0].id === 'from-handle') {
-      var newFromDate = that.x.invert(event.x - that.margin.left).toISOString()
-      if (d3.select(s[0]).attr('data-value') == null || (new Date(d3.select(s[0]).attr('data-value')) < new Date(newFromDate)) ) {
-          d3.select(s[0]).attr('data-value', newFromDate)
-          d3.select(s[0]).style('fill', 'red')
+      var newFromDate = that.x.invert(d3.event.x - that.margin.left).toISOString()
+      if (d3.select(s[0]).attr('data-value') == null || (new Date(d3.select(s[0]).attr('data-value')) < new Date(newFromDate))) {
+        d3.select(s[0]).attr('data-value', newFromDate)
+        d3.select(s[0]).style('fill', 'red')
       } else {
-          d3.select(s[0]).attr('data-value', null)
-          d3.select(s[0]).style('fill', null)
+        d3.select(s[0]).attr('data-value', null)
+        d3.select(s[0]).style('fill', null)
       }
       s[0].dispatchEvent(new Event('change'))
     }
-    var newToDate = that.x.invert(event.x - that.margin.left + that.handleWidth).toISOString()
+    var newToDate = that.x.invert(d3.event.x - that.margin.left + that.handleWidth).toISOString()
     if (s[0].id === 'to-handle') {
-       if (d3.select(s[0]).attr('data-value') == null || (new Date(d3.select(s[0]).attr('data-value')) > new Date(newToDate)) ) {
-          d3.select(s[0]).attr('data-value', newToDate)
-          d3.select(s[0]).style('fill', 'red')
+      if (d3.select(s[0]).attr('data-value') == null || (new Date(d3.select(s[0]).attr('data-value')) > new Date(newToDate))) {
+        d3.select(s[0]).attr('data-value', newToDate)
+        d3.select(s[0]).style('fill', 'red')
       } else {
-          d3.select(s[0]).attr('data-value', null)
-          d3.select(s[0]).style('fill', null)
+        d3.select(s[0]).attr('data-value', null)
+        d3.select(s[0]).style('fill', null)
       }
       d3.select(s[0]).attr('fill', 'red')
       s[0].dispatchEvent(new Event('change'))
@@ -100,7 +101,7 @@ Timeline.prototype.render = function (start, end) {
     .range([0, this.innerWidth])
 
   // axis with ticks
-  var resolutionMonth = d3.timeYears(start,end).length <= Math.floor(this.innerWidth / 100)
+  var resolutionMonth = d3.timeYears(start, end).length <= Math.floor(this.innerWidth / 100)
   this.xAxis = d3.axisBottom()
     .scale(this.x)
     .tickFormat(resolutionMonth ? d3.timeFormat('%b %Y') : d3.timeFormat('%Y'))

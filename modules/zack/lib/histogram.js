@@ -58,7 +58,7 @@ Histogram.prototype.render = function (searchString, start, end) {
         .data(data)
       .enter().append('rect')
         .attr('class', 'bar')
-        .attr('x', function (d) { return d.bucket.value  })
+        .attr('x', function (d) { return d.bucket.value })
         .attr('width', '1px')
  //       .attr("fill", function(d) { return colorScale(d.histo.value) })
         .attr('y', function (d) { return that.height - scale(d.histo.value) })

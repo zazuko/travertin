@@ -9,6 +9,7 @@ exec('js-string-escape --commonjs queries/zack.histogram.sparql .build/zack-hist
 mkdir('-p','dist')
 
 exec('browserify -d lib/app.js -o dist/zack.js')
+//exec('browserify -d lib/app.js -p [minifyify --map zack.js.map --output dist/zack.js.map] > dist/zack.js')
 cp('-r', 'public/*', 'dist/')
 
 mkdir('-p','../../data/public/zack')
