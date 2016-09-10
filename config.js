@@ -68,8 +68,12 @@ module.exports = {
   sparqlProxy: {
     path: '/alod/sparql',
     options: {
-      endpointUrl:'http://data.admin.ch:3030/alod/sparql',
+      endpointUrl:'http://data.alod.ch:5820/alod/query',
       queryOperation: 'urlencoded'
+      authentication: {
+         user: 'readonly',
+         password: 'readonly'
+      },
     }
   },
   sparqlSearch: {
