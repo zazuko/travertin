@@ -69,11 +69,11 @@ module.exports = {
     path: '/alod/sparql',
     options: {
       endpointUrl:'http://data.alod.ch:5820/alod/query',
-      queryOperation: 'urlencoded'
+      queryOperation: 'urlencoded',
       authentication: {
          user: 'readonly',
          password: 'readonly'
-      },
+      }
     }
   },
   sparqlSearch: {
