@@ -16,7 +16,7 @@ window.onresize = function () {
 }
 
 app.options = {
-  endpointUrl: 'http://data.admin.ch:3030/alod/query',
+  endpointUrl: 'http://data.alod.ch:/alod/sparql',
   pageSize: 20,
   preload: 80,
   filterContainer: 'filter-container'
