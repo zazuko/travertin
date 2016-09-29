@@ -71,6 +71,8 @@ function Timeline (options) {
       .attr('data-filter', '>=')
       .attr('data-predicate', 'http://www.w3.org/2006/time#intervalStarts')
       .attr('visibility', 'hidden')
+      .attr('width', '5px')
+      .attr('height', '50px')
       .attr('x', '0')
       .call(drag)
 
@@ -82,6 +84,8 @@ function Timeline (options) {
       .attr('data-filter', '<=')
       .attr('data-predicate', 'http://www.w3.org/2006/time#intervalStarts')
       .attr('visibility', 'hidden')
+      .attr('width', '5px')
+      .attr('height', '50px')
       .attr('x', this.width - this.margin.left - this.margin.right - this.handleWidth)
       .call(drag)
 

@@ -217,18 +217,14 @@ body {
 
 
 /* Timline SVG Styles */
-.bar {
+.svg-bar {
   fill: steelblue;
   shape-rendering: crispEdges;
 }
 
-.handle {
+.svg-handle {
   fill: gray;
   shape-rendering: crispEdges;
-  width: 5px;
   y: -3px;
-  height: 50px;
   cursor: ew-resize;
 }
-
-
