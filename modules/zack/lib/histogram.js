@@ -1,4 +1,4 @@
-var cancelableFetch = require('./cancelable-fetch')
+var cancelableFetch = require('cancelable-fetch')
 var isomorphicFetch = require('isomorphic-fetch')
 var SparqlClient = require('sparql-http-client')
 var d3 = require('d3')

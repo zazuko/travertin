@@ -1,6 +1,6 @@
 var rdfFetch = require('rdf-fetch')
 var SparqlClient = require('sparql-http-client')
-var ClusterizePaging = require('./clusterize-paging')
+var ClusterizePaging = require('clusterize.js-paging')
 
 function Zack (options) {
   this.options = options || {}
@@ -26,7 +26,7 @@ function Zack (options) {
     preload: options.preload,
     callbacks: {
       loadRows: this.loadRows.bind(this),
-      postRender: options.postRender
+      rowsLoaded: options.postRender
     }
   })
 }
