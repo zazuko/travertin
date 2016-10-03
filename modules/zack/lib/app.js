@@ -5,7 +5,7 @@ var Event = require('crab-event').Event
 var Histogram = require('./histogram')
 var QueryBuilder = require('./query-builder')
 var Timeline = require('./timeline')
-var Zack = require('./zack')
+var SparqlSearchResultList = require('sparql-search-result-list')
 
 var app = {}
 
@@ -41,7 +41,7 @@ function search () {
     query = '*'
   }
 
-  app.zack.search(query)
+  app.resultList.search(query)
 }
 
 function resultMetadata (metadata) {
@@ -50,12 +50,12 @@ function resultMetadata (metadata) {
 }
 
 function updateTimeline () {
-  app.timeline.render(app.zack.start, app.zack.end)
+  app.timeline.render(app.resultList.start, app.resultList.end)
   app.histogram.clear()
 }
 
 function updateHistogram () {
-  app.histogram.render(app.zack.query)
+  app.histogram.render(app.resultList.query)
   app.renderHistogram = false
 }
 
@@ -178,6 +178,10 @@ app.addFilter = function (label, operator, predicate, value, options) {
 }
 
 function initUi () {
+  // renderer
+  app.renderer = renderer
+  app.events.resultMetadata.on(app.renderer.init)
+
   // timeline
   app.timeline = new Timeline({margin: {top: 40, right: 20, bottom: 0, left: 20}})
 
@@ -187,10 +191,7 @@ function initUi () {
   // histogram
   app.histogram = new Histogram({
     endpointUrl: app.options.endpointUrl,
-    margin: {top: 0, right/**
- * Created by bergi on 03.10.16.
- */
-: 20, bottom: 0, left: 20}
+    margin: {top: 0, right: 20, bottom: 0, left: 20}
   })
 
   app.histogram.buildQuery = app.queryBuilder.createBuilder(app.queryTemplates.histogram)
@@ -231,23 +232,25 @@ function initQueryBuilder () {
   return Promise.resolve()
 }
 
-function initZack () {
-  app.zack = new Zack({
+function initResultList () {
+  app.resultList = new SparqlSearchResultList({
     endpointUrl: app.options.endpointUrl,
     pageSize: app.options.pageSize,
     preload: app.options.preload,
-    dummyResult: '<div class="zack-result"></div>',
     resultType: 'http://data.archiveshub.ac.uk/def/ArchivalResource',
+    scrollArea: 'scrollArea',
+    contentArea: 'contentArea',
+    dummyResult: '<div class="zack-result"></div>',
     renderResult: renderer.renderResult,
-    postRender: renderer.postRender,
+    onResultRendered: renderer.postRender,
     onFetched: app.events.fetched.trigger,
     onFetching: app.events.fetching.trigger,
     onResultMetadata: app.events.resultMetadata.trigger
   })
 
   // replace default filter query builder methods
-  app.zack.buildCountFilterQuery = app.queryBuilder.createBuilder(app.queryTemplates.count)
-  app.zack.buildSearchFilterQuery = app.queryBuilder.createBuilder(app.queryTemplates.search)
+  app.resultList.buildMetadataFilterQuery = app.queryBuilder.createBuilder(app.queryTemplates.count)
+  app.resultList.buildResultFilterQuery = app.queryBuilder.createBuilder(app.queryTemplates.search)
 
   // connect events
 
@@ -272,7 +275,7 @@ function initZack () {
 }
 
 initQueryBuilder().then(function () {
-  return initZack()
+  return initResultList()
 }).then(function () {
   return initUi()
 })

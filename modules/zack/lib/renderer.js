@@ -2,6 +2,11 @@ var colorHash = new (require('color-hash'))
 
 var renderer = {}
 
+renderer.init = function (metadata) {
+  renderer.start = metadata.start
+  renderer.end = metadata.end
+}
+
 renderer.renderResult = function (page, subject) {
   var rendering = ''
 
@@ -47,10 +52,10 @@ renderer.renderResult = function (page, subject) {
   var timeTick = ''
   if (intervalStarts) {
     var date = new Date(intervalStarts.object.toString())
-    var range = window.app.zack.end - window.app.zack.start
+    var range = renderer.end - renderer.start
     var width = document.getElementById('zack-timeline').offsetWidth - 40
     if (date instanceof Date && !isNaN(date.valueOf())) {
-      var offset = ((width / range) * (date - window.app.zack.start)) + 20
+      var offset = ((width / range) * (date - renderer.start)) + 20
       timeTick = '<div style="left: ' + offset + 'px;" class="result-time-tick"></div>' +
         '<div style="left: ' + offset + 'px;" class="result-time-tick-hover"></div>'
     }
