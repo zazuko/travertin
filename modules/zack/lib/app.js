@@ -9,17 +9,12 @@ var Zack = require('./zack')
 
 var app = {}
 
+app.options = require('./config')
+
 window.app = app
 
 window.onresize = function () {
   app.events.resize.trigger()
-}
-
-app.options = {
-  endpointUrl: 'http://data.alod.ch:/alod/sparql',
-  pageSize: 20,
-  preload: 80,
-  filterContainer: 'filter-container'
 }
 
 app.events = {
@@ -192,7 +187,10 @@ function initUi () {
   // histogram
   app.histogram = new Histogram({
     endpointUrl: app.options.endpointUrl,
-    margin: {top: 0, right: 20, bottom: 0, left: 20}
+    margin: {top: 0, right/**
+ * Created by bergi on 03.10.16.
+ */
+: 20, bottom: 0, left: 20}
   })
 
   app.histogram.buildQuery = app.queryBuilder.createBuilder(app.queryTemplates.histogram)
