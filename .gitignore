@@ -1,7 +1,5 @@
 .idea
 .DS_Store
 data/graph.ttl
-modules/zack/.build/
-modules/zack/dist/
 node_modules
 npm-debug.log
