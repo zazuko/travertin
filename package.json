@@ -1,0 +1,24 @@
+{
+  "name": "alod",
+  "description": "Zazuko aLOD is a software to manage archival finding aids using Linked Data",
+  "version": "0.1.0",
+  "homepage": "https://github.com/zazuko/alod",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zazuko/alod.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zazuko/alod/issues"
+  },
+  "dependencies": {
+    "lodash": "^4.16.4",
+    "trifid-ld": "^0.9.0",
+    "zack-search": "git://github.com/zazuko/zack-search.git#master"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "mkdir -p data/public/zack && cp -r node_modules/zack-search/dist/* data/public/zack",
+    "install": "npm run build",
+    "start": "trifid-ld"
+  }
+}
