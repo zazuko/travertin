@@ -7,46 +7,32 @@
     <body>
         <nav class="navbar navbar-default">
             <div class="container-fluid">
-                <div class="collapse navbar-collapse">
-                    <div class="navbar-form navbar-right">
-                        <a href="?setLng=de">de</a>
-                        <a href="?setLng=fr">fr</a>
-                        <a href="?setLng=it">it</a>
-                        <a href="?setLng=en">en</a>
-                    </div>
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#">Zazuko aLOD</a>
                 </div>
             </div>
         </nav>
 
         <div class="container">
             <div class="row">
-                <div class="col-md-1">
-                    <img class="img-responsive" style="width: 68px" src="/images/Coat_of_arms_of_Switzerland.svg" />
-                </div>
-                <div class="col-md-5">
-                    <h1 data-i18n="headline">Zazuko aLOD</h1>
-                    <h2 data-i18n="subheading">Archival Linked Open Data</h2>
+                <div class="col-md-offset-1 col-md-5">
+                    <h1 data-i18n="subheading">Archival Linked Open Data</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-offset-1 col-md-7">
+                    <p>
                     This is a demo instance of Zazuko aLOD using data from 
                     public SPARQL endpoints from Swiss Archival institutions.
+                    </p>
 
-                </div>
-
-                <div>
-                    Check out the <a href="/search">search interface</a>.
+                    <p>
+                    Check out the <a href="/zack">search interface</a>.
+                    </p>
                 </div>
             </div>
 
             <script src="/js/jquery.js"></script>
             <script src="/js/bootstrap.js"></script>
-            <script src="/js/i18next.js"></script>
-            <script>
-                i18n.init({fallbackLng: ['de', 'fr', 'it', 'en']}, function (t) {
-                    $('body').i18n();
-                });
-            </script>
             </body>
             </html>
