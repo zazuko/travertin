@@ -17,10 +17,12 @@ You need to have a recent version of Nodejs.
 2. Install the dependencies
 
     `npm install`
-    
-3. Run the server
 
-    `npm run`
+3. Adapt the configuration `config.js` to your needs.
+
+4. Run the server
+
+    `npm start`
 
 
 ## Docker
