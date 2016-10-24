@@ -18,7 +18,16 @@ You need to have a recent version of Nodejs.
 
     `npm install`
 
-3. Adapt the configuration `config.js` to your needs.
+3. Adapt the installation to your needs:
+
+  Change the `endpointUrl` of `handlerOptions` and `sparqlProxy` in the `config.js` file to the URL of your SPARQL endpoint.    
+  
+  The folder `/data/public` is used for static file hosting.
+  The server searches first in the folder of the aLOD installation.
+  If the requested file wasn't found it will search in the Trifid module folder `/node_modules/trifid-ld/`.
+  You can adapt the file content by copying it to your aLOD installation.
+  There you can make your changes.
+  Don't change the files in the Trifid module!
 
 4. Run the server
 
