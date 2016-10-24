@@ -51,7 +51,7 @@ Port 8080 is already the default port, but we need to change the SPARQL endpoint
 Change the `endpointUrl` property in `handlerOptions` and `sparqlProxy` to <http://localhost:3030/alod-example/sparql>.
 Now you can start aLOD:
 
-    ./node_modules/.bin/trifid-ld
+    npm start
 
 That's it!
 Open <http://localhost:8080/> in your browser and have fun with aLOD!
