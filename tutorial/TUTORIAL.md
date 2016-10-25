@@ -25,7 +25,7 @@ You can start the server in a terminal with the bundled script:
 
     ./fuseki
 
-It will create a `run` folder that contains your configuration including the dataset which we will upload. Immediately stop the server again and copy the file `tutorial/fuseki-config/alod.ttl` to `run/databases/`. Restart the server again, it will now create the `alod` dataset.
+It will create a `run` folder that contains your configuration including the dataset which we will upload. Immediately stop the server again and copy the file `tutorial/fuseki-config/alod.ttl` to `run/configuration/`. Restart the server again, it will now create the `alod` dataset.
 
 By default the server runs on <http://localhost:3030/> Open that URL in your browser and go to `manage datasets`. Now you can upload the dataset.
 Press `upload data`.
