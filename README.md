@@ -8,6 +8,9 @@ technologies
 A SPARQL endpoint with your archival documents. By default the software points to the Swiss archival institutions endpoint.
 
 # Installation
+
+This just covers getting the server up on your system. If you want to know more check out the [tutorial](tutorial/TUTORIAL.md)
+
 ## NPM
 ### Requirements
 You need to have a recent version of Nodejs.
