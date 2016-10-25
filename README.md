@@ -5,7 +5,7 @@ technologies
 
 # Requirements
 
-A SPARQL Enpoint with your Archival Documents. Currently the software points to the swiss archival instituts endpoint.
+A SPARQL endpoint with your archival documents. By default the software points to the Swiss archival institutions endpoint.
 
 # Installation
 ## NPM
@@ -13,7 +13,7 @@ A SPARQL Enpoint with your Archival Documents. Currently the software points to 
 You need to have a recent version of Nodejs.
 
 ### Installation
-1. Clone this repositiory.
+1. Clone this repository.
 2. Install the dependencies
 
     `npm install`
