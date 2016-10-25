@@ -9,9 +9,10 @@ We will use the dataset from <https://github.com/zazuko/alod-example>.
 You can fetch a copy with git clone:
 
     git clone git@github.com:zazuko/alod-example.git
+    cd alod-example
 
 The data uses the namespace `http://data.ge.alod.ch`, but we want to host it on `http://localhost:8080`.
-Let's use sed to replace it (don't forget to escape the slashes!):
+Let's use sed to replace it:
 
     sed 's/http:\/\/data.ge.alod.ch/http:\/\/localhost:8080/g' input/sample.nt > input/localhost.nt
 
