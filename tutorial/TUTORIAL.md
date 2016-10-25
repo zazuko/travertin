@@ -24,13 +24,9 @@ You can start the server in a terminal with the bundled script:
 
     ./fuseki
 
-It will create a `run` folder that contains your configuration including the dataset which we will upload.
-By default the server runs on <http://localhost:3030/>
-Open that URL in your browser and go to `manage datasets`.
-Press the `add new dataset` button to create a new dataset.
-We name our dataset `alod-example`.
-Choose `Persistent` otherwise the dataset is lost after a Fuseki server restart.
-Now you can upload the dataset.
+It will create a `run` folder that contains your configuration including the dataset which we will upload. Immediately stop the server again and copy the file `tutorial/fuseki-config/alod.ttl` to `run/databases/`. Restart the server again, it will now create the `alod` dataset.
+
+By default the server runs on <http://localhost:3030/> Open that URL in your browser and go to `manage datasets`. Now you can upload the dataset.
 Press `upload data`.
 You can choose our `localhost.nt` using the `select files...` button.
 And finally press `upload now` to import the dataset.
@@ -48,7 +44,7 @@ Install the dependencies with npm:
 
 Now change the `config.js` file.
 Port 8080 is already the default port, but we need to change the SPARQL endpoint.
-Change the `endpointUrl` property in `handlerOptions` and `sparqlProxy` to <http://localhost:3030/alod-example/sparql>.
+Change the `endpointUrl` property in `handlerOptions` and `sparqlProxy` to <http://localhost:3030/alod/sparql>.
 Now you can start aLOD:
 
     npm start
