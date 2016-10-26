@@ -14,7 +14,7 @@ You can fetch a copy with git clone:
 The data uses the namespace `http://data.ge.alod.ch`, but we want to host it on `http://localhost:8080`.
 Let's use sed to replace it:
 
-    sed 's/http:\/\/data.ge.alod.ch/http:\/\/localhost:8080/g' input/sample.nt > input/localhost.nt
+    sed 's/http:\/\/data.ge.alod.ch/http:\/\/localhost:8080/g' input/sample.nq > input/localhost.nq
 
 ## Put the dataset on the SPARQL server
 
@@ -29,7 +29,7 @@ It will create a `run` folder that contains your configuration including the dat
 
 By default the server runs on <http://localhost:3030/> Open that URL in your browser and go to `manage datasets`. Now you can upload the dataset.
 Press `upload data`.
-You can choose our `localhost.nt` using the `select files...` button.
+You can choose our `localhost.nq` using the `select files...` button.
 And finally press `upload now` to import the dataset.
 
 ## Adapt the aLOD installation
