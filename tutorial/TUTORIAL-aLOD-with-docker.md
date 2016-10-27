@@ -23,12 +23,19 @@ You can start that image by running
     docker run -p 8080:8080 --rm zazuko/alod
 
 This will start aLOD with the default configuration. While you can access
+<<<<<<< HEAD
 `http://localhost:8080/` to verify that things are working, running aLOD with 
 the default configuration is of little use: let's
+=======
+`http://localhost:8080/` to verify that things are working,
+
+Of course, running aLOD with the default configuration is of little use, let's
+>>>>>>> 83263a4954ee68beb5b430d29936b766fff5b834
 create our own deployment with our own configuration.
 
 ## Creating a deployment
 
+<<<<<<< HEAD
 The following assumes we have an instance of Fuseki serving our dataset providing
 a SPARQL endpoint at `http://fusekihost:3030/alod/sparql`, see the 
 [Fuseki Setup Tutorial](TUTORIAL-fuseki-setup.md) to learn how to setup a Fuseki 
@@ -82,3 +89,6 @@ to point to it, you may instead start it as follows for the name `fusekihost`
 to pint to the hostmachine:
 
     docker run --add-host=fusekihost:$( ifconfig docker0 | grep "inet addr" | sed -r "s/.*inet addr:([0-9.]*).*$/\1/") --rm -p 80:80 my-alod-deployment
+=======
+TBD
+>>>>>>> 83263a4954ee68beb5b430d29936b766fff5b834
