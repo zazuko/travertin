@@ -75,7 +75,7 @@ Once we've created these two files we can build the image with
 
 And run it with
 
-    docker run --rm -p 80:80 my-alod-deployment
+    docker run --rm -p 8080:8080 my-alod-deployment
 
 If you started Fuseki on your local machine and haven't configured fusekihost
 to point to it, you may instead start it as follows for the name `fusekihost` 
