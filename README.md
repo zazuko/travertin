@@ -9,7 +9,10 @@ A SPARQL endpoint with your archival documents. By default the software points t
 
 # Installation
 
-This just covers getting the server up on your system. If you want to know more check out the [tutorial](tutorial/TUTORIAL-aLOD-with-npm.md)
+This just covers getting the server up on your system. If you want to know more 
+check out one of the tutorials:
+- [Tutorial for deploying aLOD with the Node Package Manager (npm)](tutorial/TUTORIAL-aLOD-with-npm.md)
+- [Tutorial for deploying aLOD with Docker](tutorial/TUTORIAL-aLOD-with-docker.md)
 
 ## NPM
 ### Requirements
