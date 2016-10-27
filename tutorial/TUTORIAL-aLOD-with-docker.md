@@ -81,4 +81,4 @@ If you started Fuseki on your local machine and haven't configured fusekihost
 to point to it, you may instead start it as follows for the name `fusekihost` 
 to pint to the hostmachine:
 
-    docker run --add-host=fusekihost:$( ifconfig docker0 | grep "inet addr" | sed -r "s/.*inet addr:([0-9.]*).*$/\1/") --rm -p 80:80 my-alod-deployment
+    docker run --add-host=fusekihost:$( ifconfig docker0 | grep "inet addr" | sed -r "s/.*inet addr:([0-9.]*).*$/\1/") --rm -p 8080:8080 my-alod-deployment
