@@ -1,7 +1,8 @@
 # Zazuko aLOD
 
 Zazuko aLOD is a software to manage archival finding aids using Linked Data
-technologies
+technologies. You can find an example installation with data from Swiss archives at [data.alod.ch](http://data.alod.ch/zack/).
+
 
 # Requirements
 
@@ -13,6 +14,8 @@ This just covers getting the server up on your system. If you want to know more
 check out one of the tutorials:
 - [Tutorial for deploying aLOD with the Node Package Manager (npm)](tutorial/TUTORIAL-aLOD-with-npm.md)
 - [Tutorial for deploying aLOD with Docker](tutorial/TUTORIAL-aLOD-with-docker.md)
+
+By default both tutorials access data of our example installation and SPARQL endpoint with data from Swiss archives at [data.alod.ch](http://data.alod.ch/zack/).
 
 ## NPM
 ### Requirements
