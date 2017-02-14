@@ -1,6 +1,6 @@
-# Zazuko aLOD
+# Zazuko Travertin
 
-Zazuko aLOD is a software to manage archival finding aids using Linked Data
+Zazuko Travertin is a software to manage archival finding aids using Linked Data
 technologies. You can find an example installation with data from Swiss archives at [data.alod.ch](http://data.alod.ch/zack/).
 
 
@@ -12,8 +12,8 @@ A SPARQL endpoint with your archival documents. By default the software points t
 
 This just covers getting the server up on your system. If you want to know more 
 check out one of the tutorials:
-- [Tutorial for deploying aLOD with the Node Package Manager (npm)](tutorial/TUTORIAL-aLOD-with-npm.md)
-- [Tutorial for deploying aLOD with Docker](tutorial/TUTORIAL-aLOD-with-docker.md)
+- [Tutorial for deploying Travertin with the Node Package Manager (npm)](tutorial/TUTORIAL-Travertin-with-npm.md)
+- [Tutorial for deploying Travertin with Docker](tutorial/TUTORIAL-Travertin-with-docker.md)
 
 By default both tutorials access data of our example installation and SPARQL endpoint with data from Swiss archives at [data.alod.ch](http://data.alod.ch/zack/).
 
@@ -58,7 +58,7 @@ You need to have [docker](https://docker.com/) installed.
 
 ### Running image from docker hub
 
-    docker run --rm -p 8080:8080 zazuko/alod
+    docker run --rm -p 8080:8080 zazuko/travertin
 
 Typically this docker image is used as base image, the inheriting docker image 
 will overwrite the configuration, static files such as images and CSS files 
@@ -66,9 +66,9 @@ and customize the rendering by overwriting the RDF2h matchers.
 
 ### Building
 
-    docker build -t alod .
+    docker build -t travertin .
     
 ### Running your build
 
-    docker run --rm -p 8080:8080 alod
+    docker run --rm -p 8080:8080 travertin
     
