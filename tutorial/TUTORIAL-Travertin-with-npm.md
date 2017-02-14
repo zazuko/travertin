@@ -1,4 +1,4 @@
-# Zazuko aLOD tutorial
+# Zazuko Travertin tutorial
 
 This tutorial describes how to install an instance of aLOD using the example dataset.
 After reading this document you should be able to install your own instance with your own dataset.
@@ -8,12 +8,12 @@ After reading this document you should be able to install your own instance with
 Follow the steps describe in the [Fuseki Setup Tutorial](TUTORIAL-fuseki-setup.md)
 to set up a SPARQL Endpoint serving an example dataset that we can use with aLOD.
 
-## Adapt the aLOD installation
+## Adapt the Travertin installation
 
 You should fork the aLOD project to store your changes in git, but for this tutorial we will skip that step.
 Clone the aLOD project:
 
-    git clone git@github.com:zazuko/alod.git
+    git clone git@github.com:zazuko/travertin.git
 
 Install the dependencies with npm:
 
