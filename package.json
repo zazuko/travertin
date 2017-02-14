@@ -1,14 +1,14 @@
 {
-  "name": "alod",
-  "description": "Zazuko aLOD is a software to manage archival finding aids using Linked Data",
+  "name": "travertin",
+  "description": "Zazuko Travertin is a software to manage archival finding aids using Linked Data",
   "version": "0.1.0",
-  "homepage": "https://github.com/zazuko/alod",
+  "homepage": "https://github.com/zazuko/travertin",
   "repository": {
     "type": "git",
-    "url": "https://github.com/zazuko/alod.git"
+    "url": "https://github.com/zazuko/travertin.git"
   },
   "bugs": {
-    "url": "https://github.com/zazuko/alod/issues"
+    "url": "https://github.com/zazuko/travertin/issues"
   },
   "dependencies": {
     "lodash": "^4.16.4",
