@@ -1,6 +1,6 @@
-# Zazuko aLOD tutorial
+# Zazuko Travertin tutorial
 
-This tutorial describes how to deply an instance of aLOD using with 
+This tutorial describes how to deply an instance of Travertin using with 
 [docker](https://www.docker.com/)
 
 ## Requirements
@@ -11,19 +11,19 @@ for your platform.
 
 ## Docker image
 
-Zazuko alod is available from the docker default repository (hub.docker.com) as
-`zauko/alod` image.
+Zazuko Travertin is available from the docker default repository (hub.docker.com) as
+`zauko/travertin` image.
 
 Pull the latest version with
 
-    docker pull zazuko/alod
+    docker pull zazuko/travertin
 
 You can start that image by running
 
-    docker run -p 8080:8080 --rm zazuko/alod
+    docker run -p 8080:8080 --rm zazuko/travertin   
 
-This will start aLOD with the default configuration. While you can access
-`http://localhost:8080/` to verify that things are working, running aLOD with 
+This will start Travertin with the default configuration. While you can access
+`http://localhost:8080/` to verify that things are working, running Travertin with 
 the default configuration is of little use: let's
 create our own deployment with our own configuration.
 
@@ -34,7 +34,7 @@ a SPARQL endpoint at `http://fusekihost:3030/alod/sparql`, see the
 [Fuseki Setup Tutorial](TUTORIAL-fuseki-setup.md) to learn how to setup a Fuseki 
 endpoint.
 
-A deployment is a docker image that inherits from `zazuko/alod` and adds its own
+A deployment is a docker image that inherits from `zazuko/travertin` and adds its own
 configuration and potentially customization.
 
 To start let's a create an empty directory for the new project and create a
@@ -71,14 +71,14 @@ module.exports = defaultsDeep(config, baseConfig)
 
 Once we've created these two files we can build the image with
 
-    docker build -t my-alod-deployment .
+    docker build -t my-travertin-deployment .
 
 And run it with
 
-    docker run --rm -p 8080:8080 my-alod-deployment
+    docker run --rm -p 8080:8080 my-travertin-deployment
 
 If you started Fuseki on your local machine and haven't configured fusekihost
 to point to it, you may instead start it as follows for the name `fusekihost` 
 to pint to the hostmachine:
 
-    docker run --add-host=fusekihost:$( ifconfig docker0 | grep "inet addr" | sed -r "s/.*inet addr:([0-9.]*).*$/\1/") --rm -p 8080:8080 my-alod-deployment
+    docker run --add-host=fusekihost:$( ifconfig docker0 | grep "inet addr" | sed -r "s/.*inet addr:([0-9.]*).*$/\1/") --rm -p 8080:8080 my-travertin-deployment
