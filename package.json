@@ -1,7 +1,7 @@
 {
   "name": "travertin",
   "description": "Zazuko Travertin is a software to manage archival finding aids using Linked Data",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/zazuko/travertin",
   "repository": {
     "type": "git",
@@ -11,14 +11,13 @@
     "url": "https://github.com/zazuko/travertin/issues"
   },
   "dependencies": {
-    "lodash": "^4.16.4",
-    "trifid-ld": "^0.9.0",
-    "zack-search": "git://github.com/zazuko/zack-search.git#master"
+    "trifid": "^1.0.1",
+    "trifid-renderer-simple": "0.0.9",
+    "zack-search": "git://github.com/zazuko/zack-search.git#dev"
   },
   "license": "MIT",
   "scripts": {
-    "build": "mkdir -p data/public/zack && cp -r node_modules/zack-search/dist/* data/public/zack",
-    "install": "npm run build",
-    "start": "trifid-ld"
+    "start": "trifid --config config.travertin.json",
+    "start-local": "trifid --config config.travertin.dev.json"
   }
 }

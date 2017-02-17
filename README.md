@@ -29,27 +29,19 @@ You need to have a recent version of Nodejs.
 
 3. Adapt the installation to your needs:
 
-  Configure the installation through __`config.js`__
+  Configure the installation through __`config.travertin.json`__
 
-  * `handlerOptions.endpointUrl`:
+  * `sparqlEndpointUrl`:
      
      URL of the SPARQL endpoint containing the data.
-  * `sparqlProxy.path`:
-      
-     The path where your SPARQL endpoint is exposed (defaults to `/sparql` for the search interface)
-  * `sparqlProxy.handlerOptions.endpointUrl`:
-     
-     URL of the SPARQL endpoint which is exposed the data.    
-  
-  Static file hosting __`/data/public`__:
-  
-  The server searches first in the folder `/data/public` of the aLOD installation. If the requested file wasn't found it will search in the Trifid module folder `/node_modules/trifid-ld/`.
-  To adapt the file content copy the version from the Trifid module to your aLOD installation.
 
 4. Run the server
 
-    `npm start`
+    `npm run start-local`
 
+5. Test
+
+    In case you did not adjust the SPARQL endpoint you can open an example resource like: http://localhost:8080/bar/id/archivalresource/29478797e7
 
 ## Docker
 ### Requirements

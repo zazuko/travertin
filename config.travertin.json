@@ -1,0 +1,29 @@
+{
+  "baseConfig": "trifid:config-sparql.json",
+  "sparqlEndpointUrl": "http://data.admin.ch:3030/alod/sparql",
+  "staticFiles": {
+    "rendererFiles": {
+      "path": "/",
+      "folder": "renderer:public"
+    },
+    "alodFiles": {
+      "path": "/",
+      "folder": "cwd:public"
+    },
+    "zackFiles": {
+      "path": "/search/",
+      "folder":  "cwd:node_modules/zack-search/dist"
+    }
+  },
+  "handler": {
+    "options": {
+      "resourceExistsQuery": "ASK { GRAPH ?g { <${iri}> ?p ?o }}"
+    }
+  },
+  "renderer": {
+    "module": "trifid-renderer-simple",
+    "template": "cwd:data/template.html",
+    "templateError": "cwd:data/error.html",
+    "vocab": "renderer:vocab.json"
+  }
+}
