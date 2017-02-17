@@ -1,0 +1,4 @@
+apps:
+  - script   : ./node_modules/.bin/trifid
+    name     : 'travertin'
+    args     : '--config config.travertin.json'
