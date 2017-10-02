@@ -1,4 +1,4 @@
 {
-  "baseConfig": "cwd:config.travertin.json",
+  "baseConfig": "cwd:config.json",
   "datasetBaseUrl": "http://data.alod.ch/"
 }

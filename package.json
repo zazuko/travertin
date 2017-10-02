@@ -11,13 +11,12 @@
     "url": "https://github.com/zazuko/travertin/issues"
   },
   "dependencies": {
-    "trifid": "^1.0.1",
-    "trifid-renderer-simple": "0.0.9",
-    "zack-search": "git://github.com/zazuko/zack-search.git#dev"
+    "trifid": "^1.10.1",
+    "zack-search": "git://github.com/zazuko/zack-search.git"
   },
   "license": "MIT",
   "scripts": {
-    "start": "trifid --config config.travertin.json",
-    "start-local": "trifid --config config.travertin.dev.json"
+    "start": "trifid --config config.json",
+    "start-local": "trifid --config config.local.json"
   }
 }

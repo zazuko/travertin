@@ -1,0 +1,41 @@
+{
+  "baseConfig": "trifid:config-sparql.json",
+  "sparqlEndpointUrl": "https://test.lindas-data.ch:8443/alod/query",
+  "sparqlProxy": {
+    "options": {
+      "queryOperation": "postQueryUrlencoded",
+      "authentication": {
+        "user": "public",
+        "password": "public"
+      }
+    }
+  },
+  "staticFiles": {
+    "files": {
+      "path": "/",
+      "folder": "cwd:public"
+    },
+    "rendererFiles": {
+      "path": "/",
+      "folder": "renderer:public"
+    },
+    "zackFiles": {
+      "path": "/search/",
+      "folder":  "cwd:node_modules/zack-search/dist"
+    }
+  },
+  "handler": {
+    "options": {
+      "authentication": {
+        "user": "public",
+        "password": "public"
+      },
+      "resourceExistsQuery": "ASK { <${iri}> ?p ?o }",
+      "resourceGraphQuery": "DESCRIBE <${iri}>"
+    }
+  },
+  "renderer": {
+    "module": "trifid-renderer-simple",
+    "template": "renderer:views/index.html"
+  }
+}
