@@ -1,7 +1,7 @@
 {
   "name": "travertin",
   "description": "Zazuko Travertin is a software to manage archival finding aids using Linked Data",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "homepage": "https://github.com/zazuko/travertin",
   "repository": {
     "type": "git",
